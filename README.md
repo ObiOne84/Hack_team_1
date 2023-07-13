@@ -25,6 +25,21 @@ One or two paragraphs providing an overview of our project
 
 ## Agile
 
+We made use of the built in GitHub "Issues" and "Projects" functionality in order to create a Kanban board with User Stories for an efficient and clear Agile workflow while developing our project. We also made use of a custom Google Sheet for capturing the team's user stories which assisted the Scrum Master in managing the groups contributiions to the board.
+
+![agile_sheet](assets/images/readme_images/agile_sheet.png)
+
+This is the Google Sheet that we made use of with all the information required to create a complete User Story for the Kanban board.
+
+![kanban_board](assets/images/readme_images/kanban_board.png)
+
+This is the Kanban board that we made use of for managing our User Stories and workflow, it findicates which User Stories are still to do, in progress or completed.
+
+![user_story](assets/images/readme_images/user_story.png)
+
+Here is a sample of a user story which indicates the MoSCow Prioritisation, the milestone, the assigned developer as well as the tasks and criteria completed by means of checkboxes.
+
+At a glance any developer could see what is still needed and contribute accordingly.
 
 ## Goal
 The goal section provides a concise summary of the main objective or purpose of the project or software described in this README. It addresses the following aspects:
