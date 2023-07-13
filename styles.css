@@ -1,9 +1,5 @@
 /* Importing google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
 
 :root {
   --bright-green: #66ff00;
@@ -151,52 +147,65 @@ body {
   }
 }
 
-
 /* HEADER */
 #header {
-  background-color: #51AEF0;
+  background-color: #51aef0;
 }
 
-#logo{
+#logo {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
-  color: #ECF0F1;
+  font-family: "Indie Flower", cursive;
+  color: #ecf0f1;
   font-size: 2rem;
 }
 
 .nav-links {
   text-align: center;
 }
-.nav-link{
+.nav-link {
   text-decoration: none;
   margin-left: 5%;
-  color: #ECF0F1;
-  font-family: 'Indie Flower', cursive;
+  color: #ecf0f1;
+  font-family: "Indie Flower", cursive;
   font-size: 1.5rem;
 }
 .active {
-  color: #F2F48C;
+  color: #f2f48c;
 }
 
 /* FOOTER */
-#footer{
-  background-color: #54C6D9;
+#footer {
+  background-color: #54c6d9;
+  font-size: 18px;
+  padding: 20px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
-.grid-container{
+.grid-container {
   display: grid;
   grid-template-columns: 35% 65%;
   font-size: 1.2rem;
 }
 
-.grid-item{
+.grid-item {
   text-align: center;
   color: #000000;
 }
 
-.footer-link{
+.footer-link {
   text-decoration: none;
-  margin-left: 5%;
-  color: #000000;
-  font-size: 1.2rem;
+  margin-left: 2%;
+  color: #ffffff;
+  font-size: 28px;
+  background: var(--blue);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.footer-link:hover {
+  background-color: var(--bright-orange);
+  color: var(--blue);
 }
