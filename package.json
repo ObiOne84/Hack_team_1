@@ -1,0 +1,29 @@
+{
+  "name": "hack_team_1",
+  "version": "1.0.0",
+  "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
+  "main": "index.js",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarrachBarneveld/Hack_team_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarrachBarneveld/Hack_team_1/issues"
+  },
+  "homepage": "https://github.com/DarrachBarneveld/Hack_team_1#readme",
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "leaflet": "^1.9.4"
+  }
+}

@@ -1,0 +1,42 @@
+:root {
+  --bright-green: #66ff00;
+  --green: #66cc33;
+  --dark-green: #018749;
+  --off-black: #111111;
+  --primary-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#map {
+  max-width: 800px;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  box-shadow: var(--primary-shadow);
+  border: 1px solid var(--off-black);
+}
+
+#fetch-country-btn {
+}
+
+.btn {
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--off-black);
+  background: var(--green);
+  font-weight: bolder;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--bright-green);
+  cursor: pointer;
+  transition: 100ms;
+  transform: scale(0.98);
+}
