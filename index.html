@@ -1,80 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LETS GO HACK TEAM 1</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LETS GO HACK TEAM 1</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-</head>
-
-<body>
-
-  <header id="header">
-    <h1 id="logo">APP Name</h1>
-    <div class="nav-links">
-      <a href="#" class="nav-link active">Near Me!</a>
-      <a href="#" class="nav-link">What's On</a>
-      <a href="#" class="nav-link">Contact</a>
-    </div>
-  </header>
-
-
-  <main class="main-container">
-    <!-- Displays the leaflet map -->
-    <div id="map"></div>
-
-    <!-- Dynamically renders selected countries flag -->
-    <div id="information">
-      <div class="flag-container">
-        <img id="flag" src="https://flagcdn.com/gb.svg" alt="Great Britians flag" />
+  <body>
+    <header id="header">
+      <h1 id="logo">APP Name</h1>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Near Me!</a>
+        <a href="#" class="nav-link">What's On</a>
+        <a href="#" class="nav-link">Contact</a>
       </div>
-      <div id="activities">
-        <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
-        <div class="activity">
-          <h2 class="activity-name">Conna Castle</h2>
-          <h3 class="activity-location">Cork</h3>
-          <h3>Type:</h3>
-          <ul class="activity-list">
-            <li>Acitvity</li>
-            <li>Castle</li>
-            <li>Attraction</li>
-            <li>Historic Houses and Castle</li>
-          </ul>
-          <a href="https://www.castles.nl/conna-castle" alt="Link to Conna Castle" target="_blank">Visit Site</a>
+    </header>
+
+    <main class="main-container">
+      <!-- Displays the leaflet map -->
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <!-- Map buttons -->
+        <div class="btn-container">
+          <!-- fetch country button -->
+          <button id="fetch-country-btn" class="btn">
+            Fetch Irelands Info
+          </button>
+
+          <!-- Geolocatin button -->
+          <button id="geolocation-btn" class="btn">Find me</button>
+          <button id="activities-btn" class="btn">
+            Find Irish Attractions
+          </button>
         </div>
       </div>
-    </div>
-  </main>
 
-  <!-- Map buttons -->
-  <div class="btn-container">
-    <!-- fetch country button -->
-    <button id="fetch-country-btn" class="btn">Fetch Irelands Info</button>
+      <!-- Dynamically renders selected countries flag -->
+      <div id="information">
+        <div class="flag-container">
+          <img
+            id="flag"
+            src="https://flagcdn.com/gb.svg"
+            alt="Great Britians flag"
+          />
+        </div>
+        <div id="activities">
+          <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
+          <div class="activity">
+            <h2 class="activity-name">Conna Castle</h2>
+            <h3 class="activity-location">Cork</h3>
+            <h3>Type:</h3>
+            <ul class="activity-list">
+              <li>Acitvity</li>
+              <li>Castle</li>
+              <li>Attraction</li>
+              <li>Historic Houses and Castle</li>
+            </ul>
+            <a
+              href="https://www.castles.nl/conna-castle"
+              alt="Link to Conna Castle"
+              target="_blank"
+              >Visit Site</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
 
-    <!-- Geolocatin button -->
-    <button id="geolocation-btn" class="btn">Find me</button>
-    <button id="activities-btn" class="btn">Find Irish Attractions</button>
-  </div>
-
-  <footer id="footer" class="grid-container">
-    <div class="grid-item footer-logo">
-      Name APP, 2023
-    </div>
-    <div id="social-links" class="grid-item">
-      <!-- We'll use icons for the links, for now I wrote the names of the links -->
-      <a href="#" target="_blank" class="footer-link"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#" target="_blank" class="footer-link"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#" target="_blank" class="footer-link"><i class="fa-brands fa-square-twitter"></i></a>
-    </div>
-  </footer>
-
-
-</body>
-<script src="script.js" type="module"></script>
-<script src="https://kit.fontawesome.com/2730ac997a.js" crossorigin="anonymous"></script>
-
+    <footer id="footer" class="grid-container">
+      <div class="grid-item footer-logo">Name APP, 2023</div>
+      <div id="social-links" class="grid-item">
+        <!-- We'll use icons for the links, for now I wrote the names of the links -->
+        <a href="#" target="_blank" class="footer-link"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a href="#" target="_blank" class="footer-link"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="#" target="_blank" class="footer-link"
+          ><i class="fa-brands fa-square-twitter"></i
+        ></a>
+      </div>
+    </footer>
+  </body>
+  <script src="script.js" type="module"></script>
+  <script
+    src="https://kit.fontawesome.com/2730ac997a.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
