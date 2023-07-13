@@ -59,3 +59,42 @@ export function delayTimer(delay) {
     }, delay);
   });
 }
+
+export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
+  const filteredObjects = [];
+
+  for (const obj of objects) {
+    const distance = calculateDistance(originalCoords, obj);
+    console.log(distance);
+    if (distance <= radiusInKm) {
+      filteredObjects.push(obj);
+    }
+  }
+
+  return filteredObjects;
+}
+
+function calculateDistance(coords1, coords2) {
+  const earthRadiusKm = 6371;
+  const { lat: lat1, lng: lng1 } = coords1;
+  const { lat: lat2, lng: lng2 } = coords2;
+
+  const dLat = toRadians(lat2 - lat1);
+  const dLng = toRadians(lng2 - lng1);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRadians(lat1)) *
+      Math.cos(toRadians(lat2)) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = earthRadiusKm * c;
+
+  return distance;
+}
+
+function toRadians(degrees) {
+  return degrees * (Math.PI / 180);
+}
