@@ -1,3 +1,10 @@
+/* Importing google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+
+
+
+
 :root {
   --bright-green: #66ff00;
   --green: #66cc33;
@@ -142,4 +149,54 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+/* HEADER */
+#header {
+  background-color: #51AEF0;
+}
+
+#logo{
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  color: #ECF0F1;
+  font-size: 2rem;
+}
+
+.nav-links {
+  text-align: center;
+}
+.nav-link{
+  text-decoration: none;
+  margin-left: 5%;
+  color: #ECF0F1;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5rem;
+}
+.active {
+  color: #F2F48C;
+}
+
+/* FOOTER */
+#footer{
+  background-color: #54C6D9;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 35% 65%;
+  font-size: 1.2rem;
+}
+
+.grid-item{
+  text-align: center;
+  color: #000000;
+}
+
+.footer-link{
+  text-decoration: none;
+  margin-left: 5%;
+  color: #000000;
+  font-size: 1.2rem;
 }
