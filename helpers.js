@@ -1,3 +1,4 @@
+// Takes an array and returns a random 3 items from it
 export function randomThreeFromArray(array) {
   let randomItems = [];
 
@@ -9,6 +10,7 @@ export function randomThreeFromArray(array) {
   return randomItems;
 }
 
+// Creates the HTML for an activity
 export function createActivityHTML(activity) {
   //Create the activity element
   const activityElement = document.createElement("div");
