@@ -8,7 +8,7 @@
 # SUBMISSION
 ## Deployment
 #### _(please note, your team must also include the deployed links in the usual submission in Hackapp)_
-The project is deployed and can be accessed at [http://your-deployed-link.com](http://your-deployed-link.com).
+This project was deployed using [Netlify](https://app.netlify.com/) and can be accessed at [this address](https://musical-kataifi-25a4e4.netlify.app/).
 
 ## Criteria
 In this section, we will briefly discuss how our team addressed the applicable criteria:
