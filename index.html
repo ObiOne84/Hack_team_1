@@ -14,7 +14,22 @@
     />
   </head>
   <body>
-    <div id="map"></div>
+    <main class="main-container">
+      <!-- Displays the leaflet map -->
+      <div id="map"></div>
+
+      <!-- Dynamically renders selected countries flag -->
+      <div id="information">
+        <div class="flag-container">
+          <img
+            id="flag"
+            src="https://flagcdn.com/gb.svg"
+            alt="Great Britians flag"
+          />
+        </div>
+      </div>
+    </main>
+
     <div class="btn-container">
       <button id="fetch-country-btn" class="btn">Fetch Irelands Info</button>
       <button id="geolocation-btn" class="btn">Find me</button>

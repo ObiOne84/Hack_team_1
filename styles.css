@@ -15,12 +15,31 @@ body {
   gap: 1rem;
 }
 
+.main-container {
+  display: flex;
+  gap: 1rem;
+}
+
 #map {
+  flex: 1;
   max-width: 800px;
   aspect-ratio: 1;
   border-radius: 10px;
   box-shadow: var(--primary-shadow);
   border: 1px solid var(--off-black);
+}
+
+#information {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  background-color: #0096ff;
+  padding: 1rem;
+}
+
+#flag {
+  width: clamp(50px, 22.5vw, 300px);
+  border-radius: 10px;
 }
 
 #geolocation-btn {

@@ -18,15 +18,16 @@ async function fetchCountryData(name) {
   try {
     const { data } = await axios(url);
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
+    console.log(data[1]);
     const { latlng } = capitalInfo;
     map.flyTo([latlng[0], latlng[1]], 13);
+    displayCountryFlag(data[1].name.common, data[1].flags.svg);
   } catch (error) {
     print(error);
   }
 }
 
 // Using web geolocation to find current users location and display on map
-
 function getCurrentLocation() {
   try {
     navigator.geolocation.getCurrentPosition(
@@ -42,6 +43,12 @@ function getCurrentLocation() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function displayCountryFlag(country, flagUrl) {
+  const flag = document.getElementById("flag");
+  flag.src = flagUrl;
+  flag.alt = `${country}'s flag`;
 }
 
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
