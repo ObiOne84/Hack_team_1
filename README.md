@@ -105,3 +105,5 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 ---
 
 Happy coding!
+
+Just added line here to check if I can create pull request - Szymon.
