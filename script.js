@@ -1,6 +1,8 @@
 import L from "leaflet";
 import axios from "axios";
 
+import { randomThreeFromArray } from "./helpers";
+
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
 const activitiesBtn = document.getElementById("activities-btn");
@@ -55,6 +57,7 @@ function displayCountryFlag(country, flagUrl) {
 
 // Async function to fetch activity data from Failte Irelands API
 async function getFailteIrelandsActivities() {
+  console.log(randomThreeFromArray);
   try {
     const { data } = await axios(
       "https://failteireland.azure-api.net/opendata-api/v1/activities"
