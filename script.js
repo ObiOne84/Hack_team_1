@@ -51,13 +51,10 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 // Async function that fetching country information from rest-countries API
 async function fetchCountryData() {
-  console.log("fire")
+  console.log("fire");
   const url = `https://restcountries.com/v3.1/name/ireland`;
   try {
-    // const { data } = await axios(url);
-    const response = await fetch(url)
-    const data = await response.json()
-    console.log("Data")
+    const { data } = await axios(url);
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
     console.log(data[1]);
     const { latlng } = capitalInfo;
@@ -108,9 +105,14 @@ async function getFailteIrelandsAttractions() {
 
     const results = [];
 
-    const { data } = await axios(
+    // const { data } = await axios.get(
+    //   "https://failteireland.azure-api.net/opendata-api/v1/attractions"
+    // );
+
+    const response = await fetch(
       "https://failteireland.azure-api.net/opendata-api/v1/attractions"
     );
+    const data = await response.json();
 
     results.push(data);
 
