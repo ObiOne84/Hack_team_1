@@ -60,6 +60,7 @@ export function delayTimer(delay) {
   });
 }
 
+// filter objects by radius and return filtered array
 export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
   const filteredObjects = [];
 
@@ -74,6 +75,7 @@ export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
   return filteredObjects;
 }
 
+// Calculate the distace between to coords
 function calculateDistance(coords1, coords2) {
   const earthRadiusKm = 6371;
   const { lat: lat1, lng: lng1 } = coords1;
@@ -82,6 +84,7 @@ function calculateDistance(coords1, coords2) {
   const dLat = toRadians(lat2 - lat1);
   const dLng = toRadians(lng2 - lng1);
 
+  // Trig functions used to find the circumference and radial distances
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(toRadians(lat1)) *
@@ -95,6 +98,7 @@ function calculateDistance(coords1, coords2) {
   return distance;
 }
 
+// convert the degrees into a radial line distance
 function toRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
