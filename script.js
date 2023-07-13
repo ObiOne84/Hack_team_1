@@ -85,10 +85,19 @@ function getCurrentLocation() {
   }
 }
 
+// Place a marker the map
 function placeMarker(location) {
   L.marker(location).addTo(map);
 }
 
+// Removes all markers from the map
+function removeAllMarkers(map) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
+}
 // Function to dynamically render a countries flag to the DOM
 function displayCountryFlag(country, flagUrl) {
   const flag = document.getElementById("flag");
@@ -139,9 +148,15 @@ async function getFailteIrelandsAttractionsData() {
 
     await delayTimer(100); // Simulating fetch request delay
 
-    console.log(DUMMY_ATTRACTIONS[0]);
     actvityWrapper.innerHTML = "";
     const randomThreeActivites = randomThreeFromArray(DUMMY_ATTRACTIONS);
+
+    removeAllMarkers(map);
+
+    randomThreeActivites.forEach((attraction) => {
+      const { lat, lng } = attraction;
+      placeMarker([lat, lng]);
+    });
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
   } catch (error) {
