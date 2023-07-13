@@ -3,36 +3,34 @@ import axios from "axios";
 
 import { createActivityHTML, randomThreeFromArray } from "./helpers";
 
-const DUMMY_ACTIVITY_DATA = 
-  {
-    context: "http://schema.org",
-    type: [
-      "LocalBusiness",
-      "TouristAttraction",
-      "LandmarksOrHistoricalBuildings",
-    ],
-    address: {
-      type: "PostalAddress",
-      addressLocality: "Conna",
-      addressRegion: "Cork",
-      addressCountry: "Republic of Ireland",
-    },
-    geo: {
-      type: "GeoCoordinates",
-      longitude: -8.1016545,
-      latitude: 52.0945205,
-    },
-    image: {
-      type: "ImageObject",
-      caption: "Fáilte Ireland Logo",
-      url: "https://failtecdn.azureedge.net/failteireland/F%C3%A1ilte_Ireland_Logo_OpenDataAPI.jpg",
-    },
-    name: "Conna Castle",
-    tags: ["Activity", "Castle", "Attraction", "Historic Houses and Castle"],
-    telephone: "+353862149601",
-    url: "https://www.castles.nl/conna-castle",
+const DUMMY_ACTIVITY_DATA = {
+  context: "http://schema.org",
+  type: [
+    "LocalBusiness",
+    "TouristAttraction",
+    "LandmarksOrHistoricalBuildings",
+  ],
+  address: {
+    type: "PostalAddress",
+    addressLocality: "Conna",
+    addressRegion: "Cork",
+    addressCountry: "Republic of Ireland",
   },
-;
+  geo: {
+    type: "GeoCoordinates",
+    longitude: -8.1016545,
+    latitude: 52.0945205,
+  },
+  image: {
+    type: "ImageObject",
+    caption: "Fáilte Ireland Logo",
+    url: "https://failtecdn.azureedge.net/failteireland/F%C3%A1ilte_Ireland_Logo_OpenDataAPI.jpg",
+  },
+  name: "Conna Castle",
+  tags: ["Activity", "Castle", "Attraction", "Historic Houses and Castle"],
+  telephone: "+353862149601",
+  url: "https://www.castles.nl/conna-castle",
+};
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
@@ -70,6 +68,7 @@ function getCurrentLocation() {
         const { latitude } = position.coords;
         const { longitude } = position.coords;
         map.flyTo([latitude, longitude], 14);
+        placeMarker([latitude, longitude]);
       },
       (error) => {
         console.error("Error getting location:", error);
@@ -78,6 +77,10 @@ function getCurrentLocation() {
   } catch (error) {
     console.log(error);
   }
+}
+
+function placeMarker(location) {
+  L.marker(location).addTo(map);
 }
 
 // Function to dynamically render a countries flag to the DOM
@@ -89,37 +92,33 @@ function displayCountryFlag(country, flagUrl) {
 
 // Async function to fetch activity data from Failte Irelands API
 async function getFailteIrelandsActivities() {
-  
   try {
-    actvityWrapper.innerHTML = ''
-    const loader = document.createElement('div')
-    actvityWrapper.appendChild(loader)
-    loader.id = 'loader'
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
 
     const { data } = await axios(
       "https://failteireland.azure-api.net/opendata-api/v1/activities"
     );
-    actvityWrapper.innerHTML = ''
+    actvityWrapper.innerHTML = "";
     const randomThreeActivites = randomThreeFromArray(data.results);
 
-    randomThreeActivites.forEach(activity => displayActivites(activity))
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
 // Renders actvities to the DOM
 function displayActivites(activities) {
-  if(!activities) return 
-    const activitiesElements = createActivityHTML(activities);
+  if (!activities) return;
+  const activitiesElements = createActivityHTML(activities);
 
-  [activitiesElements].forEach(element => {
-    actvityWrapper.appendChild(activitiesElements)
-    
+  [activitiesElements].forEach((element) => {
+    actvityWrapper.appendChild(activitiesElements);
   });
-
 }
-
 
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
 geolocationBtn.addEventListener("click", getCurrentLocation);
