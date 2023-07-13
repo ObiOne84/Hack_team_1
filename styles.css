@@ -2,6 +2,8 @@
   --bright-green: #66ff00;
   --green: #66cc33;
   --dark-green: #018749;
+  --bright-blue: #0096ff;
+  --blue: #4267b2;
   --off-black: #111111;
   --primary-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -21,7 +23,13 @@ body {
   border: 1px solid var(--off-black);
 }
 
-#fetch-country-btn {
+#geolocation-btn {
+  background-color: var(--blue);
+}
+
+#geolocation-btn:hover,
+#geolocation-btn:focus {
+  background-color: var(--bright-blue);
 }
 
 .btn {
