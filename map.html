@@ -24,7 +24,56 @@
       </div>
     </header>
 
-    <main class="main-container"></main>
+    <main class="main-container">
+      <!-- Displays the leaflet map -->
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <!-- Map buttons -->
+        <div class="btn-container">
+          <!-- fetch country button -->
+          <button id="fetch-country-btn" class="btn">
+            Fetch Irelands Info
+          </button>
+
+          <!-- Geolocatin button -->
+          <button id="geolocation-btn" class="btn">Find me</button>
+          <button id="activities-btn" class="btn">
+            Find Irish Attractions
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamically renders selected countries flag -->
+      <div id="information">
+        <div class="flag-container">
+          <img
+            id="flag"
+            src="https://flagcdn.com/gb.svg"
+            alt="Great Britians flag"
+          />
+        </div>
+        <div id="activities">
+          <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
+          <div class="activity">
+            <h2 class="activity-name">Conna Castle</h2>
+            <h3 class="activity-location">Cork</h3>
+            <h3>Type:</h3>
+            <ul class="activity-list">
+              <li>Acitvity</li>
+              <li>Castle</li>
+              <li>Attraction</li>
+              <li>Historic Houses and Castle</li>
+            </ul>
+            <a
+              href="https://www.castles.nl/conna-castle"
+              alt="Link to Conna Castle"
+              target="_blank"
+              >Visit Site</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
 
     <footer id="footer" class="grid-container">
       <div class="grid-item footer-logo">Name APP, 2023</div>
