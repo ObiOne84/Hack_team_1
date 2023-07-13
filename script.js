@@ -87,7 +87,8 @@ function getCurrentLocation() {
 
 // Place a marker the map
 function placeMarker(location) {
-  L.marker(location).addTo(map);
+  const marker = L.marker(location).addTo(map);
+  return marker;
 }
 
 // Removes all markers from the map
@@ -155,7 +156,8 @@ async function getFailteIrelandsAttractionsData() {
 
     randomThreeActivites.forEach((attraction) => {
       const { lat, lng } = attraction;
-      placeMarker([lat, lng]);
+      const marker = placeMarker([lat, lng]);
+      marker.bindTooltip(attraction.name).openTooltip();
     });
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
