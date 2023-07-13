@@ -50,8 +50,8 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // Async function that fetching country information from rest-countries API
-async function fetchCountryData(name) {
-  const url = `https://restcountries.com/v3.1/name/${name}`;
+async function fetchCountryData() {
+  const url = `https://restcountries.com/v3.1/name/ireland`;
   try {
     const { data } = await axios(url);
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
@@ -143,6 +143,6 @@ function displayActivites(activities) {
   });
 }
 
-fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
+fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", getCurrentLocation);
 activitiesBtn.addEventListener("click", getFailteIrelandsAttractions);
