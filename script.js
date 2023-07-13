@@ -1,7 +1,11 @@
 import L from "leaflet";
 import axios from "axios";
 
-import { createActivityHTML, randomThreeFromArray } from "./helpers";
+import {
+  createActivityHTML,
+  delayTimer,
+  randomThreeFromArray,
+} from "./helpers";
 
 const DUMMY_ACTIVITY_DATA = {
   context: "http://schema.org",
@@ -91,16 +95,23 @@ function displayCountryFlag(country, flagUrl) {
 }
 
 // Async function to fetch activity data from Failte Irelands API
-async function getFailteIrelandsActivities() {
+async function getFailteIrelandsAttractions() {
   try {
     actvityWrapper.innerHTML = "";
     const loader = document.createElement("div");
     actvityWrapper.appendChild(loader);
     loader.id = "loader";
 
+    const results = [];
+
     const { data } = await axios(
-      "https://failteireland.azure-api.net/opendata-api/v1/activities"
+      "https://failteireland.azure-api.net/opendata-api/v1/attractions"
     );
+
+    results.push(data);
+
+    // await fetchAlFailteIrelandActivities(data, results);
+
     actvityWrapper.innerHTML = "";
     const randomThreeActivites = randomThreeFromArray(data.results);
 
@@ -109,6 +120,18 @@ async function getFailteIrelandsActivities() {
     console.log(error);
   }
 }
+
+// async function fetchAlFailteIrelandActivities(lastReq, results, count = 0) {
+//   await delayTimer(1000);
+//   const { data } = await axios(lastReq.nextPage);
+//   results.push(data);
+//   console.log(count);
+//   if (data.nextPage && count < 9) {
+//     count++;
+//     fetchAlFailteIrelandActivities(data, results, count);
+//   }
+//   return;
+// }
 
 // Renders actvities to the DOM
 function displayActivites(activities) {
@@ -122,4 +145,4 @@ function displayActivites(activities) {
 
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
 geolocationBtn.addEventListener("click", getCurrentLocation);
-activitiesBtn.addEventListener("click", getFailteIrelandsActivities);
+activitiesBtn.addEventListener("click", getFailteIrelandsAttractions);

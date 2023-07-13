@@ -2,7 +2,6 @@
   "name": "hack_team_1",
   "version": "1.0.0",
   "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
-  "main": "index.js",
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",

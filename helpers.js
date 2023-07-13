@@ -49,3 +49,12 @@ export function createActivityHTML(activity) {
 
   return activityElement;
 }
+
+// Delay timer for UI/Rate Limit
+export function delayTimer(delay) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, delay);
+  });
+}
