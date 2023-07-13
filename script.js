@@ -1,7 +1,38 @@
 import L from "leaflet";
 import axios from "axios";
 
-import { randomThreeFromArray } from "./helpers";
+import { createActivityHTML, randomThreeFromArray } from "./helpers";
+
+const DUMMY_ACTIVITY_DATA = 
+  {
+    context: "http://schema.org",
+    type: [
+      "LocalBusiness",
+      "TouristAttraction",
+      "LandmarksOrHistoricalBuildings",
+    ],
+    address: {
+      type: "PostalAddress",
+      addressLocality: "Conna",
+      addressRegion: "Cork",
+      addressCountry: "Republic of Ireland",
+    },
+    geo: {
+      type: "GeoCoordinates",
+      longitude: -8.1016545,
+      latitude: 52.0945205,
+    },
+    image: {
+      type: "ImageObject",
+      caption: "Fáilte Ireland Logo",
+      url: "https://failtecdn.azureedge.net/failteireland/F%C3%A1ilte_Ireland_Logo_OpenDataAPI.jpg",
+    },
+    name: "Conna Castle",
+    tags: ["Activity", "Castle", "Attraction", "Historic Houses and Castle"],
+    telephone: "+353862149601",
+    url: "https://www.castles.nl/conna-castle",
+  },
+;
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
@@ -62,12 +93,28 @@ async function getFailteIrelandsActivities() {
     const { data } = await axios(
       "https://failteireland.azure-api.net/opendata-api/v1/activities"
     );
-
-    console.log(data);
+    const randomThreeActivites = randomThreeFromArray(data.results);
+    console.log(data.results);
   } catch (error) {
     console.log("There was an error retrieving data");
   }
 }
+
+function displayActivites(activities) {
+
+  if(!activities) return 
+  const actvityWrapper = document.getElementById("activities");
+  actvityWrapper.innerHTML = ''
+  const activitiesElements = createActivityHTML(activities);
+
+  [activitiesElements].forEach(element => {
+    actvityWrapper.appendChild(activitiesElements)
+    
+  });
+
+}
+
+displayActivites();
 
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
 geolocationBtn.addEventListener("click", getCurrentLocation);
