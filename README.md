@@ -1,28 +1,41 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center"><strong>🌞🚵 Summer of Code 🏄🏖️</strong>
 
-Welcome USER_NAME,
+</h1>
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+![Summer of Code Banner](https://res.cloudinary.com/djdefbnij/image/upload/v1688114955/Summer_2_owummy.png)
 
-## Gitpod Reminders
+# SUBMISSION
+## Deployment
+#### _(please note, your team must also include the deployed links in the usual submission in Hackapp)_
+The project is deployed and can be accessed at [http://your-deployed-link.com](http://your-deployed-link.com).
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Criteria
+In this section, we will briefly discuss how our team addressed the applicable criteria:
 
-`python3 -m http.server`
+- ✨ Project is 100% Mobile First
+- ✨ Project uses browser location or device camera
+- ✨ Project aligns well to the Hackathon Theme
+- ✨ Clear use of Github Projects or other agile tool
+- ✨ Presentation Quality - Present as if you are pitching it to client
 
-A blue button should appear to click: _Make Public_,
+# ABOUT SUBMISSION
+## Intro
+One or two paragraphs providing an overview of our project
 
-Another blue button should appear to click: _Open Browser_.
+## Agile
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A blue button should appear to click: _Make Public_,
+## Goal
+The goal section provides a concise summary of the main objective or purpose of the project or software described in this README. It addresses the following aspects:
 
-Another blue button should appear to click: _Open Browser_.
+- ➡️ Problem Statement
+- ➡️ Objective(s)
+- ➡️ Target Audience
+- ➡️ Benefits
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Tech
+In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
 
 To log into the Heroku toolbelt CLI:
 
