@@ -89,13 +89,18 @@ function displayCountryFlag(country, flagUrl) {
 
 // Async function to fetch activity data from Failte Irelands API
 async function getFailteIrelandsActivities() {
-  console.log(randomThreeFromArray);
+  
   try {
+    actvityWrapper.innerHTML = ''
+    const loader = document.createElement('div')
+    actvityWrapper.appendChild(loader)
+    loader.id = 'loader'
+
     const { data } = await axios(
       "https://failteireland.azure-api.net/opendata-api/v1/activities"
     );
-    const randomThreeActivites = randomThreeFromArray(data.results);
     actvityWrapper.innerHTML = ''
+    const randomThreeActivites = randomThreeFromArray(data.results);
 
     randomThreeActivites.forEach(activity => displayActivites(activity))
   } catch (error) {
