@@ -3,11 +3,12 @@ import axios from "axios";
 import {
   createActivityHTML,
   delayTimer,
+  filterObjectsByRadius,
   randomThreeFromArray,
 } from "./helpers";
 import DUMMY_ATTRACTIONS from "./data/attractions.json";
 
-const DUMMY_ACTIVITY_DATA = {
+const DUMMY_ACTIVITY_API_DATA = {
   context: "http://schema.org",
   type: [
     "LocalBusiness",
@@ -67,19 +68,27 @@ async function fetchCountryData() {
 }
 
 // Using web geolocation to find current users location and display on map
-function getCurrentLocation() {
+async function getCurrentLocation() {
   try {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude } = position.coords;
-        const { longitude } = position.coords;
-        map.flyTo([latitude, longitude], 14);
-        placeMarker([latitude, longitude]);
-      },
-      (error) => {
-        console.error("Error getting location:", error);
-      }
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    map.flyTo([lat, lng], 14);
+    placeMarker([lat, lng]);
+
+    const coords = { lat, lng };
+    const filteredAttractions = filterObjectsByRadius(
+      coords,
+      DUMMY_ATTRACTIONS,
+      30
     );
+
+    filteredAttractions.forEach((attraction) => placeToolTipMarker(attraction));
+
+    console.log(filteredAttractions);
   } catch (error) {
     console.log(error);
   }
@@ -88,6 +97,15 @@ function getCurrentLocation() {
 // Place a marker the map
 function placeMarker(location) {
   const marker = L.marker(location).addTo(map);
+  return marker;
+}
+
+// Places a marker with a tooltip on the map
+function placeToolTipMarker(location) {
+  const { lat, lng } = location;
+  const marker = placeMarker([lat, lng]);
+  marker.bindTooltip(location.name).openTooltip();
+
   return marker;
 }
 
@@ -154,11 +172,9 @@ async function getFailteIrelandsAttractionsData() {
 
     removeAllMarkers(map);
 
-    randomThreeActivites.forEach((attraction) => {
-      const { lat, lng } = attraction;
-      const marker = placeMarker([lat, lng]);
-      marker.bindTooltip(attraction.name).openTooltip();
-    });
+    randomThreeActivites.forEach((attraction) =>
+      placeToolTipMarker(attraction)
+    );
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
   } catch (error) {
