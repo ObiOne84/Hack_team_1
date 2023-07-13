@@ -14,6 +14,17 @@
     />
   </head>
   <body>
+
+    <header id="header">
+      <h1 id="logo">APP Name</h1>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Near Me!</a>
+        <a href="#" class="nav-link">What's On</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+
     <main class="main-container">
       <!-- Displays the leaflet map -->
       <div id="map"></div>
@@ -59,6 +70,20 @@
       <button id="geolocation-btn" class="btn">Find me</button>
       <button id="activities-btn" class="btn">Find Irish Attractions</button>
     </div>
+
+    <footer id="footer" class="grid-container">
+      <div class="grid-item footer-logo">
+        Name APP, 2023
+      </div>
+      <div id="social-links" class="grid-item">
+        <!-- We'll use icons for the links, for now I wrote the names of the links -->
+        <a href="#" target="_blank" class="footer-link">Facebook</a>
+        <a href="#" target="_blank" class="footer-link">Instagram</a>
+        <a href="#" target="_blank" class="footer-link">Twitter</a>
+      </div>
+    </footer>
+
+
   </body>
   <script src="script.js" type="module"></script>
 </html>
