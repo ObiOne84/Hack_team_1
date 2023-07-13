@@ -37,6 +37,7 @@ const DUMMY_ACTIVITY_DATA =
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
 const activitiesBtn = document.getElementById("activities-btn");
+const actvityWrapper = document.getElementById("activities");
 
 const map = L.map("map").setView([51.505, -0.09], 8);
 
@@ -88,24 +89,29 @@ function displayCountryFlag(country, flagUrl) {
 
 // Async function to fetch activity data from Failte Irelands API
 async function getFailteIrelandsActivities() {
-  console.log(randomThreeFromArray);
+  
   try {
+    actvityWrapper.innerHTML = ''
+    const loader = document.createElement('div')
+    actvityWrapper.appendChild(loader)
+    loader.id = 'loader'
+
     const { data } = await axios(
       "https://failteireland.azure-api.net/opendata-api/v1/activities"
     );
+    actvityWrapper.innerHTML = ''
     const randomThreeActivites = randomThreeFromArray(data.results);
-    console.log(data.results);
+
+    randomThreeActivites.forEach(activity => displayActivites(activity))
   } catch (error) {
-    console.log("There was an error retrieving data");
+    console.log(error)
   }
 }
 
+// Renders actvities to the DOM
 function displayActivites(activities) {
-
   if(!activities) return 
-  const actvityWrapper = document.getElementById("activities");
-  actvityWrapper.innerHTML = ''
-  const activitiesElements = createActivityHTML(activities);
+    const activitiesElements = createActivityHTML(activities);
 
   [activitiesElements].forEach(element => {
     actvityWrapper.appendChild(activitiesElements)
@@ -114,7 +120,6 @@ function displayActivites(activities) {
 
 }
 
-displayActivites();
 
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
 geolocationBtn.addEventListener("click", getCurrentLocation);
