@@ -6,7 +6,8 @@ import {
   filterObjectsByRadius,
   randomThreeFromArray,
 } from "./helpers";
-import DUMMY_ATTRACTIONS from "./data/attractions.json";
+import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
+import { attractionMarkerIcon } from "./mapscript";
 
 const DUMMY_ACTIVITY_API_DATA = {
   context: "http://schema.org",
@@ -95,15 +96,18 @@ async function getCurrentLocation() {
 }
 
 // Place a marker the map
-function placeMarker(location) {
-  const marker = L.marker(location).addTo(map);
+function placeMarker(location, icon) {
+  let marker;
+  icon
+    ? (marker = L.marker(location, { icon: icon }).addTo(map))
+    : (marker = L.marker(location).addTo(map));
   return marker;
 }
 
 // Places a marker with a tooltip on the map
 function placeToolTipMarker(location) {
   const { lat, lng } = location;
-  const marker = placeMarker([lat, lng]);
+  const marker = placeMarker([lat, lng], attractionMarkerIcon);
   marker.bindTooltip(location.name).openTooltip();
 
   return marker;
