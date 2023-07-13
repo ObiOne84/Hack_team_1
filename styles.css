@@ -90,6 +90,12 @@ body {
 
 /* Activities */
 
+#activities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .activity {
   box-shadow: var(--primary-shadow);
   padding: 1rem 2rem;

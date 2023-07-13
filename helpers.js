@@ -10,6 +10,7 @@ export function randomThreeFromArray(array) {
 }
 
 export function createActivityHTML(activity) {
+  console.log(activity);
   //Create the activity element
   const activityElement = document.createElement("div");
   activityElement.classList.add("activity");
