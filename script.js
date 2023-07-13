@@ -1,11 +1,11 @@
 import L from "leaflet";
 import axios from "axios";
-
 import {
   createActivityHTML,
   delayTimer,
   randomThreeFromArray,
 } from "./helpers";
+import DUMMY_ATTRACTIONS from "./data/attractions.json";
 
 const DUMMY_ACTIVITY_DATA = {
   context: "http://schema.org",
@@ -60,7 +60,6 @@ async function fetchCountryData() {
     const data = await response.json();
 
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
-    console.log(data[1]);
     const { latlng } = capitalInfo;
     map.flyTo([latlng[0], latlng[1]], 13);
     displayCountryFlag(data[1].name.common, data[1].flags.svg);
@@ -100,7 +99,7 @@ function displayCountryFlag(country, flagUrl) {
 }
 
 // Async function to fetch activity data from Failte Irelands API
-async function getFailteIrelandsAttractions() {
+async function getFailteIrelandsAttractionsAPI() {
   try {
     actvityWrapper.innerHTML = "";
     const loader = document.createElement("div");
@@ -124,6 +123,27 @@ async function getFailteIrelandsAttractions() {
 
     actvityWrapper.innerHTML = "";
     const randomThreeActivites = randomThreeFromArray(data.results);
+
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Gets FailteIrelands Attraction data from parsed CSV into JSON object array
+
+async function getFailteIrelandsAttractionsData() {
+  try {
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
+
+    await delayTimer(100); // Simulating fetch request delay
+
+    console.log(DUMMY_ATTRACTIONS[0]);
+    actvityWrapper.innerHTML = "";
+    const randomThreeActivites = randomThreeFromArray(DUMMY_ATTRACTIONS);
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
   } catch (error) {
@@ -155,4 +175,4 @@ function displayActivites(activities) {
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", getCurrentLocation);
-activitiesBtn.addEventListener("click", getFailteIrelandsAttractions);
+activitiesBtn.addEventListener("click", getFailteIrelandsAttractionsData);
