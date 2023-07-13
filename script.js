@@ -51,16 +51,18 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 // Async function that fetching country information from rest-countries API
 async function fetchCountryData() {
+  console.log("fire")
   const url = `https://restcountries.com/v3.1/name/ireland`;
   try {
     const { data } = await axios(url);
+    console.log("Data")
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
     console.log(data[1]);
     const { latlng } = capitalInfo;
     map.flyTo([latlng[0], latlng[1]], 13);
     displayCountryFlag(data[1].name.common, data[1].flags.svg);
   } catch (error) {
-    print(error);
+    console.log(error);
   }
 }
 
