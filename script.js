@@ -54,9 +54,7 @@ async function fetchCountryData() {
   const url = `https://restcountries.com/v3.1/name/ireland`;
   try {
     // const { data } = await axios(url);
-    const response = await fetch(
-      "https://failteireland.azure-api.net/opendata-api/v1/attractions"
-    );
+    const response = await fetch(url);
     const data = await response.json();
 
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
