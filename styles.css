@@ -4,6 +4,8 @@
   --dark-green: #018749;
   --bright-blue: #0096ff;
   --blue: #4267b2;
+  --bright-orange: #ffac1c;
+  --orange: #f28c28;
   --off-black: #111111;
   --primary-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -49,6 +51,15 @@ body {
 #geolocation-btn:hover,
 #geolocation-btn:focus {
   background-color: var(--bright-blue);
+}
+
+#activities-btn {
+  background-color: var(--orange);
+}
+
+#activities-btn:hover,
+#activities-btn:focus {
+  background-color: var(--bright-orange);
 }
 
 .btn {

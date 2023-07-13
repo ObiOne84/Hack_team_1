@@ -3,6 +3,7 @@ import axios from "axios";
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
+const activitiesBtn = document.getElementById("activities-btn");
 
 const map = L.map("map").setView([51.505, -0.09], 8);
 
@@ -45,11 +46,26 @@ function getCurrentLocation() {
   }
 }
 
+// Function to dynamically render a countries flag to the DOM
 function displayCountryFlag(country, flagUrl) {
   const flag = document.getElementById("flag");
   flag.src = flagUrl;
   flag.alt = `${country}'s flag`;
 }
 
+// Async function to fetch activity data from Failte Irelands API
+async function getFailteIrelandsActivities() {
+  try {
+    const { data } = await axios(
+      "https://failteireland.azure-api.net/opendata-api/v1/activities"
+    );
+
+    console.log(data);
+  } catch (error) {
+    console.log("There was an error retrieving data");
+  }
+}
+
 fetchCountryBtn.addEventListener("click", () => fetchCountryData("ireland"));
 geolocationBtn.addEventListener("click", getCurrentLocation);
+activitiesBtn.addEventListener("click", getFailteIrelandsActivities);
