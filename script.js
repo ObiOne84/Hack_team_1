@@ -54,7 +54,9 @@ async function fetchCountryData() {
   console.log("fire")
   const url = `https://restcountries.com/v3.1/name/ireland`;
   try {
-    const { data } = await axios(url);
+    // const { data } = await axios(url);
+    const response = await fetch(url)
+    const data = await response.json()
     console.log("Data")
     const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
     console.log(data[1]);
