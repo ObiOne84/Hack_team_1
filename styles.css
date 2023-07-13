@@ -9,6 +9,8 @@
   --blue: #4267b2;
   --bright-orange: #ffac1c;
   --orange: #f28c28;
+  --bright-violet: #cf9fff;
+  --violet: #7f00ff;
   --off-black: #111111;
   --primary-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -66,28 +68,37 @@ body {
   border-radius: 10px;
 }
 
-#geolocation-btn {
-  background-color: var(--blue);
-}
-
-#geolocation-btn:hover,
-#geolocation-btn:focus {
-  background-color: var(--bright-blue);
-}
-
-#activities-btn {
-  background-color: var(--orange);
-}
-
-#activities-btn:hover,
-#activities-btn:focus {
-  background-color: var(--bright-orange);
-}
-
 .btn-container {
   display: flex;
   justify-content: space-evenly;
   padding: 0.25rem;
+}
+
+.btn:nth-child(2) {
+  background-color: var(--blue);
+}
+
+.btn:nth-child(2):hover,
+.btn:nth-child(2):focus {
+  background-color: var(--bright-blue);
+}
+
+.btn:nth-child(3) {
+  background-color: var(--orange);
+}
+
+.btn:nth-child(3):hover,
+.btn:nth-child(3):focus {
+  background-color: var(--bright-orange);
+}
+
+.btn:nth-child(4) {
+  background-color: var(--violet);
+}
+
+.btn:nth-child(4):hover,
+.btn:nth-child(4):focus {
+  background-color: var(--bright-violet);
 }
 
 .btn {

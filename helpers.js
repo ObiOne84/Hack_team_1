@@ -66,7 +66,6 @@ export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
 
   for (const obj of objects) {
     const distance = calculateDistance(originalCoords, obj);
-    console.log(distance);
     if (distance <= radiusInKm) {
       filteredObjects.push(obj);
     }

@@ -1,5 +1,4 @@
 import L from "leaflet";
-import axios from "axios";
 import {
   createActivityHTML,
   delayTimer,
@@ -9,38 +8,10 @@ import {
 import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
 import { attractionMarkerIcon } from "./mapscript";
 
-const DUMMY_ACTIVITY_API_DATA = {
-  context: "http://schema.org",
-  type: [
-    "LocalBusiness",
-    "TouristAttraction",
-    "LandmarksOrHistoricalBuildings",
-  ],
-  address: {
-    type: "PostalAddress",
-    addressLocality: "Conna",
-    addressRegion: "Cork",
-    addressCountry: "Republic of Ireland",
-  },
-  geo: {
-    type: "GeoCoordinates",
-    longitude: -8.1016545,
-    latitude: 52.0945205,
-  },
-  image: {
-    type: "ImageObject",
-    caption: "Fáilte Ireland Logo",
-    url: "https://failtecdn.azureedge.net/failteireland/F%C3%A1ilte_Ireland_Logo_OpenDataAPI.jpg",
-  },
-  name: "Conna Castle",
-  tags: ["Activity", "Castle", "Attraction", "Historic Houses and Castle"],
-  telephone: "+353862149601",
-  url: "https://www.castles.nl/conna-castle",
-};
-
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
 const activitiesBtn = document.getElementById("activities-btn");
+const nearbyLocationsBtn = document.getElementById("locations-btn");
 const actvityWrapper = document.getElementById("activities");
 
 const map = L.map("map").setView([51.505, -0.09], 8);
@@ -69,7 +40,7 @@ async function fetchCountryData() {
 }
 
 // Using web geolocation to find current users location and display on map
-async function getCurrentLocation() {
+async function getCurrentLocationLatLng() {
   try {
     const position = await new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -77,22 +48,30 @@ async function getCurrentLocation() {
 
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    map.flyTo([lat, lng], 14);
-    placeMarker([lat, lng]);
-
-    const coords = { lat, lng };
-    const filteredAttractions = filterObjectsByRadius(
-      coords,
-      DUMMY_ATTRACTIONS,
-      30
-    );
-
-    filteredAttractions.forEach((attraction) => placeToolTipMarker(attraction));
-
-    console.log(filteredAttractions);
+    return { lat, lng };
   } catch (error) {
     console.log(error);
   }
+}
+
+async function flyToCurrentLocation() {
+  const { lat, lng } = await getCurrentLocationLatLng();
+  map.flyTo([lat, lng], 14);
+  placeMarker([lat, lng]);
+}
+
+async function getLocationsNearMe() {
+  const { lat, lng } = await getCurrentLocationLatLng();
+  const coords = { lat, lng };
+  const filteredAttractions = filterObjectsByRadius(
+    coords,
+    DUMMY_ATTRACTIONS,
+    30
+  );
+
+  filteredAttractions.forEach((attraction) => placeToolTipMarker(attraction));
+
+  fitMarkersInView();
 }
 
 // Place a marker the map
@@ -121,6 +100,35 @@ function removeAllMarkers(map) {
     }
   });
 }
+
+// Find all Markers currently on the map
+function getAllMarkers() {
+  const allMarkers = [];
+
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Marker) {
+      allMarkers.push(layer);
+    }
+  });
+
+  return allMarkers;
+}
+
+// Fit all the markers available within the view of the map
+function fitMarkersInView() {
+  const markerBounds = L.latLngBounds();
+
+  const markers = getAllMarkers();
+
+  // Iterate over each marker and extend the bounds
+  markers.forEach((marker) => {
+    markerBounds.extend(marker.getLatLng());
+  });
+
+  // Fit the marker bounds within the map's view
+  map.fitBounds(markerBounds);
+}
+
 // Function to dynamically render a countries flag to the DOM
 function displayCountryFlag(country, flagUrl) {
   const flag = document.getElementById("flag");
@@ -186,18 +194,6 @@ async function getFailteIrelandsAttractionsData() {
   }
 }
 
-// async function fetchAlFailteIrelandActivities(lastReq, results, count = 0) {
-//   await delayTimer(1000);
-//   const { data } = await axios(lastReq.nextPage);
-//   results.push(data);
-//   console.log(count);
-//   if (data.nextPage && count < 9) {
-//     count++;
-//     fetchAlFailteIrelandActivities(data, results, count);
-//   }
-//   return;
-// }
-
 // Renders actvities to the DOM
 function displayActivites(activities) {
   if (!activities) return;
@@ -209,5 +205,6 @@ function displayActivites(activities) {
 }
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
-geolocationBtn.addEventListener("click", getCurrentLocation);
+geolocationBtn.addEventListener("click", flyToCurrentLocation);
 activitiesBtn.addEventListener("click", getFailteIrelandsAttractionsData);
+nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
