@@ -243,6 +243,18 @@ div.hero .hero-heading {
 
 /* Contact us page */
 /* form */
+#form-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+#contact-form {
+    grid-column: 2;
+    grid-row: 2;
+}
+
 .contact-us-form {
     color: #fffcf2;
     text-shadow: 2px 1px #252422;
