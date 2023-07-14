@@ -86,9 +86,10 @@ async function getLocationsNearMe() {
     30
   );
 
-  filteredAttractions.forEach((attraction) =>
-    placeToolTipMarker(attraction, attractionMarkerIcon)
-  );
+  filteredAttractions.forEach((attraction) => {
+    placeToolTipMarker(attraction, attractionMarkerIcon);
+    displayActivites(attraction);
+  });
 
   fitMarkersInView();
 }
@@ -99,6 +100,16 @@ function placeMarker(location, icon) {
   icon
     ? (marker = L.marker(location, { icon: icon }).addTo(map))
     : (marker = L.marker(location).addTo(map));
+  return marker;
+}
+
+function placeInteractiveMarker(location, icon, activity) {
+  const { lat, lng } = location;
+  const marker = placeMarker([lat, lng], icon);
+  // marker.bindTooltip(location.name).openTooltip();
+
+  marker.addEventListener("click", () => console.log(activity));
+
   return marker;
 }
 
@@ -309,7 +320,7 @@ function displayFilteredActivtiesOnMap(filteredActivities, value) {
   filteredActivities.forEach((activity) => {
     const icon = selectMarkerIconFromValue(value);
     const { lat, lng } = activity;
-    placeMarker([lat, lng], icon);
+    placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
 }
