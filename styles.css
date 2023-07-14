@@ -1,13 +1,15 @@
 /* Importing google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 :root {
-  --bright-green: #66ff00;
-  --green: #66cc33;
-  --dark-green: #018749;
+  --bright-green: #11ac32;
+  --green: #298470;
+  --dark-green: #2f413d;
   --bright-blue: #0096ff;
   --blue: #4267b2;
   --bright-orange: #ffac1c;
-  --orange: #f28c28;
+  --orange: #ff883e;
+  --bright-orange: #fe9452;
+  --dark-orange: rgb(193, 78, 6);
   --bright-red: #ee4b2b;
   --red: #d22b2b;
   --bright-violet: #cf9fff;
@@ -218,35 +220,88 @@ body {
 }
 
 /* HEADER */
-#header {
-  background-color: #51aef0;
+/* Nav Bar with Brand Logo */
+#navMain {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 0 20px;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-#logo {
-  text-align: center;
-  font-family: "Indie Flower", cursive;
-  color: #ecf0f1;
-  font-size: 2rem;
+.navbar-toggler {
+  background-color: #ffffff;
+  border: none;
 }
 
-.nav-links {
-  text-align: center;
+#logo-brand img {
+  width: 200px;
+  height: 60px;
 }
-.nav-link {
-  text-decoration: none;
-  margin-left: 5%;
-  color: #ecf0f1;
-  font-family: "Indie Flower", cursive;
-  font-size: 1.5rem;
+
+.navbar ul a {
+  color: white;
 }
+
+.navbar ul a:hover {
+  background-color: var(--dark-orange);
+  color: white;
+}
+
 .active {
-  color: #f2f48c;
+  background-color: var(--dark-orange);
+  color: rgb(255, 255, 255);
 }
+/* Nav Bar Ends */
+
+/*hero*/
+div.home-hero {
+  background-image: linear-gradient(rgba(9, 53, 29, 0.8), rgba(47, 65, 61, 0.8)),
+    url("./assets/images/ireland-hero.jpg");
+}
+
+div.hero {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+div.hero .hero-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+}
+
+div.hero .hero-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+}
+
+.hero .btn-hero {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid white;
+  background-color: var(--dark-orange);
+}
+
+.hero .btn-hero:hover {
+  background-color: var(--dark-green);
+}
+
+/*End hero*/
 
 /* footer */
 
 #footer {
-  background-color: rgba(47,65,61,0.9); /* Johnny - test new color scheme */
+  background-color: rgba(47, 65, 61, 0.9); /* Johnny - test new color scheme */
   /*background-color: #54c6d9; original color */
 }
 
@@ -263,7 +318,7 @@ body {
   /*background-color: var(--bright-orange); original color */
   background-color: white; /* Johnny - test new color scheme */
   /*color: var(--blue);*/
-  color: rgba(47,65,61,0.9) !important; /* Johnny - test new color scheme */
+  color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
 }
 
 /* ANIMATIONS */
@@ -287,6 +342,26 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/*Media Queries*/
+@media (min-width: 768px) {
+  div.hero {
+    padding-top: 17rem;
+    padding-bottom: 12.5rem;
+  }
+  div.hero .hero-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+  div.hero .hero-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
   }
 }
 

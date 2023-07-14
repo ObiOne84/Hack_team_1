@@ -1,143 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lovin Summer</title>
 
-    <!-- bootstrap link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lovin Summer</title>
+
+  <!-- bootstrap link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <!-- stylesheet link -->
-    <link rel="stylesheet" href="styles.css" />
+  <!-- stylesheet link -->
+  <link rel="stylesheet" href="styles.css" />
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-  </head>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
 
-  <body>
-    <header id="header">
-      <h1 id="logo">APP Name</h1>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link active">Near Me!</a>
-        <a href="map.html" class="nav-link">What's On</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+<body>
+  <!-- Nav Bar and Logo -->
+  <header>
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg" id="navMain">
+      <div class="container-fluid nav-container">
+        <!--Brand Logo-->
+        <a class="navbar-brand" id="logo-brand" href="index.html"> <img src="assets/images/logo-summer.png"
+            alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarLinks"
+          aria-controls="navBarLinks" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navBarLinks">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item active"><a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Map</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    
-    <!-- Media articles -->
-    <section>
-      <div class="container-fluid">
+    <!-- hero with welcome text -->
+    <div class="hero home-hero">
+      <div class="container">
+        <div class="hero-subheading">Welcome To Our Lovin Summer</div>
+        <div class="hero-heading text-uppercase">Explore Ireland - Have Fun</div>
+        <a class="btn btn-hero btn-xl text-uppercase" href="#">CONTACT US</a>
+      </div>
+    </div>
+    <!-- hero Ends -->
+  </header>
+  <!-- Nav Bar and Logo Ends -->
+
+    <main class="main-container"></main>
+
+  <!-- footer -->
+  <footer id="footer" class="container-fluid mt-5">
+    <div class="row p-3">
+
+      <!-- copyright -->
+      <div class="col-12 col-md-3 text-center my-auto order-2 order-md-1 pb-3 text-white footer-text">
+        <p class="m-auto">&copy; Lovin Summer, 2023</p>
+      </div>
+
+      <!-- social links -->
+      <div id="social-links" class="col-12 col-md-6 text-center order-1 order-md-2 py-3">
         <div class="row">
-          <div class="col-12 col-md-6 col-lg-4" >
-            <div class="card">
-            <img src="//i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/female-eyes-closed-in-woods-1296-728-header.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          </div>
 
-          <div class="col-12 col-md-6 col-lg-4" >
-            <div class="card">
-            <img src="//i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/female-eyes-closed-in-woods-1296-728-header.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+          <!-- facebook -->
+          <div class="col-4 col-md-4 text-md-right">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
+              aria-label="Visit our Facebook page (opens in a new tab)">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" >
-            <div class="card">
-            <img src="//i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/female-eyes-closed-in-woods-1296-728-header.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          </div>
-
-          <div class="col-12 col-md-6 col-lg-4" >
-            <div class="card">
-            <img src="//i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/female-eyes-closed-in-woods-1296-728-header.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+          <!-- instagram -->
+          <div class="col-4 col-md-4">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener"
+              class="footer-link p-2 rounded text-white" aria-label="Visit our Instagram page (opens in a new tab)">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
           </div>
 
-          <div class="col-12 col-md-6 col-lg-4" >
-            <div class="card">
-            <img src="//i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/female-eyes-closed-in-woods-1296-728-header.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          </div>
-
-
-
-      </div>
-
-        
-      </div>
-    </section>
-
-
-
-    <!-- footer -->
-    <footer id="footer" class="container-fluid mt-5">
-      <div class="row p-3">
-
-        <!-- copyright -->
-        <div class="col-12 col-md-3 text-center my-auto order-2 order-md-1 pb-3 text-white footer-text">
-          <p class="m-auto">&copy; Lovin Summer, 2023</p>
-        </div>
-  
-        <!-- social links -->
-        <div id="social-links" class="col-12 col-md-6 text-center order-1 order-md-2 py-3">
-          <div class="row">
-  
-            <!-- facebook -->
-            <div class="col-4 col-md-4 text-md-right">
-              <a href="https://www.facebook.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
-                aria-label="Visit our Facebook page (opens in a new tab)">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-            </div>
-  
-            <!-- instagram -->
-            <div class="col-4 col-md-4">
-              <a href="https://www.instagram.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
-                aria-label="Visit our Instagram page (opens in a new tab)">
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-            </div>
-  
-            <!-- twitter -->
-            <div class="col-4 col-md-4 text-md-left">
-              <a href="https://www.twitter.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
-                aria-label="Visit our Twitter page (opens in a new tab)">
-                <i class="fa-brands fa-square-twitter"></i>
-              </a>
-            </div>
+          <!-- twitter -->
+          <div class="col-4 col-md-4 text-md-left">
+            <a href="https://www.twitter.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
+              aria-label="Visit our Twitter page (opens in a new tab)">
+              <i class="fa-brands fa-square-twitter"></i>
+            </a>
           </div>
         </div>
-  
-        <!-- creator details -->
-        <div class="col-12 col-md-3 text-center my-auto order-3 pb-3 text-white footer-text">
+      </div>
+
+      <!-- creator details -->
+      <div class="col-12 col-md-3 text-center my-auto order-3 pb-3 text-white footer-text">
         <p class="m-auto">
           Created by Codewave Surfers<br>
         </p>
-        </div>
-  
       </div>
+
+    </div>
 
       <!-- educational disclaimer -->
       <div class="row">
@@ -148,23 +114,21 @@
         </div>
       </div>
     </footer>
-
   </body>
-
   <!-- bootstrap plugins -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
   </script>
-
   <!-- noscript message -->
   <noscript>Your browser does not support JavaScript!</noscript>
-
-  <!-- font awesome script -->
-  <script src="https://kit.fontawesome.com/2730ac997a.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/2730ac997a.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
