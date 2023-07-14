@@ -6,10 +6,12 @@ import {
   randomThreeFromArray,
 } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
-import { attractionMarkerIcon } from "./mapscript";
+import DUMMY_ACTIVITIES from "./assets/data/activities.json";
+import { activityMarkerIcon, attractionMarkerIcon } from "./mapscript";
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
+const attractionsBtn = document.getElementById("attractions-btn");
 const activitiesBtn = document.getElementById("activities-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
 const actvityWrapper = document.getElementById("activities");
@@ -84,9 +86,15 @@ function placeMarker(location, icon) {
 }
 
 // Places a marker with a tooltip on the map
-function placeToolTipMarker(location) {
+function placeToolTipMarker(location, type = "attraction") {
+  let icon;
+  type === "attraction"
+    ? (icon = attractionMarkerIcon)
+    : (icon = activityMarkerIcon);
+
+  console.log(icon);
   const { lat, lng } = location;
-  const marker = placeMarker([lat, lng], attractionMarkerIcon);
+  const marker = placeMarker([lat, lng], icon);
   marker.bindTooltip(location.name).openTooltip();
 
   return marker;
@@ -194,6 +202,30 @@ async function getFailteIrelandsAttractionsData() {
   }
 }
 
+async function getFailteIrelandsActivitiesData() {
+  try {
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
+
+    await delayTimer(100); // Simulating fetch request delay
+
+    actvityWrapper.innerHTML = "";
+    const randomThreeActivites = randomThreeFromArray(DUMMY_ACTIVITIES);
+
+    removeAllMarkers(map);
+
+    randomThreeActivites.forEach((attraction) =>
+      placeToolTipMarker(attraction, "activity")
+    );
+
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Renders actvities to the DOM
 function displayActivites(activities) {
   if (!activities) return;
@@ -206,5 +238,6 @@ function displayActivites(activities) {
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
-activitiesBtn.addEventListener("click", getFailteIrelandsAttractionsData);
+attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
+activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
