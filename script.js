@@ -102,6 +102,16 @@ function placeMarker(location, icon) {
   return marker;
 }
 
+function placeInteractiveMarker(location, icon, activity) {
+  const { lat, lng } = location;
+  const marker = placeMarker([lat, lng], icon);
+  // marker.bindTooltip(location.name).openTooltip();
+
+  marker.addEventListener("click", () => console.log(activity));
+
+  return marker;
+}
+
 // Places a marker with a tooltip on the map
 function placeToolTipMarker(location, icon) {
   const { lat, lng } = location;
@@ -309,7 +319,7 @@ function displayFilteredActivtiesOnMap(filteredActivities, value) {
   filteredActivities.forEach((activity) => {
     const icon = selectMarkerIconFromValue(value);
     const { lat, lng } = activity;
-    placeMarker([lat, lng], icon);
+    placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
 }
