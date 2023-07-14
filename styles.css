@@ -253,15 +253,24 @@ div.hero .hero-heading {
     border-radius: 10px;
 }
 
-.text-input, .contact-us-form label, .btn-submit {
+.text-input, .contact-us-form label {
     display: block;
     margin-top: 3%;
 }
 
 .btn-submit {
     height: 40px;
+    width: 100px;
     border: 1px solid white;
     border-radius: 5px;
+    background-color: var(--dark-orange);
+    margin-top: 5%;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: white;
+    color: #111111;
 }
 
 /*Media Queries*/
