@@ -258,6 +258,16 @@ div.hero .hero-heading {
     margin-top: 3%;
 }
 
+.text-input {
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.text-input:hover {
+    background-color: var(--bright-orange);
+}
+
 .btn-submit {
     height: 40px;
     width: 100px;
