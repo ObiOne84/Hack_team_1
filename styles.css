@@ -43,6 +43,7 @@ body {
   background-color: blanchedalmond;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
+  min-height: 90vh;
   flex: 1;
 }
 
