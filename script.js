@@ -11,6 +11,7 @@ import {
   ALL_CATEGORIES,
   activityMarkerIcon,
   attractionMarkerIcon,
+  foodMarkerIcon,
 } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
@@ -296,9 +297,54 @@ function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
-function filterOptions() {
+function filterActivityData() {
   const value = filterSelector.value;
+  const filteredActivities = filterOptions(value);
 
+  displayFilteredActivtiesOnMap(filteredActivities, value);
+}
+
+function displayFilteredActivtiesOnMap(filteredActivities, value) {
+  removeAllMarkers(map);
+  filteredActivities.forEach((activity) => {
+    const icon = selectMarkerIconFromValue(value);
+    const { lat, lng } = activity;
+    placeMarker([lat, lng], icon);
+  });
+  fitMarkersInView();
+}
+
+function selectMarkerIconFromValue(value) {
+  let icon;
+
+  switch (value) {
+    case "food":
+      icon = activityMarkerIcon;
+      break;
+    case "sport":
+      icon = activityMarkerIcon;
+      break;
+    case "scenic":
+      icon = activityMarkerIcon;
+      break;
+    case "luxury":
+      icon = attractionMarkerIcon;
+      break;
+    case "culture":
+      icon = attractionMarkerIcon;
+      break;
+    case "city":
+      icon = attractionMarkerIcon;
+      break;
+    default:
+      icon = foodMarkerIcon;
+      break;
+  }
+
+  return icon;
+}
+
+function filterOptions(value) {
   const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
 
   if (value === "all") {
@@ -315,7 +361,7 @@ function filterOptions() {
     }
   });
 
-  return { filteredAttractions, value };
+  return filteredAttractions;
 }
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
@@ -324,4 +370,4 @@ attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
 activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
-filterSelector.addEventListener("change", filterOptions);
+filterSelector.addEventListener("change", filterActivityData);
