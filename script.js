@@ -21,7 +21,7 @@ const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
 
-const map = L.map("map").setView([51.505, -0.09], 8);
+const map = L.map("map").setView([53.34, -6.26], 8);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
