@@ -71,7 +71,9 @@ async function getLocationsNearMe() {
     30
   );
 
-  filteredAttractions.forEach((attraction) => placeToolTipMarker(attraction));
+  filteredAttractions.forEach((attraction) =>
+    placeToolTipMarker(attraction, attractionMarkerIcon)
+  );
 
   fitMarkersInView();
 }
@@ -86,13 +88,7 @@ function placeMarker(location, icon) {
 }
 
 // Places a marker with a tooltip on the map
-function placeToolTipMarker(location, type = "attraction") {
-  let icon;
-  type === "attraction"
-    ? (icon = attractionMarkerIcon)
-    : (icon = activityMarkerIcon);
-
-  console.log(icon);
+function placeToolTipMarker(location, icon) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
   marker.bindTooltip(location.name).openTooltip();
@@ -193,7 +189,7 @@ async function getFailteIrelandsAttractionsData() {
     removeAllMarkers(map);
 
     randomThreeActivites.forEach((attraction) =>
-      placeToolTipMarker(attraction)
+      placeToolTipMarker(attraction, attractionMarkerIcon)
     );
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
@@ -217,7 +213,7 @@ async function getFailteIrelandsActivitiesData() {
     removeAllMarkers(map);
 
     randomThreeActivites.forEach((attraction) =>
-      placeToolTipMarker(attraction, "activity")
+      placeToolTipMarker(attraction, activityMarkerIcon)
     );
 
     randomThreeActivites.forEach((activity) => displayActivites(activity));
