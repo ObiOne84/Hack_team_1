@@ -5,7 +5,8 @@
   --green: #298470;
   --dark-green: #2f413d;
   --bright-blue: #0096ff;
-  --blue: #4267b2;
+  --blue: #4267b2; /* changing to aerlingus green - Juan */
+  --aeaDarkGreen: #006272;
   --bright-orange: #ffac1c;
   --orange: #ff883e;
   --bright-orange: #fe9452;
@@ -31,7 +32,7 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: var(--blue);
+  background-color: var(--aeaDarkGreen);
   height: 100%;
   min-height: 100vh;
   font-family: "Ubuntu", sans-serif;
