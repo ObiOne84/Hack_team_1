@@ -23,9 +23,8 @@ export function createActivityHTML(activity) {
   //Create inner html for the activity element
 
   const html = `
-      <h2 class="activity-name">${activity.name}</h2>
-      <h3 class="activity-location">${activity.region}</h3>
-      <h3>Type:</h3>
+      <h3 class="activity-name">${activity.name}</h3>
+      <h4 class="activity-location">${activity.region}</h4>
      ${activityListStringArray}
      <div class="activity-links">
       <a
