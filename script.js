@@ -2,14 +2,16 @@ import L from "leaflet";
 import {
   delayTimer,
   filterObjectsByRadius,
+  getCategoryWithHighestCount,
   randomThreeFromArray,
 } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
 import DUMMY_ACTIVITIES from "./assets/data/activities.json";
 import {
-  ALL_TAGS,
+  ALL_CATEGORIES,
   activityMarkerIcon,
   attractionMarkerIcon,
+  foodMarkerIcon,
 } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
@@ -20,8 +22,9 @@ const activitiesBtn = document.getElementById("activities-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
+const filterSelector = document.getElementById("filter");
 
-const map = L.map("map").setView([51.505, -0.09], 8);
+const map = L.map("map").setView([53.34, -6.26], 8);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -294,9 +297,77 @@ function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
+function filterActivityData() {
+  const value = filterSelector.value;
+  const filteredActivities = filterOptions(value);
+
+  displayFilteredActivtiesOnMap(filteredActivities, value);
+}
+
+function displayFilteredActivtiesOnMap(filteredActivities, value) {
+  removeAllMarkers(map);
+  filteredActivities.forEach((activity) => {
+    const icon = selectMarkerIconFromValue(value);
+    const { lat, lng } = activity;
+    placeMarker([lat, lng], icon);
+  });
+  fitMarkersInView();
+}
+
+function selectMarkerIconFromValue(value) {
+  let icon;
+
+  switch (value) {
+    case "food":
+      icon = activityMarkerIcon;
+      break;
+    case "sport":
+      icon = activityMarkerIcon;
+      break;
+    case "scenic":
+      icon = activityMarkerIcon;
+      break;
+    case "luxury":
+      icon = attractionMarkerIcon;
+      break;
+    case "culture":
+      icon = attractionMarkerIcon;
+      break;
+    case "city":
+      icon = attractionMarkerIcon;
+      break;
+    default:
+      icon = foodMarkerIcon;
+      break;
+  }
+
+  return icon;
+}
+
+function filterOptions(value) {
+  const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
+
+  if (value === "all") {
+    return allIrishAttractions;
+  }
+
+  const filteredAttractions = [];
+
+  allIrishAttractions.forEach((activity) => {
+    const result = getCategoryWithHighestCount(activity.tags, ALL_CATEGORIES);
+
+    if (result === value) {
+      filteredAttractions.push(activity);
+    }
+  });
+
+  return filteredAttractions;
+}
+
 fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
 activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
+filterSelector.addEventListener("change", filterActivityData);
