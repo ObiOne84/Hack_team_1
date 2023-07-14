@@ -23,19 +23,19 @@ In this section, we will briefly discuss how our team addressed the applicable c
 ## Intro
 One or two paragraphs providing an overview of our project
 
-## Agile
+## Agile Management Tools
 
 We made use of the built in GitHub "Issues" and "Projects" functionality in order to create a Kanban board with User Stories for an efficient and clear Agile workflow while developing our project. We also made use of a custom Google Sheet for capturing the team's user stories which assisted the Scrum Master in managing the groups contributiions to the board.
 
-![agile_sheet](assets/images/readme_images/agile_sheet.png)
+![agile_sheet](assets/images/readme_images/us_capture_sheet.png)
 
 This is the Google Sheet that we made use of with all the information required to create a complete User Story for the Kanban board.
 
-![kanban_board](assets/images/readme_images/kanban_board.png)
+![kanban_board](assets/images/readme_images/lovin_summer_kanban.png)
 
 This is the Kanban board that we made use of for managing our User Stories and workflow, it findicates which User Stories are still to do, in progress or completed.
 
-![user_story](assets/images/readme_images/user_story.png)
+![user_story](assets/images/readme_images/lovin_summer_user_story.png)
 
 Here is a sample of a user story which indicates the MoSCow Prioritisation, the milestone, the assigned developer as well as the tasks and criteria completed by means of checkboxes.
 
