@@ -86,9 +86,10 @@ async function getLocationsNearMe() {
     30
   );
 
-  filteredAttractions.forEach((attraction) =>
-    placeToolTipMarker(attraction, attractionMarkerIcon)
-  );
+  filteredAttractions.forEach((attraction) => {
+    placeToolTipMarker(attraction, attractionMarkerIcon);
+    displayActivites(attraction);
+  });
 
   fitMarkersInView();
 }
