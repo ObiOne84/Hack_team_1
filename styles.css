@@ -152,6 +152,12 @@ body {
   gap: 0.25rem;
 }
 
+.activity-links {
+  display: flex;
+
+  justify-content: space-between;
+}
+
 /* GENERAL UI */
 
 #loader {

@@ -1,6 +1,5 @@
 import L from "leaflet";
 import {
-  createActivityHTML,
   delayTimer,
   filterObjectsByRadius,
   randomThreeFromArray,
@@ -8,6 +7,7 @@ import {
 import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
 import DUMMY_ACTIVITIES from "./assets/data/activities.json";
 import { activityMarkerIcon, attractionMarkerIcon } from "./mapscript";
+import { createActivityHTML } from "./html-renders";
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
@@ -228,8 +228,17 @@ function displayActivites(activities) {
   const activitiesElements = createActivityHTML(activities);
 
   [activitiesElements].forEach((element) => {
+    const flyBtn = element.querySelector(".fly-btn");
+
+    const { location } = flyBtn.dataset;
+
+    flyBtn.addEventListener("click", () => flyToLocation(location.split(",")));
     actvityWrapper.appendChild(activitiesElements);
   });
+}
+
+function flyToLocation(coords) {
+  map.flyTo(coords, 14);
 }
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
