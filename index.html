@@ -1,134 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lovin Summer</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lovin Summer</title>
+    <!-- bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
 
-  <!-- bootstrap link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- stylesheet link -->
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- stylesheet link -->
-  <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-</head>
-
-<body>
-  <!-- Nav Bar and Logo -->
-  <header>
-    <!--Nav Bar-->
-    <nav class="navbar navbar-expand-lg" id="navMain">
-      <div class="container-fluid nav-container">
-        <!--Brand Logo-->
-        <a class="navbar-brand" id="logo-brand" href="index.html"> <img src="assets/images/logo-summer.png"
-            alt="logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarLinks"
-          aria-controls="navBarLinks" aria-expanded="false" aria-label="Toggle navigation"><span
-            class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navBarLinks">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item active"><a class="nav-link" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- hero with welcome text -->
-    <div class="hero home-hero">
-      <div class="container">
-        <div class="hero-subheading">Welcome To Our Lovin Summer</div>
-        <div class="hero-heading text-uppercase">Explore Ireland - Have Fun</div>
-        <a class="btn btn-hero btn-xl text-uppercase" href="contact.html">CONTACT US</a>
-      </div>
-    </div>
-    <!-- hero Ends -->
-  </header>
-  <!-- Nav Bar and Logo Ends -->
-
-  <main class="main-container"></main>
-
-  <!-- footer -->
-  <footer id="footer" class="container-fluid mt-5">
-    <div class="row p-3">
-
-      <!-- copyright -->
-      <div class="col-12 col-md-3 text-center my-auto order-2 order-md-1 pb-3 text-white footer-text">
-        <p class="m-auto">&copy; Lovin Summer, 2023</p>
-      </div>
-
-      <!-- social links -->
-      <div id="social-links" class="col-12 col-md-6 text-center order-1 order-md-2 py-3">
-        <div class="row">
-
-          <!-- facebook -->
-          <div class="col-4 col-md-4 text-md-right">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
-              aria-label="Visit our Facebook page (opens in a new tab)">
-              <i class="fa-brands fa-facebook"></i>
-            </a>
-          </div>
-
-          <!-- instagram -->
-          <div class="col-4 col-md-4">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener"
-              class="footer-link p-2 rounded text-white" aria-label="Visit our Instagram page (opens in a new tab)">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
-
-          <!-- twitter -->
-          <div class="col-4 col-md-4 text-md-left">
-            <a href="https://www.twitter.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
-              aria-label="Visit our Twitter page (opens in a new tab)">
-              <i class="fa-brands fa-square-twitter"></i>
-            </a>
+  <body>
+    <!-- Nav Bar and Logo -->
+    <header>
+      <!--Nav Bar-->
+      <nav class="navbar navbar-expand-lg" id="navMain">
+        <div class="container-fluid nav-container">
+          <!--Brand Logo-->
+          <a class="navbar-brand" id="logo-brand" href="index.html">
+            <img src="assets/images/logo-summer.png" alt="logo"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navBarLinks"
+            aria-controls="navBarLinks"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navBarLinks">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="map.html">Map</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <!-- creator details -->
-      <div class="col-12 col-md-3 text-center my-auto order-3 pb-3 text-white footer-text">
-        <p class="m-auto">
-          Created by Codewave Surfers<br>
+      <!-- hero with welcome text -->
+      <div class="hero home-hero">
+        <div class="container">
+          <div class="hero-subheading">Welcome To Our Lovin Summer</div>
+          <h1 class="hero-heading text-uppercase">
+            Explore Ireland - Have Fun
+          </h1>
+          <a class="btn btn-hero btn-xl text-uppercase" href="contact.html"
+            >CONTACT US</a
+          >
+        </div>
+      </div>
+      <!-- hero Ends -->
+    </header>
+    <!-- Nav Bar and Logo Ends -->
+    <main
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+        padding: 0.25rem;
+      "
+    >
+      <!-- intro explanation -->
+      <section
+        style="
+          padding: 2rem;
+          border: 1px solid black;
+          background-color: aliceblue;
+        "
+      >
+        <h2 style="padding: 2rem; text-decoration: underline">
+          WHO ARE WE AND WHY
+        </h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, vel
+          eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi quas
+          cupiditate quam qui praesentium ad eos porro est ea aliquam.
+          Consequuntur obcaecati corporis soluta labore! Adipisci odit
+          blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
+          distinctio, eveniet, nesciunt voluptate officia.
         </p>
-      </div>
-
-    </div>
-
-    <!-- educational disclaimer -->
-    <div class="row">
-      <div class="col-12 text-center my-auto text-white footer-text">
-        <p class="auto">
-          For educational purposes only!
+      </section>
+      <!-- static map -->
+      <section
+        style="
+          padding: 2rem;
+          border: 1px solid black;
+          background-color: aliceblue;
+        "
+      >
+        <h2 style="padding: 2rem; text-decoration: underline">
+          STATIC MAP AND SOME TEXT
+        </h2>
+        <div style="display: flex; gap: 2rem">
+          <img
+            src="https://www.shutterstock.com/image-vector/cartoon-map-ireland-600w-1013843395.jpg"
+          />
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
+            vel eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi
+            quas cupiditate quam qui praesentium ad eos porro est ea aliquam.
+            Consequuntur obcaecati corporis soluta labore! Adipisci odit
+            blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
+            distinctio, eveniet, nesciunt voluptate officia.
+          </p>
+        </div>
+      </section>
+      <!-- pros of exercsie -->
+      <section
+        style="
+          padding: 2rem;
+          border: 1px solid black;
+          background-color: aliceblue;
+        "
+      >
+        <h2 style="padding: 2rem; text-decoration: underline">
+          Why go outside and move?
+        </h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, vel
+          eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi quas
+          cupiditate quam qui praesentium ad eos porro est ea aliquam.
+          Consequuntur obcaecati corporis soluta labore! Adipisci odit
+          blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
+          distinctio, eveniet, nesciunt voluptate officia.
         </p>
-      </div>
-    </div>
-  </footer>
-</body>
-<!-- bootstrap plugins -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
-  </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-  </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-  integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-<!-- noscript message -->
-<noscript>Your browser does not support JavaScript!</noscript>
-<script src="https://kit.fontawesome.com/2730ac997a.js" crossorigin="anonymous"></script>
+      </section>
+    </main>
 
+    <!-- footer -->
+    <footer id="footer" class="container-fluid mt-5">
+      <div class="row p-3">
+        <!-- copyright -->
+        <div
+          class="col-12 col-md-3 text-center my-auto order-2 order-md-1 pb-3 text-white footer-text"
+        >
+          <p class="m-auto">&copy; Lovin Summer, 2023</p>
+        </div>
+
+        <!-- social links -->
+        <div
+          id="social-links"
+          class="col-12 col-md-6 text-center order-1 order-md-2 py-3"
+        >
+          <div class="row">
+            <!-- facebook -->
+            <div class="col-4 col-md-4 text-md-right">
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener"
+                class="footer-link p-2 rounded text-white"
+                aria-label="Visit our Facebook page (opens in a new tab)"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </div>
+
+            <!-- instagram -->
+            <div class="col-4 col-md-4">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener"
+                class="footer-link p-2 rounded text-white"
+                aria-label="Visit our Instagram page (opens in a new tab)"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </div>
+
+            <!-- twitter -->
+            <div class="col-4 col-md-4 text-md-left">
+              <a
+                href="https://www.twitter.com"
+                target="_blank"
+                rel="noopener"
+                class="footer-link p-2 rounded text-white"
+                aria-label="Visit our Twitter page (opens in a new tab)"
+              >
+                <i class="fa-brands fa-square-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- creator details -->
+        <div
+          class="col-12 col-md-3 text-center my-auto order-3 pb-3 text-white footer-text"
+        >
+          <p class="m-auto">Created by Codewave Surfers<br /></p>
+        </div>
+      </div>
+
+      <!-- educational disclaimer -->
+      <div class="row">
+        <div class="col-12 text-center my-auto text-white footer-text">
+          <p class="auto">For educational purposes only!</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <!-- bootstrap plugins -->
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"
+  ></script>
+  <!-- noscript message -->
+  <noscript>Your browser does not support JavaScript!</noscript>
+  <script
+    src="https://kit.fontawesome.com/2730ac997a.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
