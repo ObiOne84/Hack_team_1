@@ -140,6 +140,9 @@ body {
   border-radius: 5px;
   gap: 0.5rem;
   color: var(--dark-grey);
+  transform: translateY(50px);
+  opacity: 0;
+  animation: fadeInSlideUp 1s ease forwards;
 }
 
 .activity-name {
@@ -193,17 +196,6 @@ body {
   animation: spin 2s linear infinite;
 }
 
-/* ANIMATIONS */
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* HEADER */
 #header {
   background-color: #51aef0;
@@ -233,7 +225,6 @@ body {
 /* FOOTER */
 #footer {
   background-color: #54c6d9;
-
   padding: 20px;
 }
 
@@ -260,4 +251,28 @@ body {
 .footer-link:hover {
   background-color: var(--bright-orange);
   color: var(--blue);
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  50% {
+    transform: translateY(0) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
