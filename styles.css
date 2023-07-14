@@ -264,6 +264,12 @@ div.hero .hero-heading {
   color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
 }
 
+.partners-row img{
+  height: 25px;
+  aspect-ratio: 4/1;
+}
+
+
 /* Contact us page */
 /* form */
 #form-grid {
@@ -341,7 +347,7 @@ div.hero .hero-heading {
 /* CARDS */
 
 .card {
-  margin: 10px 10px;
+  margin: 10px;
 }
 
 /* ANIMATIONS */
