@@ -60,3 +60,41 @@ function calculateDistance(coords1, coords2) {
 function toRadians(degrees) {
   return degrees * (Math.PI / 180);
 }
+
+// Find the category listed in the current categoires with the highest count
+export function getCategoryWithHighestCount(tagsArray, categoryObject) {
+  var categoryCounts = {};
+
+  // Initialize category counts to 0
+  for (var category in categoryObject) {
+    if (categoryObject.hasOwnProperty(category)) {
+      categoryCounts[category] = 0;
+    }
+  }
+
+  // Loop through the tags array and update category counts
+  tagsArray.forEach(function (tag) {
+    for (var category in categoryObject) {
+      if (categoryObject.hasOwnProperty(category)) {
+        if (categoryObject[category].includes(tag)) {
+          categoryCounts[category]++;
+          break;
+        }
+      }
+    }
+  });
+
+  // Find the category with the highest count
+  var highestCount = 0;
+  var categoryWithHighestCount = null;
+  for (var category in categoryCounts) {
+    if (categoryCounts.hasOwnProperty(category)) {
+      if (categoryCounts[category] > highestCount) {
+        highestCount = categoryCounts[category];
+        categoryWithHighestCount = category;
+      }
+    }
+  }
+
+  return categoryWithHighestCount;
+}

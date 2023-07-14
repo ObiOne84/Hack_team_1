@@ -1,5 +1,6 @@
 import attractionMarkerImage from "./assets/images/attraction-marker.png";
 import activityMarkerImage from "./assets/images/activity-marker.png";
+import foodMarkerImage from "./assets/images/food-marker.png";
 
 export const attractionMarkerIcon = L.icon({
   iconUrl: attractionMarkerImage,
@@ -9,6 +10,12 @@ export const attractionMarkerIcon = L.icon({
 
 export const activityMarkerIcon = L.icon({
   iconUrl: activityMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const foodMarkerIcon = L.icon({
+  iconUrl: foodMarkerImage,
   iconSize: [40, 40],
   iconAnchor: [16, 32],
 });
@@ -139,7 +146,7 @@ export const ALL_CATEGORIES = {
     "Literary Ireland",
     "Public Sculpture",
   ],
-  urban: [
+  city: [
     "Shopping",
     "Shopping Centres and Department Store",
     "Movies",
