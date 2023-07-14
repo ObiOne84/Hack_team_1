@@ -33,7 +33,13 @@ export function createActivityHTML(activity) {
         target="_blank"
         >Visit Site</a
       >
-      <button data-location=${activity.lat},${activity.lng} class="fly-btn btn">Fly Here</button>
+
+      <div>
+      <button class="favourite-btn btn">
+        <i class="fa-solid fa-heart"></i>
+      </button>
+        <button class="fly-btn btn">Fly Here</button>
+    </div>
       </div>`;
 
   // Add inner html to activity element

@@ -8,6 +8,8 @@
   --blue: #4267b2;
   --bright-orange: #ffac1c;
   --orange: #f28c28;
+  --bright-red: #ee4b2b;
+  --red: #d22b2b;
   --bright-violet: #cf9fff;
   --violet: #7f00ff;
   --dark-grey: #43464b;
@@ -179,6 +181,25 @@ body {
 .activity-links a {
   display: flex;
   align-items: center;
+}
+
+.favourite-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--red);
+}
+.favourite-btn:hover,
+.favourite-btn:focus {
+  background-color: whitesmoke;
+  filter: brightness(1.05);
+}
+
+.favourite-btn:hover i,
+.favourite-btn:focus i {
+  color: var(--red);
+}
+
+.favourite-btn i {
+  color: white;
 }
 
 .fly-btn {

@@ -3,14 +3,14 @@ import activityMarkerImage from "./assets/images/activity-marker.png";
 
 export const attractionMarkerIcon = L.icon({
   iconUrl: attractionMarkerImage,
-  iconSize: [40, 40], // Set the size of the icon
-  iconAnchor: [16, 32], // Set the anchor point of the icon
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
 });
 
 export const activityMarkerIcon = L.icon({
   iconUrl: activityMarkerImage,
-  iconSize: [40, 40], // Set the size of the icon
-  iconAnchor: [16, 32], // Set the anchor point of the icon
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
 });
 
 const DUMMY_ACTIVITY_API_DATA = {

@@ -14,6 +14,7 @@ const geolocationBtn = document.getElementById("geolocation-btn");
 const attractionsBtn = document.getElementById("attractions-btn");
 const activitiesBtn = document.getElementById("activities-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
+const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
 
 const map = L.map("map").setView([51.505, -0.09], 8);
@@ -222,19 +223,39 @@ async function getFailteIrelandsActivitiesData() {
   }
 }
 
+function toggleFavourites(activity) {
+  const currentStoredFavourites = localStorage.getItem("favourites");
+
+  if (currentStoredFavourites) {
+    const currentFavourites = JSON.parse(currentStoredFavourites);
+    const filteredFavourites = currentFavourites.filter(
+      (fav) => fav.name !== activity.name
+    );
+    const newFavourites = [...filteredFavourites, activity];
+    localStorage.setItem("favourites", JSON.stringify(newFavourites));
+  } else localStorage.setItem("favourites", JSON.stringify([activity]));
+}
+
+function loadAllFavourites() {
+  const currentStoredFavourites = localStorage.getItem("favourites");
+  const currentFavourites = JSON.parse(currentStoredFavourites);
+
+  currentFavourites.forEach((activity) => displayActivites(activity));
+}
+
 // Renders actvities to the DOM
-function displayActivites(activities) {
-  if (!activities) return;
-  const activitiesElements = createActivityHTML(activities);
+function displayActivites(activity) {
+  if (!activity) return;
+  const activitiesElement = createActivityHTML(activity);
 
-  [activitiesElements].forEach((element) => {
-    const flyBtn = element.querySelector(".fly-btn");
+  const flyBtn = activitiesElement.querySelector(".fly-btn");
+  const favouriteBtn = activitiesElement.querySelector(".favourite-btn");
 
-    const { location } = flyBtn.dataset;
+  const { lat, lng } = activity;
 
-    flyBtn.addEventListener("click", () => flyToLocation(location.split(",")));
-    actvityWrapper.appendChild(activitiesElements);
-  });
+  flyBtn.addEventListener("click", () => flyToLocation([lat, lng]));
+  favouriteBtn.addEventListener("click", () => toggleFavourites(activity));
+  actvityWrapper.appendChild(activitiesElement);
 }
 
 function flyToLocation(coords) {
@@ -245,4 +266,5 @@ fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
 activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
+favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
