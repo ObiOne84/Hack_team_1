@@ -364,3 +364,9 @@ div.hero .hero-heading {
     margin-bottom: 4rem;
   }
 }
+
+/* CARDS */
+
+.card{
+  margin:10px 10px;
+}
