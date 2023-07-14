@@ -243,35 +243,27 @@ body {
   color: #f2f48c;
 }
 
-/* FOOTER */
+/* footer */
+
 #footer {
-  background-color: #54c6d9;
-  padding: 20px;
+  background-color: rgba(47,65,61,0.9); /* Johnny - test new color scheme */
+  /*background-color: #54c6d9; original color */
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  font-size: 1.2rem;
-}
-
-.grid-item {
-  text-align: center;
-  color: #000000;
+.footer-text {
+  font-size: 0.9rem;
 }
 
 .footer-link {
-  margin-left: 2%;
-  color: #ffffff;
-  font-size: 28px;
-  background: var(--blue);
-  padding: 10px;
-  border-radius: 10px;
+  font-size: 2rem;
+  /*background: var(--blue); original color */
 }
 
 .footer-link:hover {
-  background-color: var(--bright-orange);
-  color: var(--blue);
+  /*background-color: var(--bright-orange); original color */
+  background-color: white; /* Johnny - test new color scheme */
+  /*color: var(--blue);*/
+  color: rgba(47,65,61,0.9) !important; /* Johnny - test new color scheme */
 }
 
 /* ANIMATIONS */
