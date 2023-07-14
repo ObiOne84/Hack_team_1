@@ -289,3 +289,9 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+/* CARDS */
+
+.card{
+  margin:10px 10px;
+}
