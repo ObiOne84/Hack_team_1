@@ -241,6 +241,29 @@ div.hero .hero-heading {
   color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
 }
 
+/* Contact us page */
+/* form */
+.contact-us-form {
+    color: #fffcf2;
+    text-shadow: 2px 1px #252422;
+    background-color: var( --dark-green);
+    max-width: 350px; /* this can be changed to so it is respnosive */
+    padding: 5%;
+    border: 1px solid var(--off-black);
+    border-radius: 10px;
+}
+
+.text-input, .contact-us-form label, .btn-submit {
+    display: block;
+    margin-top: 3%;
+}
+
+.btn-submit {
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
 /*Media Queries*/
 @media (min-width: 768px) {
   div.hero {
