@@ -196,11 +196,13 @@ async function getFailteIrelandsAttractionsData() {
 
     removeAllMarkers(map);
 
+    const testArr = [DUMMY_ATTRACTIONS[0], DUMMY_ATTRACTIONS[1]];
+
     randomThreeActivites.forEach((attraction) =>
       placeToolTipMarker(attraction, attractionMarkerIcon)
     );
 
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
+    testArr.forEach((activity) => displayActivites(activity));
   } catch (error) {
     console.log(error);
   }
@@ -220,7 +222,7 @@ async function getFailteIrelandsActivitiesData() {
 
     removeAllMarkers(map);
 
-    randomThreeActivites.forEach((attraction) =>
+    DUMMY_ACTIVITIES[0].forEach((attraction) =>
       placeToolTipMarker(attraction, activityMarkerIcon)
     );
 
@@ -233,14 +235,33 @@ async function getFailteIrelandsActivitiesData() {
 function toggleFavourites(activity) {
   const currentStoredFavourites = localStorage.getItem("favourites");
 
-  if (currentStoredFavourites) {
-    const currentFavourites = JSON.parse(currentStoredFavourites);
-    const filteredFavourites = currentFavourites.filter(
+  // If not storage
+  if (!currentStoredFavourites) {
+    localStorage.setItem("favourites", JSON.stringify([activity]));
+    return;
+  }
+  const currentFavourites = JSON.parse(currentStoredFavourites);
+  // filter to see if activity exists
+  const existingActivity = currentFavourites.find(
+    (fav) => fav.name === activity.name
+  );
+
+  // if activity exists
+  if (existingActivity) {
+    const newFavourites = currentFavourites.filter(
       (fav) => fav.name !== activity.name
     );
-    const newFavourites = [...filteredFavourites, activity];
     localStorage.setItem("favourites", JSON.stringify(newFavourites));
-  } else localStorage.setItem("favourites", JSON.stringify([activity]));
+    return;
+  }
+
+  console.log("fire");
+
+  // if activity doesnt exist
+  localStorage.setItem(
+    "favourites",
+    JSON.stringify([...currentFavourites, activity])
+  );
 }
 
 function loadAllFavourites() {
