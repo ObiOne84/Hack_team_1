@@ -218,30 +218,32 @@ body {
 }
 
 /* HEADER */
-#header {
-  background-color: #51aef0;
+/* Nav Bar with Brand Logo */
+#navMain{
+  background-color: rgb(47, 65, 61);
+  color: white;
+  padding: 0 10px;
 }
 
-#logo {
-  text-align: center;
-  font-family: "Indie Flower", cursive;
-  color: #ecf0f1;
-  font-size: 2rem;
+.navbar-toggler{
+  background-color: #ffffff;
+  border: none;
 }
 
-.nav-links {
-  text-align: center;
+
+#logo-brand img {
+  width: 200px;
+  height: 60px;
 }
-.nav-link {
-  text-decoration: none;
-  margin-left: 5%;
-  color: #ecf0f1;
-  font-family: "Indie Flower", cursive;
-  font-size: 1.5rem;
+
+.navbar ul a {
+  color: rgb(255, 255, 255);
 }
-.active {
-  color: #f2f48c;
+.navbar ul a:hover {
+  background-color: #fff;
+  color: rgb(255, 255, 255);
 }
+/* Nav Bar Ends */
 
 /* footer */
 
