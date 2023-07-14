@@ -233,6 +233,11 @@ div.hero .hero-heading {
   font-weight: 100;
 }
 
+.intro strong{
+  font-weight: 600;
+  color: var(--bright-orange);
+}
+
 /* End Intro */
 
 /* footer */
