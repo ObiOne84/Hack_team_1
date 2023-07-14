@@ -230,7 +230,7 @@ body {
   font-weight: 600;
 }
 
-.navbar-toggler{
+.navbar-toggler {
   background-color: #ffffff;
   border: none;
 }
@@ -241,12 +241,12 @@ body {
 }
 
 .navbar ul a {
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 .navbar ul a:hover {
   background-color: var(--dark-orange);
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 .active {
@@ -255,10 +255,53 @@ body {
 }
 /* Nav Bar Ends */
 
+/*hero*/
+div.home-hero {
+  background-image: linear-gradient(rgba(9, 53, 29, 0.7), rgba(47, 65, 61, 0.4)),
+    url("./assets/images/ireland-hero.jpg");
+}
+
+div.hero {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+div.hero .hero-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+}
+
+div.hero .hero-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+}
+
+.hero .btn-hero {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid white;
+  background-color: var(--dark-orange);
+}
+
+.hero .btn-hero:hover {
+  background-color: var(--dark-green);
+}
+
+/*End hero*/
+
 /* footer */
 
 #footer {
-  background-color: rgba(47,65,61,0.9); /* Johnny - test new color scheme */
+  background-color: rgba(47, 65, 61, 0.9); /* Johnny - test new color scheme */
   /*background-color: #54c6d9; original color */
 }
 
@@ -275,7 +318,7 @@ body {
   /*background-color: var(--bright-orange); original color */
   background-color: white; /* Johnny - test new color scheme */
   /*color: var(--blue);*/
-  color: rgba(47,65,61,0.9) !important; /* Johnny - test new color scheme */
+  color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
 }
 
 /* ANIMATIONS */
@@ -299,5 +342,25 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/*Media Queries*/
+@media (min-width: 768px) {
+  div.hero {
+    padding-top: 17rem;
+    padding-bottom: 12.5rem;
+  }
+  div.hero .hero-subheading {
+    font-size: 2.25rem;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+  div.hero .hero-heading {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
   }
 }
