@@ -6,7 +6,11 @@ import {
 } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
 import DUMMY_ACTIVITIES from "./assets/data/activities.json";
-import { activityMarkerIcon, attractionMarkerIcon } from "./mapscript";
+import {
+  ALL_TAGS,
+  activityMarkerIcon,
+  attractionMarkerIcon,
+} from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
