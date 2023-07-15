@@ -7,9 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("id") === "submit-button") {
-                alert("You clicked button");
+                displayThankYouMessage();
                 return;
             }
         })
     }
 });
+
+function displayThankYouMessage() {
+
+    let thankYouMessage = document.getElementById("thank-you-note");
+    thankYouMessage.style.display = "block";
+}
