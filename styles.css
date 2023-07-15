@@ -240,12 +240,32 @@ div.hero .hero-heading {
 
 /* End Intro */
 
+/* Outdoor Activities */
+
+.out-activities{
+  background-color: aliceblue;
+  margin: 0;
+  padding: 2rem;
+  letter-spacing: 1.5;
+}
+
+.stat-map-col {
+  max-width: 90%;
+  margin: 2rem 0;
+}
+
+/* End Outdoor Activities */
+
 /* footer */
 
 #footer {
   font-family: Indie Flower,cursive;
   background-color: rgba(47, 65, 61, 0.9); /* Johnny - test new color scheme */
   /*background-color: #54c6d9; original color */
+}
+
+.font-indie {
+  font-family: Indie Flower,cursive;
 }
 
 .footer-text {
@@ -264,9 +284,15 @@ div.hero .hero-heading {
   color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
 }
 
+
 .partners-row img{
   height: 25px;
   aspect-ratio: 4/1;
+}
+
+.partner-text {
+  letter-spacing: 1px;
+  font-size:large;
 }
 
 
