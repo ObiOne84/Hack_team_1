@@ -21,7 +21,12 @@ In this section, we will briefly discuss how our team addressed the applicable c
 
 # ABOUT SUBMISSION
 ## Intro
-One or two paragraphs providing an overview of our project
+This project has been carried out with the intention of promoting healthy habits and fostering the connection among users of the application. The application is based on outdoor activities in Ireland and provides a source of information and resources for those interested in healthy lifestyle habits.
+
+The web application is divided into three pages:
+* Landing page: where the introduction to the website is located, and various articles that can be accessed.
+* A interactive map serves for user geolocation and allows us to display attractions and events around us.
+* Contact page where a form is included to easily get in touch with Lovin Summer.
 
 ## Agile Management Tools
 
