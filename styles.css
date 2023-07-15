@@ -269,13 +269,19 @@ div.hero .hero-heading {
 .out-activities {
   background-color: aliceblue;
   margin: 0;
-  padding: 2rem;
+  padding: 2rem 0;
   letter-spacing: 1.5;
 }
 
+.map-row{
+  margin: 0;
+}
 .stat-map-col {
-  max-width: 90%;
-  margin: 2rem 0;
+  max-width: 100%;
+}
+
+.stat-map-col img{
+  max-width: 90vw;
 }
 
 /* End Outdoor Activities */
