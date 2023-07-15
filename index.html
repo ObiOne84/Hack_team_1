@@ -87,13 +87,11 @@
     <!-- Nav Bar and Logo Ends -->
     <main
       style="
-        display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
         text-align: center;
-        padding: 0.25rem;
       "
     >
       <!-- intro explanation -->
@@ -105,8 +103,8 @@
           color: aliceblue;
         "
       >
-        <h2 style="padding: 2rem;">
-          WHO ARE WE AND WHY
+        <h2>
+          WHO WE ARE AND WHY
         </h2>
         <p>
           Lovin Summer is a joint initiative by <strong>Tourism Ireland,
@@ -117,31 +115,36 @@
           visitors to explore all that our country has to offer.
         </p>
       </section>
+
       <!-- static map -->
-      <section
-        style="
-          padding: 2rem;
-          border: 1px solid black;
-          background-color: aliceblue;
-        "
-      >
-        <h2 style="padding: 2rem; text-decoration: underline">
-          Outdoor activities
-        </h2>
-        <div style="display: flex; gap: 2rem">
-          <img
+
+      <section class="container-fluid out-activities">
+        <div class="row">
+          <h2>Outdoor Activities</h2>
+        </div>
+        <div class="row ">
+          <div class="col-1"></div>
+          <div class="col-10 stat-map-col">
+            <img
             src="https://www.shutterstock.com/image-vector/cartoon-map-ireland-600w-1013843395.jpg"
           />
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
-            vel eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi
-            quas cupiditate quam qui praesentium ad eos porro est ea aliquam.
-            Consequuntur obcaecati corporis soluta labore! Adipisci odit
-            blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
-            distinctio, eveniet, nesciunt voluptate officia.
-          </p>
+          </div>
+          <div class="col-1"></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
+              vel eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi
+              quas cupiditate quam qui praesentium ad eos porro est ea aliquam.
+              Consequuntur obcaecati corporis soluta labore! Adipisci odit
+              blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
+              distinctio, eveniet, nesciunt voluptate officia.
+            </p>
+          </div>
         </div>
       </section>
+      
       <!-- pros of exercsie -->
       <section
         style="
