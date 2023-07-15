@@ -29,6 +29,17 @@
   margin: 0;
 }
 
+/* johnny testing */
+.map-card {
+  height: 50vh;
+}
+
+.map-colour {
+  background-color: rgba(47, 65, 61, 0.9);
+}
+
+/* end johnny testing */
+
 body {
   display: flex;
   flex-direction: column;
@@ -38,7 +49,9 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
-.main-container {
+/* DARRACH ORIGINAL CODE - Johnny edit for Bootstrap */
+
+/*.main-container {
   display: grid;
   gap: 1rem;
   background-color: blanchedalmond;
@@ -46,22 +59,22 @@ body {
   padding: 1rem;
   min-height: 90vh;
   flex: 1;
-}
+}*/
 
-.map-wrapper {
+/*.map-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
+}*/
 
-#map {
+/*#map {
   flex: 1;
   border-radius: 10px;
   box-shadow: var(--primary-shadow);
   border: 1px solid var(--off-black);
-}
+}*/
 
-#information {
+/*#information {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -69,62 +82,64 @@ body {
   background-color: #0096ff;
   padding: 1rem;
   gap: 0.5rem;
-}
+}*/
 
-#flag {
+/*#flag {
   width: clamp(50px, 22.5vw, 300px);
   border-radius: 10px;
-}
+}*/
 
-.btn-container {
+/*.btn-container {
   display: flex;
   justify-content: space-evenly;
   padding: 0.25rem;
-}
+}*/
 
-.btn:nth-child(2) {
+/*.btn:nth-child(2) {
   background-color: var(--blue);
-}
+}*/
 
-.btn:nth-child(2):hover,
+/*.btn:nth-child(2):hover,
 .btn:nth-child(2):focus {
   background-color: var(--bright-blue);
-}
+}*/
 
-.btn:nth-child(3) {
+/*.btn:nth-child(3) {
   background-color: var(--orange);
-}
+}*/
 
-.btn:nth-child(3):hover,
+/*.btn:nth-child(3):hover,
 .btn:nth-child(3):focus {
   background-color: var(--bright-orange);
-}
+}*/
 
-.btn:nth-child(4) {
+/*.btn:nth-child(4) {
   background-color: var(--violet);
-}
+}*/
 
-.btn:nth-child(4):hover,
+/*.btn:nth-child(4):hover,
 .btn:nth-child(4):focus {
   background-color: var(--bright-violet);
-}
+}*/
 
-.btn {
+/*.btn {
   width: fit-content;
   padding: 1rem;
   border-radius: 5px;
   border: 1px solid var(--off-black);
   background: var(--green);
   font-weight: bolder;
-}
+}*/
 
-.btn:hover,
+/*.btn:hover,
 .btn:focus {
   background-color: var(--bright-green);
   cursor: pointer;
   transition: 100ms;
   transform: scale(0.98);
-}
+}*/
+
+/*END - DARRACH ORIGINAL CODE - Johnny edit for Bootstrap */
 
 /* GENERAL UI */
 
