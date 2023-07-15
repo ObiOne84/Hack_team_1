@@ -43,7 +43,7 @@ body {
   gap: 1rem;
   background-color: blanchedalmond;
   grid-template-columns: 1fr 1fr;
-  /* padding: 1rem; */
+  padding: 1rem;
   min-height: 90vh;
   flex: 1;
 }
@@ -220,7 +220,9 @@ div.hero .hero-heading {
 
 /* Intro */
 
-h2{
+
+
+.intro h2{
   font-weight: 600;
   text-decoration: none;
 }
@@ -257,7 +259,7 @@ h2{
 /* footer */
 
 #footer {
-  /*font-family: Indie Flower,cursive;*/
+  font-family: Indie Flower,cursive;
   background-color: rgba(47, 65, 61, 0.9); /* Johnny - test new color scheme */
   /*background-color: #54c6d9; original color */
 }
@@ -280,6 +282,12 @@ h2{
   background-color: white; /* Johnny - test new color scheme */
   /*color: var(--blue);*/
   color: rgba(47, 65, 61, 0.9) !important; /* Johnny - test new color scheme */
+}
+
+
+.partners-row img{
+  height: 25px;
+  aspect-ratio: 4/1;
 }
 
 .partner-text {
@@ -355,9 +363,43 @@ h2{
     color: white;
 }
 
-.btn-submit:hover {
+.btn-submi
+t:hover {
     background-color: white;
     color: #111111;
+}
+/* Thanky you page */
+
+#thank-you-note {
+    width: 75%;
+    height: 450px;
+    /* background-color: rgba(235, 94, 40, 0.8); */
+    /* background-color: var( --dark-green); */
+    background-color: var( --dark-orange);
+    color: #fffcf2;
+    font-size: 140%;
+    position: absolute;
+    left: 12.5%;
+    top: 25%;
+    text-align: center;
+    /* text-shadow: 1px 1px white; */
+    text-shadow: 1px 1px black;
+    border: 2px solid black;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#thank-you-note h2 {
+    margin-top: 5vh;
+}
+
+#thank-you-note h3 {
+    padding: 15px 0;
+}
+
+.submitted-ok {
+    font-size: 300%;
+    padding: 15px 0;
 }
 
 /*Media Queries*/
