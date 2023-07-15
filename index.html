@@ -1,268 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lovin Summer</title>
 
-    <!-- bootstrap link -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lovin Summer</title>
 
-    <!-- stylesheet link -->
-    <link rel="stylesheet" href="styles.css" />
+  <!-- bootstrap link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-  </head>
+  <!-- stylesheet link -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <body>
-    <!-- Nav Bar and Logo -->
-    <header>
-      <!--Nav Bar-->
-      <nav class="navbar navbar-expand-lg" id="navMain">
-        <div class="container-fluid nav-container">
-          <!--Brand Logo-->
-          <a class="navbar-brand" id="logo-brand" href="index.html">
-            <img src="assets/images/logo-summer.png" alt="logo"
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navBarLinks"
-            aria-controls="navBarLinks"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navBarLinks">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" aria-current="page" href="index.html"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="map.html">Map</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
 
-      <!-- hero with welcome text -->
-      <div class="hero home-hero">
-        <div class="container">
-          <div class="hero-subheading">Welcome To Our Lovin Summer</div>
-          <h1 class="hero-heading text-uppercase">
-            Explore Ireland - Have Fun
-          </h1>
-          <a class="btn btn-hero btn-xl text-uppercase" href="contact.html"
-            >CONTACT US</a
-          >
+<body>
+  <!-- Nav Bar and Logo -->
+  <header>
+    <!--Nav Bar-->
+    <nav class="navbar navbar-expand-lg" id="navMain">
+      <div class="container-fluid nav-container">
+        <!--Brand Logo-->
+        <a class="navbar-brand" id="logo-brand" href="index.html">
+          <img src="assets/images/logo-summer.png" alt="logo" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarLinks"
+          aria-controls="navBarLinks" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarLinks">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="map.html">Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- hero Ends -->
-    </header>
-    <!-- Nav Bar and Logo Ends -->
-    <main
-      style="
+    </nav>
+
+    <!-- hero with welcome text -->
+    <div class="hero home-hero">
+      <div class="container">
+        <div class="hero-subheading">Welcome To Our Lovin Summer</div>
+        <h1 class="hero-heading text-uppercase">
+          Explore Ireland - Have Fun
+        </h1>
+        <a class="btn btn-hero btn-xl text-uppercase" href="contact.html">CONTACT US</a>
+      </div>
+    </div>
+    <!-- hero Ends -->
+  </header>
+  <!-- Nav Bar and Logo Ends -->
+  <main style="
         justify-content: center;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
         text-align: center;
-      "
-    >
-      <!-- intro explanation -->
-      <section class="intro"
-        style="
-          padding: 2rem;
-          /* border: 1px solid black; */
-          background-color: transparent;
-          color: aliceblue;
-        "
-      >
-        <h2>
-          WHO WE ARE AND WHY
-        </h2>
-        <p>
-          Lovin Summer is a joint initiative by <strong>Tourism Ireland,
-          </strong> the <strong>Department of Foreign Affairs
-          </strong> and the <strong>Department of Health</strong> with
-          the aim of promoting healthy lifestiles during the summer in
-          Ireland by providing inspiration and ideas for locals and 
-          visitors to explore all that our country has to offer.
-        </p>
-      </section>
+      ">
+    <!-- intro explanation -->
+    <section class="intro">
+      <h2>
+        WHO WE ARE AND WHY
+      </h2>
+      <p>
+        Lovin Summer is a joint initiative by <strong>Tourism Ireland,
+        </strong> the <strong>Department of Foreign Affairs
+        </strong> and the <strong>Department of Health</strong> with
+        the aim of promoting healthy lifestiles during the summer in
+        Ireland by providing inspiration and ideas for locals and
+        visitors to explore all that our country has to offer.
+      </p>
+    </section>
 
-      <!-- static map -->
+    <!-- static map -->
 
-      <section class="container-fluid out-activities">
-        <div class="row">
-          <h2>Outdoor Activities</h2>
+    <section class="container-fluid out-activities">
+      <div class="row">
+        <h2>Outdoor Activities</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
+            vel eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi
+            quas cupiditate quam qui praesentium ad eos porro est ea aliquam.
+            Consequuntur obcaecati corporis soluta labore! Adipisci odit
+            blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
+            distinctio, eveniet, nesciunt voluptate officia.
+          </p>
         </div>
-        <div class="row ">
-          <div class="col-1"></div>
-          <div class="col-10 stat-map-col">
-            <img
-            src="https://www.shutterstock.com/image-vector/cartoon-map-ireland-600w-1013843395.jpg"
-          />
+      </div>
+      <div class="row ">
+        <div class="col-1"></div>
+        <div class="col-10 stat-map-col">
+          <img src="https://www.shutterstock.com/image-vector/cartoon-map-ireland-600w-1013843395.jpg" />
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </section>
+
+    <!-- Go outside -->
+    <section>
+      <div class="container-fluid go-outside">
+        <div class="row">
+          <div class="col-12">
+            <h2>Why go outside and move?</h2>
           </div>
-          <div class="col-1"></div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col-12">
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum,
-              vel eius perspiciatis laboriosam repellat eum maiores. Dolor, quasi
-              quas cupiditate quam qui praesentium ad eos porro est ea aliquam.
-              Consequuntur obcaecati corporis soluta labore! Adipisci odit
-              blanditiis voluptatum eum sunt, eos soluta laboriosam omnis quisquam
-              distinctio, eveniet, nesciunt voluptate officia.
+              Discover the transformative power of nature and embrace the joy of outdoor activities. <br>
+              Engaging in outdoor activities like hiking, biking can improve and boost your physical health. <br>
+              It helps reduce stress and anxiety. <br>
+              Outdoor activities provide an opportunity to connect with the environment
+              and develop a deeper sense of environmental consciousness. <br>
+              Outdoor activities offer a great opportunity to bond with friends, family,
+              or meet like-minded individuals who share your passion for nature and outdoor adventures.
             </p>
           </div>
         </div>
-      </section>
-      
-      <!-- pros of exercsie -->
-      <section
-        style="
-          padding: 2rem;
-          border: 1px solid black;
-          background-color: aliceblue;
-        "
-      >
-        <h2 style="padding: 2rem; text-decoration: underline">
-          Why go outside and move?
-        </h2>
-        <p>
-          Discover the transformative power of nature and embrace the joy of outdoor activities. <br>
-          Engaging in outdoor activities like hiking, biking can improve and boost your physical health. <br>
-          It helps reduce stress and anxiety. <br>
-          Outdoor activities provide an opportunity to connect with the environment
-          and develop a deeper sense of environmental consciousness. <br>
-          Outdoor activities offer a great opportunity to bond with friends, family, 
-          or meet like-minded individuals who share your passion for nature and outdoor adventures.
-        </p>
-      </section>
+      </div>
+    </section>
 
-      <!-- Patricia -->
-      <section class="inspiration">
+    <!-- Patricia -->
+    <section>
+      <div class="container-fluid inspiration">
+        <div class="row">
+          <div class="col-12">
+            <h2>
+              Be Inspired
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p>
+              Ireland in Summer awaits you.
+              Visit the great museums and sights, and then relax in a charming café.
+              Look forward to concerts and shows, take leisurely strolls through the shops,
+              immerse yourself in thrilling sports events,and discover with us all the diversity
+              of the most wonderful season in Ireland.
+            </p>
+          </div>
+        </div>
+    </div>
+    </section>
 
-        <h2>
-          Be Inspired
-        </h2>
-          
-        <p>
-          Ireland in Summer awaits you.
-          Visit the great museums and sights, and then relax in a charming café.
-          Look forward to concerts and shows, take leisurely strolls through the shops,
-          immerse yourself in thrilling sports events,and discover with us all the diversity
-          of the most wonderful season in Ireland.
-        </p>
-        
-      </section>
-        
-        <!-- Start: Carousel media section -->
-        <div id="carouselExampleIndicators" class="carousel carousel-fade slide" data-ride="carousel" data-interval="2000">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <div class="image-wrapper">
-                    <img class="card-img-top" src="assets/images/healthy-benefits.png" alt="Card image cap">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">8 Health Benefits of Getting Back to Nature and Spending Time Outside</h5>
-                    <p class="card-text">
-                      Spending time outdoors can boost physical and mental health in a range of ways.
-                      You don't have to spend hours at a time outside before those benefits kick in, either.
-                    </p>
-                    <a href="https://www.healthline.com/health/health-benefits-of-being-outdoors" target="_blank" class="card-link">Read more >>> </a>
-                  </div>
-                </div>
+    <!-- Start: Carousel media section -->
+    <div id="carouselExampleIndicators" class="carousel carousel-fade slide" data-ride="carousel" data-interval="2000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img class="card-img-top" src="assets/images/healthy-benefits.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">8 Health Benefits of Getting Back to Nature and Spending Time Outside</h5>
+                <p class="card-text">
+                  Spending time outdoors can boost physical and mental health in a range of ways.
+                  You don't have to spend hours at a time outside before those benefits kick in, either.
+                </p>
+                <a href="https://www.healthline.com/health/health-benefits-of-being-outdoors" target="_blank"
+                  class="card-link">Read more >>> </a>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <div class="image-wrapper">
-                    <img class="card-img-top" src="assets/images/sports.png" alt="Card image cap">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Sports & Fitness in Dublin</h5>
-                    <p class="card-text">
-                      Find your own supply of sport. Whether you're up for swimming, kayacking, gaelic games or
-                      more unusual kinds of leisure sports, Dublin is an excellent place to get moving.
-                    </p>
-                    <a href="https://theculturetrip.com/europe/ireland/articles/where-you-can-play-sports-in-dublin/" target="_blank" class="card-link">Read more >>> </a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img class="card-img-top" src="assets/images/sports.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Sports & Fitness in Dublin</h5>
+                <p class="card-text">
+                  Find your own supply of sport. Whether you're up for swimming, kayacking, gaelic games or
+                  more unusual kinds of leisure sports, Dublin is an excellent place to get moving.
+                </p>
+                <a href="https://theculturetrip.com/europe/ireland/articles/where-you-can-play-sports-in-dublin/"
+                  target="_blank" class="card-link">Read more >>> </a>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <div class="image-wrapper">
-                    <img class="card-img-top" src="assets/images/festival-dragon.png" alt="Card image cap">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Discover the creative roots of the most imaginative arts Festival in Ireland.</h5>
-                    <p class="card-text">
-                      Galway International Arts Festival is a creative collision of performance, music, visual art, theatre and spectacle.
-                      Whether turning a small Irish city on its head for two weeks, taking part and work on an international tour, or being a forceful year-round presence,
-                      every experience is an unforgettable encounter.
-                    </p>
-                    <a href="https://eaf.ie/about" target="_blank" class="card-link">Read more >>> </a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img class="card-img-top" src="assets/images/festival-dragon.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Discover the creative roots of the most imaginative arts Festival in Ireland.
+                </h5>
+                <p class="card-text">
+                  Galway International Arts Festival is a creative collision of performance, music, visual art, theatre
+                  and spectacle.
+                  Whether turning a small Irish city on its head for two weeks, taking part and work on an international
+                  tour, or being a forceful year-round presence,
+                  every experience is an unforgettable encounter.
+                </p>
+                <a href="https://eaf.ie/about" target="_blank" class="card-link">Read more >>> </a>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="cards-wrapper">
-                <div class="card">
-                  <div class="image-wrapper">
-                    <img class="card-img-top" src="assets/images/hiking-routes.png" alt="Card image cap">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Hiking in Ireland: 7 most beautiful multi-day walking routes</h5>
-                    <p class="card-text">
-                      The untouched nature, sparsely populated islands, friendly people and fascinating historical monuments really do make it a hikers paradise.
-                      But what are the most beautiful multi-day walking routes in Ireland?
-                    </p>
-                    <a href="https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/" target="_blank" class="card-link">Read more >>> </a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img class="card-img-top" src="assets/images/hiking-routes.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Hiking in Ireland: 7 most beautiful multi-day walking routes</h5>
+                <p class="card-text">
+                  The untouched nature, sparsely populated islands, friendly people and fascinating historical monuments
+                  really do make it a hikers paradise.
+                  But what are the most beautiful multi-day walking routes in Ireland?
+                </p>
+                <a href="https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/"
+                  target="_blank" class="card-link">Read more >>> </a>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="cards-wrapper">
+            <div class="card">
+              <div class="image-wrapper">
+                <img class="card-img-top" src="assets/images/electric-picnic-tour.png" alt="Card image cap">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"> Ireland’s largest gathering of music & arts, and the ultimate rock n' roll
+                  circus</h5>
+                <p class="card-text">
+                  Missed out on tickets for Electric Picnic 2023? Fear not, as signing up for Tour De Picnic 2023 17km
+                  run or
+                  80km cycle is your final chance to nab a golden ticket to the festival of the summer which sold out.
+                </p>
+                <a href="https://www.electricpicnic.ie/news/sign-up-for-tour-de-picnic-2023/" target="_blank"
+                  class="card-link">Read more >>> </a>
             <div class="carousel-item">
               <div class="cards-wrapper">
                 <div class="card">
@@ -281,48 +280,46 @@
               </div>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    <!-- End: Carousel media section -->
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer id="footer" class="container-fluid mt-5">
+
+    <div class="row my-3">
+
+      <!-- contact details -->
+      <div class="col-12 col-md-4 text-center order-2 order-md-1 py-3">
+
+        <div class="row pt-4">
+          <div class="col-12 text-white text-left">
+            <h6 class="font-weight-bold"><u>Contact:</u></h6>
+            <p>
+              Lovin Summer<br>
+              Hacker Street 101<br>
+              Coding Hills<br>
+              Dublin<br>
+              Ireland
+              <br><br>
+              hackers@codewave_surfers.com
+            </p>
+          </div>
         </div>
         
-        <!-- End: Carousel media section -->
-      </section>
-    </main>
-
-    <!-- footer -->
-    <footer id="footer" class="container-fluid mt-5">
-
-      <div class="row my-3">
-
-        <!-- contact details -->
-        <div class="col-12 col-md-4 text-center order-2 order-md-1 py-3">
-
-          <div class="row pt-4">
-            <div class="col-12 text-white text-left">
-              <h6 class="font-weight-bold"><u>Contact:</u></h6>
-              <p>
-                Lovin Summer<br>
-                Hacker Street 101<br>
-                Coding Hills<br>
-                Dublin<br>
-                Ireland
-                <br><br>
-                hackers@codewave_surfers.com
-              </p>
-            </div>
-          </div>
-          
-
-        </div>
-
-        <!-- partner and social links column -->
-        <div class="col-12 col-md-4 text-right my-auto order-1 order-md-2 text-white footer-text">
+      </div>
 
           <!-- social links -->
           <div class="row">
@@ -338,83 +335,73 @@
                 <i class="fa-brands fa-facebook"></i>
               </a>
             </div>
+            
+      <!-- partner and social links column -->
+      <div class="col-12 col-md-4 text-right my-auto order-1 order-md-2 text-white footer-text">
 
-            <!-- instagram -->
-            <div class="col-4 col-md-4 text-center">
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noopener"
-                class="footer-link p-2 rounded text-white"
-                aria-label="Visit our Instagram page (opens in a new tab)"
-              >
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-            </div>
+        <!-- social links -->
+        <div class="row">
 
-            <!-- twitter -->
-            <div class="col-4 col-md-4 text-center">
-              <a
-                href="https://www.twitter.com"
-                target="_blank"
-                rel="noopener"
-                class="footer-link p-2 rounded text-white"
-                aria-label="Visit our Twitter page (opens in a new tab)"
-              >
-                <i class="fa-brands fa-square-twitter"></i>
-              </a>
-            </div>
+          <!-- facebook -->
+          <div class="col-4 col-md-4 text-center">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
+              aria-label="Visit our Facebook page (opens in a new tab)">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
           </div>
 
-          <!-- partners -->
-          <div class="row">
-            <div class="col-md-12 text-left mt-4">
-              <p class="m-auto font-weight-bold partner-text">Our Partners:</p>
-            </div>
-            <div class="col-md-12 text-center">
-              <a href="https://www.tourismireland.com/" target="_blank">
-                <img class="img-fluid" src="/assets/images/logoTourismIreland.jpg" alt="Tourism Ireland Logo">
-              </a>
-            </div>
+          <!-- instagram -->
+          <div class="col-4 col-md-4 text-center">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener"
+              class="footer-link p-2 rounded text-white" aria-label="Visit our Instagram page (opens in a new tab)">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+
+          <!-- twitter -->
+          <div class="col-4 col-md-4 text-center">
+            <a href="https://www.twitter.com" target="_blank" rel="noopener" class="footer-link p-2 rounded text-white"
+              aria-label="Visit our Twitter page (opens in a new tab)">
+              <i class="fa-brands fa-square-twitter"></i>
+            </a>
           </div>
         </div>
 
-        <!-- copyright and disclaimer -->
-        <div class="col-12 col-md-4 text-center my-auto order-3 order-md-3 pb-3 text-white footer-text">
-          <p class="m-auto pb-3">&copy; Lovin Summer, 2023</p>
-          <p class="m-auto pb-3">For educational purposes only!</p>
-          <p class="m-auto">Created by <span class="font-indie">Codewave Surfers</span></p>
+        <!-- partners -->
+        <div class="row">
+          <div class="col-md-12 text-left mt-4">
+            <p class="m-auto font-weight-bold partner-text">Our Partners:</p>
+          </div>
+          <div class="col-md-12 text-center">
+            <a href="https://www.tourismireland.com/" target="_blank">
+              <img class="img-fluid" src="/assets/images/logoTourismIreland.jpg" alt="Tourism Ireland Logo">
+            </a>
+          </div>
         </div>
-
       </div>
 
-    </footer>
-  </body>
-  <!-- bootstrap plugins -->
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-    crossorigin="anonymous"
-  ></script>
-  <!-- noscript message -->
-  <noscript>Your browser does not support JavaScript!</noscript>
-  <script
-    src="https://kit.fontawesome.com/2730ac997a.js"
-    crossorigin="anonymous"
-  ></script>
+      <!-- copyright and disclaimer -->
+      <div class="col-12 col-md-4 text-center my-auto order-3 order-md-3 pb-3 text-white footer-text">
+        <p class="m-auto pb-3">&copy; Lovin Summer, 2023</p>
+        <p class="m-auto pb-3">For educational purposes only!</p>
+        <p class="m-auto">Created by <span class="font-indie">Codewave Surfers</span></p>
+      </div>
+
+    </div>
+
+  </footer>
+</body>
+<!-- bootstrap plugins -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+  integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<!-- noscript message -->
+<noscript>Your browser does not support JavaScript!</noscript>
+<script src="https://kit.fontawesome.com/2730ac997a.js" crossorigin="anonymous"></script>
+
 </html>
