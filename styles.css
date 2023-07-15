@@ -43,7 +43,7 @@ body {
   gap: 1rem;
   background-color: blanchedalmond;
   grid-template-columns: 1fr 1fr;
-  padding: 1rem;
+  /* padding: 1rem; */
   min-height: 90vh;
   flex: 1;
 }
@@ -220,9 +220,7 @@ div.hero .hero-heading {
 
 /* Intro */
 
-
-
-.intro h2{
+h2{
   font-weight: 600;
   text-decoration: none;
 }
@@ -239,6 +237,21 @@ div.hero .hero-heading {
 }
 
 /* End Intro */
+
+/* Outdoor Activities */
+
+.out-activities{
+  background-color: aliceblue;
+  margin: 0;
+  padding: 2rem;
+}
+
+.stat-map-col {
+  max-width: 90%;
+  margin: 2rem 0;
+}
+
+/* End Outdoor Activities */
 
 /* footer */
 
