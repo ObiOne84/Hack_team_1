@@ -42,53 +42,58 @@
     </nav>
   </header>
 
-  <main class="contact-page">
-    <div id="form-grid">
-      <div id="contact-form">
-        <!-- Contact us form -->
-        <form method="GET" action="./thankyou.html" class="contact-us-form"> <!-- for some reason it opens the main page idext.html using npm strart, but works with python3 -m http.server -->
+  <main>
 
-            <h3><i class="fas fa-file-signature"></i> Contact us today!</h3>
-            <div>
-                <div>
-                    <label for="fname">First Name</label>
-                </div>
-                <div>
-                    <input type="text" id="fname" name="first_name" required class="text-input">
-                </div>
-            </div>
-            <div>
-                <div class="col-label">
-                    <label for="lname">Last Name</label>
-                </div>
-                <div class="col-input">
-                    <input type="text" id="lname" name="last_name" required class="text-input">
-                </div>
-            </div>
-            <div>
-                <div>
-                    <label for="email">Email Address</label>
-                </div>
-                <div>
-                    <input type="email" id="email" name="email_address" required class="text-input">
-                </div>
-            </div> 
-            <div>
-                <div>
-                    <label for="message">Subject</label>
-                </div>
-                <div>
-                    <textarea id="message" name="messages" required class="text-input" maxlength="500"></textarea>
-                </div>
-            </div>  
-            <div>
-                <input type="submit" value="Send!" class="btn-submit">
-            </div>
+    <!-- contact form area -->
+    <div class="row pt-5 pb-5">
+
+      <!-- empty div -->
+      <div class="col-1 col-md-3 col-xl-4"></div>
+
+      <!-- contact form -->
+      <div class="col-10 col-md-6 col-xl-4">
+        <form method="GET" action="./thankyou.html" class="form-background text-white p-2 p-md-5 rounded"><!-- for some reason it opens the main page idext.html using npm strart, but works with python3 -m http.server -->
+            
+          <!-- form heading -->
+          <h3><i class="fas fa-file-signature pb-4"></i> Contact us today!</h3>
+
+          <!-- first name field -->
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control form-text-hover" id="fname" required name="first_name"
+              placeholder="Enter your first name here">
+          </div>
+
+          <!-- last name field -->
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="password" class="form-control form-text-hover" id="exampleInputPassword1" required
+              placeholder="Enter your last name here">
+          </div>
+
+          <!-- email field -->
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control form-text-hover" id="exampleInputEmail1" required
+              aria-describedby="emailHelp" placeholder="Enter your email here">
+            <small id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</small>
+          </div>
+
+          <!-- message field -->
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control form-text-hover" aria-label="With textarea" placeholder="What would you like to know?" maxlength="500"></textarea>
+          </div>
+
+          <!-- submit button -->
+          <button type="submit" class="btn btn-primary submit-button btn-lg font-indie">Send!</button>
+
         </form>
       </div>
-      <div>
-        <!-- this is an empty div -->
-      </div>
+
+      <!-- empty div -->
+      <div class="col-1 col-md-3 col-xl-4"></div>
+
     </div>
   </main>
 

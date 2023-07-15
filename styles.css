@@ -349,75 +349,22 @@ div.hero .hero-heading {
 /* Contact us page */
 /* form */
 
-.contact-page {
-    /* that is copied from the map setting - should be change to home page style */
-    gap: 1rem;
-    background-color: blanchedalmond;
-    min-height: 90vh;
-    flex: 1;
-  }
-
-#form-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-}
-
-#contact-form {
-    grid-column: 3 / 7;
-    grid-row: 1/ 2;
-    width: 100%;
-    margin-top: 10%;
-  
-}
-
-.contact-us-form {
-    color: #fffcf2;
-    text-shadow: 2px 1px #252422;
-    background-color: var( --dark-green);
-    width: 90%;
-    padding: 10%;
-    border: 1px solid var(--off-black);
-    border-radius: 10px;
-    margin-left: 15%;
-}
-
-.text-input, .contact-us-form label {
-    display: inline-block;
-    margin-top: 1%;
-}
-
-.text-input {
-    border-radius: 5px;
-    font-size: 1em;
-    padding: 5px;
-    width: 90%;
-}
-
-#message {
-    height: 150px;
+.form-background {
+  background-color: var( --dark-green);
 }
 
 .text-input:hover {
     background-color: var(--bright-orange);
 }
 
-.btn-submit {
-    height: 40px;
-    width: 100px;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: var(--dark-orange);
-    margin-top: 5%;
-    color: white;
+.form-text-hover {
+  background-color: var(--bright-orange);
 }
 
-.btn-submi
-t:hover {
-    background-color: white;
-    color: #111111;
+.submit-button {
+  background-color: var(--dark-orange);
 }
+
 /* Thanky you page */
 
 #thank-you-note {
