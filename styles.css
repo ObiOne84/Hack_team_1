@@ -272,6 +272,17 @@ div.hero .hero-heading {
 
 /* Contact us page */
 /* form */
+
+.contact-page {
+    display: grid;
+    gap: 1rem;
+    background-color: blanchedalmond;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    min-height: 90vh;
+    flex: 1;
+  }
+
 #form-grid {
     width: 100%;
     display: grid;
