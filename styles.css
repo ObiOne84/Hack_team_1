@@ -287,26 +287,28 @@ div.hero .hero-heading {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 #contact-form {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 100%;
 }
 
 .contact-us-form {
     color: #fffcf2;
     text-shadow: 2px 1px #252422;
     background-color: var( --dark-green);
-    max-width: 350px; /* this can be changed to so it is respnosive */
+    width: 70%;
     padding: 5%;
     border: 1px solid var(--off-black);
     border-radius: 10px;
+    margin-left: 15%;
 }
 
 .text-input, .contact-us-form label {
-    display: block;
+    display: inline-block;
     margin-top: 3%;
 }
 
@@ -314,6 +316,7 @@ div.hero .hero-heading {
     border-radius: 5px;
     font-size: 1em;
     padding: 5px;
+    width: 70%;
 }
 
 .text-input:hover {
