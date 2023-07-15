@@ -248,6 +248,10 @@ div.hero .hero-heading {
   /*background-color: #54c6d9; original color */
 }
 
+.font-indie {
+  font-family: Indie Flower,cursive;
+}
+
 .footer-text {
   font-size: 1rem;
 }
@@ -265,7 +269,7 @@ div.hero .hero-heading {
 }
 
 .partner-text {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-size:large;
 }
 
