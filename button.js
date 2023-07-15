@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function displayThankYouMessage() {
-
-    let thankYouMessage = document.getElementById("thank-you-note");
-    thankYouMessage.style.display = "block";
+    let thankYouMessage = document.getElementById("thank-you-note"); 
+    let fname = document.getElementById("fname").value.trim();
+    let lname = document.getElementById("exampleInputPassword1").value.trim();
+    let email = document.getElementById("exampleInputEmail1").value.trim();
+   
+    if (fname !== "" && lname !== "" && email !== "") {
+        thankYouMessage.style.display = "block"
+    }
 }
