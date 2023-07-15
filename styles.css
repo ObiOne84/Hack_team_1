@@ -423,7 +423,7 @@ div.hero .hero-heading {
   background-color: var(--dark-orange);
 }
 
-/* Thanky you page */
+/* Thanky you message*/
 
 #thank-you-note {
   width: 75%;
@@ -455,6 +455,10 @@ div.hero .hero-heading {
 .submitted-ok {
   font-size: 300%;
   padding: 15px 0;
+}
+
+#thank-you-note {
+    display: none;
 }
 
 /*Media Queries*/
