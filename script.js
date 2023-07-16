@@ -2,13 +2,11 @@ import L from "leaflet";
 import {
   delayTimer,
   filterObjectsByRadius,
-  getCategoryWithHighestCount,
   randomThreeFromArray,
 } from "./helpers";
-import DUMMY_ATTRACTIONS from "./assets/data/attractions.json";
-import DUMMY_ACTIVITIES from "./assets/data/activities.json";
+import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
+import DUMMY_ACTIVITIES from "./assets/data/testing.json";
 import {
-  ALL_CATEGORIES,
   activityMarkerIcon,
   attractionMarkerIcon,
   cityMarkerIcon,
@@ -63,10 +61,8 @@ async function getCurrentLocationLatLng() {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 
-    const lat = position.coords.latitude;// 53.350140;
-    const lng = position.coords.longitude;// -6.266155;
-    console.log(lat)
-    console.log(lng)
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
     return { lat, lng };
   } catch (error) {
     console.log(error);
@@ -282,8 +278,6 @@ function toggleFavourites(activity) {
     return;
   }
 
-  console.log("fire");
-
   // if activity doesnt exist
   localStorage.setItem(
     "favourites",
@@ -317,31 +311,32 @@ function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
-// activity filter
 function filterActivityData() {
   const value = filterSelector.value;
-  const filteredActivities = filterOptions(value);
+  const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
+  const filteredActivities = allIrishAttractions.filter(
+    (activity) => activity.category === value
+  );
 
-  displayFilteredActivtiesOnMap(filteredActivities, value);
+  displayFilteredActivtiesOnMap(
+    value === "all" ? allIrishAttractions : filteredActivities
+  );
 }
 
-// display activities on map
-function displayFilteredActivtiesOnMap(filteredActivities, value) {
+function displayFilteredActivtiesOnMap(filteredActivities) {
   removeAllMarkers(map);
   filteredActivities.forEach((activity) => {
-    const icon = selectMarkerIconFromValue(value);
+    const icon = selectMarkerIconFromValue(activity.category);
     const { lat, lng } = activity;
     placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
-  // Johnny - Inserted
-  flyToCurrentLocation();
-  // Johnny - Inserted end
 }
 
 function selectMarkerIconFromValue(value) {
   let icon;
 
+  console.log(value);
   switch (value) {
     case "food":
       icon = foodMarkerIcon;
@@ -368,26 +363,7 @@ function selectMarkerIconFromValue(value) {
 
   return icon;
 }
-
-function filterOptions(value) {
-  const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
-
-  if (value === "all") {
-    return allIrishAttractions;
-  }
-
-  const filteredAttractions = [];
-
-  allIrishAttractions.forEach((activity) => {
-    const result = getCategoryWithHighestCount(activity.tags, ALL_CATEGORIES);
-
-    if (result === value) {
-      filteredAttractions.push(activity);
-    }
-  });
-
-  return filteredAttractions;
-}
+// NODE JS FUNCTIONS - REWRITE FOR VALUE OF INDIVIDUALS.
 
 fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
