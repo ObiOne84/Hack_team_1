@@ -122,7 +122,7 @@ function placeInteractiveMarker(location, icon, activity) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
 
-  marker.addEventListener("mouseover", () => {
+  marker.addEventListener("click", () => {
     marker.bindTooltip(activity.name).openTooltip();
     renderActivityPopup(activity);
   });
@@ -131,10 +131,11 @@ function placeInteractiveMarker(location, icon, activity) {
 }
 
 function renderActivityPopup(activity) {
-  // activitiesModal.innerHTML = ` <span id="close-modal" class='close-modal'>&times;</span>`;
+  activitiesModal.style.display = "flex";
+  activitiesModal.innerHTML = ` <span id="close-activity-modal" class='close-modal'>&times;</span>`;
   background.style.display = "flex";
   mapBtnContainers.style.display = "none";
-  // const activityElement = createActivityHTML(activity);
+  const activityElement = createActivityHTML(activity);
 
   activitiesModal.appendChild(activityElement);
 }
@@ -394,6 +395,7 @@ function closeModalOnClick(e) {
   if (e.target === background || closeSettingsModalBtn || closeActivityModal) {
     background.style.display = "none";
     settingsModal.style.display = "none";
+    activitiesModal.style.display = "none";
     mapBtnContainers.style.display = "flex";
   }
 }
@@ -402,6 +404,7 @@ function closeModal() {
   background.style.display = "none";
   settingsModal.style.display = "none";
   mapBtnContainers.style.display = "flex";
+  activitiesModal.style.display = "none";
 }
 
 geolocationBtn.addEventListener("click", flyToCurrentLocation);

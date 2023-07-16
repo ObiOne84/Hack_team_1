@@ -134,7 +134,7 @@
 
 /* MODAL */
 #background {
-  display: flex;
+  display: none;
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -164,6 +164,7 @@
 }
 
 #activites-modal {
+  display: none;
 }
 
 .close-modal {
