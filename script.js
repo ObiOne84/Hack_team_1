@@ -26,6 +26,7 @@ const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
 const filterSelector = document.getElementById("filter");
+const distanceSelector = document.getElementById("distance");
 
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
@@ -83,17 +84,23 @@ async function flyToCurrentLocation() {
 }
 
 async function getLocationsNearMe() {
+  removeAllMarkers(map);
   const { lat, lng } = await getCurrentLocationLatLng();
   const coords = { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
     DUMMY_ATTRACTIONS,
-    30
+    distanceSelector.value
   );
 
   filteredAttractions.forEach((attraction) => {
-    placeToolTipMarker(attraction, attractionMarkerIcon);
-    displayActivites(attraction);
+    const icon = selectMarkerIconFromValue(attraction.category);
+
+    const { lat, lng } = attraction;
+    if (distanceSelector.value > 50) {
+      placeInteractiveMarker({ lat, lng }, icon, attraction);
+    } else placeToolTipMarker(attraction, icon);
+    // displayActivites(attraction);
   });
 
   fitMarkersInView();
@@ -155,6 +162,7 @@ function fitMarkersInView() {
 
   const markers = getAllMarkers();
 
+  if (markers.length === 0) return;
   // Iterate over each marker and extend the bounds
   markers.forEach((marker) => {
     markerBounds.extend(marker.getLatLng());
@@ -219,13 +227,11 @@ async function getFailteIrelandsAttractionsData() {
 
     removeAllMarkers(map);
 
-    const testArr = [DUMMY_ATTRACTIONS[0], DUMMY_ATTRACTIONS[1]];
-
     randomThreeActivites.forEach((attraction) =>
       placeToolTipMarker(attraction, attractionMarkerIcon)
     );
 
-    testArr.forEach((activity) => displayActivites(activity));
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
   } catch (error) {
     console.log(error);
   }
@@ -245,7 +251,7 @@ async function getFailteIrelandsActivitiesData() {
 
     removeAllMarkers(map);
 
-    DUMMY_ACTIVITIES[0].forEach((attraction) =>
+    DUMMY_ACTIVITIES.forEach((attraction) =>
       placeToolTipMarker(attraction, activityMarkerIcon)
     );
 
@@ -372,3 +378,4 @@ activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
 filterSelector.addEventListener("change", filterActivityData);
+distanceSelector.addEventListener("change", getLocationsNearMe);
