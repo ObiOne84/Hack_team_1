@@ -58,8 +58,10 @@ async function getCurrentLocationLatLng() {
       navigator.geolocation.getCurrentPosition(resolve, reject);
     });
 
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
+    const lat = position.coords.latitude;// 53.350140;
+    const lng = position.coords.longitude;// -6.266155;
+    console.log(lat)
+    console.log(lng)
     return { lat, lng };
   } catch (error) {
     console.log(error);
@@ -310,6 +312,7 @@ function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
+// activity filter
 function filterActivityData() {
   const value = filterSelector.value;
   const filteredActivities = filterOptions(value);
@@ -317,6 +320,7 @@ function filterActivityData() {
   displayFilteredActivtiesOnMap(filteredActivities, value);
 }
 
+// display activities on map
 function displayFilteredActivtiesOnMap(filteredActivities, value) {
   removeAllMarkers(map);
   filteredActivities.forEach((activity) => {
@@ -325,6 +329,9 @@ function displayFilteredActivtiesOnMap(filteredActivities, value) {
     placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
+  // Johnny - Inserted
+  flyToCurrentLocation();
+  // Johnny - Inserted end
 }
 
 function selectMarkerIconFromValue(value) {
