@@ -271,7 +271,6 @@ div.hero .hero-heading {
 
 .stat-map-col {
   max-width: 90%;
-  margin: 2rem 0;
 }
 
 /* End Outdoor Activities */
@@ -464,23 +463,21 @@ div.hero .hero-heading {
 /*Media Queries*/
 
 @media screen and (max-width: 1200px) {
+  /* thank you note */
 
-    /* thank you note */
-
-    #thank-you-note {
-        width: 50vw;
-        left: -200%
-    }
+  #thank-you-note {
+    width: 50vw;
+    left: -200%;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  /* thank you note */
 
-    /* thank you note */
-
-    #thank-you-note {
-        width: 90vw;
-        left: -1000%;
-    }
+  #thank-you-note {
+    width: 90vw;
+    left: -1000%;
+  }
 }
 
 @media (min-width: 768px) {
