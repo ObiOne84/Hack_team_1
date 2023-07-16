@@ -32,10 +32,6 @@
 }
 
 /* johnny testing */
-.map-card {
-  height: 50vh;
-}
-
 .map-colour {
   background-color: rgba(47, 65, 61, 0.9);
 }
@@ -146,13 +142,13 @@ body {
 /* GENERAL UI */
 
 #loader {
-  border: 16px solid #f3f3f3;
+  border: 4px solid var(--dark-grey);
   /* Light grey */
-  border-top: 16px solid var(--bright-green);
+  border-top: 4px solid white;
   /* Blue */
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 30px;
+  height: 30px;
   animation: spin 2s linear infinite;
 }
 
@@ -298,7 +294,6 @@ div.hero .hero-heading {
   font-weight: 400;
 }
 
-
 /* End go outside */
 
 /*Start carousel*/
@@ -324,7 +319,7 @@ div.hero .hero-heading {
 }
 
 .card {
-  margin: 0 .5em;
+  margin: 0 0.5em;
   width: calc(100%);
 }
 
@@ -396,7 +391,6 @@ div.hero .hero-heading {
   /* Johnny - test new color scheme */
 }
 
-
 .partners-row img {
   height: 25px;
   aspect-ratio: 4/1;
@@ -439,7 +433,7 @@ div.hero .hero-heading {
 #thank-you-note {
   width: 100%;
   height: 100%;
-  background-color: var( --dark-green);
+  background-color: var(--dark-green);
   color: #fffcf2;
   font-size: 140%;
   position: absolute;
@@ -528,7 +522,6 @@ div.hero .hero-heading {
   width: 100%;
   aspect-ratio: 16/9;
 }
-
 
 /* ANIMATIONS */
 @keyframes spin {
