@@ -455,9 +455,9 @@ div.hero .hero-heading {
   padding: 15px 0;
 }
 
-/* #thank-you-note {
+#thank-you-note {
     display: none;
-} */
+}
 
 /*Media Queries*/
 @media (min-width: 768px) {
