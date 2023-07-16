@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
-
-// Buttons controls
+// Wait for DOM to finish
+// Get button elements and add event listener to them
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+
+/**
+ * Function check the form input for content
+ * if input is provided, function display thank you note
+ * to the user
+ */
 function displayThankYouMessage() {
     let thankYouMessage = document.getElementById("thank-you-note"); 
     let fname = document.getElementById("fname").value.trim();
