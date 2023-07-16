@@ -1,8 +1,9 @@
+import { isFavouritedActivity } from "./helpers";
+
 // Creates the HTML for an activity
 export function createActivityHTML(activity) {
   //Create the activity element
-  const activityElement = document.createElement("div");
-  activityElement.classList.add("activity");
+  const activityElement = document.getElementById("activity");
 
   //Create the activity list
   const activityList = document.createElement("ul");
@@ -22,24 +23,21 @@ export function createActivityHTML(activity) {
 
   //Create inner html for the activity element
 
+  const isFavourited = isFavouritedActivity(activity);
+
   const html = `
       <h3 class="activity-name">${activity.name}</h3>
       <h4 class="activity-location">${activity.region}</h4>
      ${activityListStringArray}
      <div class="activity-links">
-      <a
-        href=${activity.url}
-        alt="Link to ${activity.name} website"
-        target="_blank"
-        >Visit Site</a
-      >
-
-      <div class="">
-      <button class="favourite-btn btn btn-dark">
+      <button class="favourite-btn btn-flat ${isFavourited && "favourite"}">
         <i class="fa-solid fa-heart"></i>
       </button>
-        <button class="fly-btn btn btn-info">Fly Here</button>
-    </div>
+        <a href=${activity.url}
+        alt="Link to ${activity.name} website"
+        target="_blank" class="fly-btn btn-flat">
+        <i class="fa-solid fa-globe"></i>
+        </a>
       </div>`;
 
   // Add inner html to activity element

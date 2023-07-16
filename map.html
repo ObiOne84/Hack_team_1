@@ -110,9 +110,8 @@
             />
           </div>
           <div id="activites-modal">
-            <div class="activity">
-              <div id="close-activity-modal" class="close-modal">&times;</div>
-            </div>
+            <span id="close-activity-modal" class="close-modal">&times;</span>
+            <div id="activity" class="activity"></div>
           </div>
         </div>
 
@@ -138,117 +137,6 @@
           >
             <i class="fa-solid fa-gear"></i>
           </button>
-        </div>
-      </div>
-
-      <!-- Dynamically renders selected countries flag -->
-      <div class="col-12 col-lg-6 text-center my-auto px-3 px-md-5">
-        <div id="information" class="map-colour rounded">
-          <!-- flag -->
-          <div class="row pt-5">
-            <div class="flag-container">
-              <img
-                id="flag"
-                src="https://flagcdn.com/gb.svg"
-                alt="Great Britians flag"
-                class="col-6 col-md-8"
-              />
-            </div>
-          </div>
-
-          <!-- load favorites button -->
-
-          <!-- category dropdown -->
-          <div class="row">
-            <div class="col-2 col-md-4"></div>
-            <div class="col-8 col-md-4 mt-3">
-              <label for="filter" class="text-white">Categories:</label>
-              <select
-                id="filter"
-                class="dropdown btn btn-sm btn-secondary dropdown-toggle text-center"
-              >
-                <option value="all">All</option>
-                <option value="food">Food & Beverage</option>
-                <option value="scenic">Scenic</option>
-                <option value="sport">Sport</option>
-                <option value="luxury">Luxury</option>
-                <option value="city">City</option>
-                <option value="culture">Culture</option>
-              </select>
-            </div>
-            <div class="col-2 col-md-4"></div>
-          </div>
-
-          <!-- activity information -->
-          <div class="row">
-            <!-- empty div -->
-            <!-- <div class="col-2 col-md-3"></div> -->
-
-            <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
-            <!-- <div class="col-8 col-md-6"> -->
-            <div id="activities">
-              <div class="activity">
-                <h2 class="activity-name mt-3 text-white">Conna Castle</h2>
-                <h3 class="activity-location text-white">Cork</h3>
-                <ul
-                  class="activity-list list-group-flush text-white text-center"
-                >
-                  <li class="list-group-item">Acitvity</li>
-                  <li class="list-group-item">Castle</li>
-                  <li class="list-group-item">Attraction</li>
-                  <li class="list-group-item">Historic Houses and Castle</li>
-                </ul>
-                <div class="activity-links">
-                  <a
-                    href="https://www.castles.nl/conna-castle"
-                    alt="Link to Conna Castle"
-                    target="_blank"
-                    >Visit Site</a
-                  >
-                  <div class="mb-5 mt-3">
-                    <button
-                      data-name="Conna Castle"
-                      class="favourite-btn btn btn-dark"
-                    >
-                      <i class="fa-solid fa-heart"></i>
-                    </button>
-                    <button
-                      data-location="lat lng"
-                      class="fly-btn btn btn-info"
-                    >
-                      Fly Here
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- </div> -->
-
-            <div class="activity">
-              <h3 class="activity-name">Maynooth Ecclesiastical Museum</h3>
-              <h4 class="activity-location">Kildare</h4>
-              <ul class="activity-list">
-                <li>Museums and Attraction</li>
-              </ul>
-              <div class="activity-links">
-                <a
-                  href="http://museum.maynoothcollege.ie"
-                  alt="Link to Maynooth Ecclesiastical Museum website"
-                  target="_blank"
-                  >Visit Site</a
-                >
-
-                <div class="">
-                  <button class="favourite-btn btn btn-dark">
-                    <i class="fa-solid fa-heart"></i>
-                  </button>
-                  <button class="fly-btn btn btn-info">Fly Here</button>
-                </div>
-              </div>
-            </div>
-            <!-- empty div -->
-            <div class="col-2 col-md-3"></div>
-          </div>
         </div>
       </div>
     </main>

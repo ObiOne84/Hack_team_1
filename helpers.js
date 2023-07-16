@@ -33,6 +33,19 @@ export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
   return filteredObjects;
 }
 
+export function isFavouritedActivity(activity) {
+  const currentStoredFavourites = localStorage.getItem("favourites");
+  if (!currentStoredFavourites) return;
+  const currentFavourites = JSON.parse(currentStoredFavourites);
+
+  if (currentFavourites) {
+    return currentFavourites.find(
+      (favourite) => favourite.name === activity.name
+    );
+  }
+  return null;
+}
+
 // Calculate the distace between to coords
 function calculateDistance(coords1, coords2) {
   const earthRadiusKm = 6371;

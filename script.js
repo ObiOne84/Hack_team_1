@@ -2,6 +2,7 @@ import L from "leaflet";
 import {
   delayTimer,
   filterObjectsByRadius,
+  isFavouritedActivity,
   randomThreeFromArray,
 } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
@@ -11,6 +12,7 @@ import {
   attractionMarkerIcon,
   cityMarkerIcon,
   cultureMarkerIcon,
+  favouriteMarkerIcon,
   foodMarkerIcon,
   luxuryMarkerIcon,
   parkMarkerIcon,
@@ -98,7 +100,7 @@ async function getLocationsNearMe() {
   );
 
   filteredAttractions.forEach((attraction) => {
-    const icon = selectMarkerIconFromValue(attraction.category);
+    const icon = selectMarkerIconFromValue(attraction);
 
     const { lat, lng } = attraction;
     placeInteractiveMarker({ lat, lng }, icon, attraction);
@@ -122,8 +124,11 @@ function placeInteractiveMarker(location, icon, activity) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
 
+  marker.addEventListener("mouseover", () =>
+    marker.bindTooltip(activity.name).openTooltip()
+  );
+
   marker.addEventListener("click", () => {
-    marker.bindTooltip(activity.name).openTooltip();
     renderActivityPopup(activity);
   });
 
@@ -132,10 +137,12 @@ function placeInteractiveMarker(location, icon, activity) {
 
 function renderActivityPopup(activity) {
   activitiesModal.style.display = "flex";
-  activitiesModal.innerHTML = ` <span id="close-activity-modal" class='close-modal'>&times;</span>`;
   background.style.display = "flex";
   mapBtnContainers.style.display = "none";
   const activityElement = createActivityHTML(activity);
+
+  const favouriteBtn = activityElement.querySelector(".favourite-btn");
+  favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
 
   activitiesModal.appendChild(activityElement);
 }
@@ -276,7 +283,11 @@ async function getFailteIrelandsActivitiesData() {
   }
 }
 
-function toggleFavourites(activity) {
+function toggleFavourites(e, activity) {
+  console.log(e);
+  const closestButton = e.target.closest("button");
+  closestButton.classList.toggle("favourite");
+
   const currentStoredFavourites = localStorage.getItem("favourites");
   activity.favourited = !activity.favourited;
 
@@ -309,9 +320,15 @@ function toggleFavourites(activity) {
 
 function loadAllFavourites() {
   const currentStoredFavourites = localStorage.getItem("favourites");
+  if (!currentStoredFavourites) {
+    alert("NO current favourites");
+    return;
+  }
   const currentFavourites = JSON.parse(currentStoredFavourites);
 
-  currentFavourites.forEach((activity) => displayActivites(activity));
+  currentFavourites.forEach((activity) =>
+    placeToolTipMarker(activity, favouriteMarkerIcon)
+  );
 }
 
 // Renders actvities to the DOM
@@ -325,7 +342,7 @@ function displayActivites(activity) {
   const { lat, lng } = activity;
 
   flyBtn.addEventListener("click", () => flyToLocation([lat, lng]));
-  favouriteBtn.addEventListener("click", () => toggleFavourites(activity));
+  favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
   actvityWrapper.appendChild(activitiesElement);
 }
 
@@ -348,7 +365,7 @@ function filterActivityData() {
 function displayFilteredActivtiesOnMap(filteredActivities) {
   removeAllMarkers(map);
   filteredActivities.forEach((activity) => {
-    const icon = selectMarkerIconFromValue(activity.category);
+    const icon = selectMarkerIconFromValue(activity);
     const { lat, lng } = activity;
     placeInteractiveMarker({ lat, lng }, icon, activity);
   });
@@ -356,10 +373,10 @@ function displayFilteredActivtiesOnMap(filteredActivities) {
   closeModal();
 }
 
-function selectMarkerIconFromValue(value) {
+function selectMarkerIconFromValue(activity) {
   let icon;
 
-  switch (value) {
+  switch (activity.category) {
     case "food":
       icon = foodMarkerIcon;
       break;
@@ -383,6 +400,10 @@ function selectMarkerIconFromValue(value) {
       break;
   }
 
+  if (isFavouritedActivity(activity)) {
+    icon = favouriteMarkerIcon;
+  }
+
   return icon;
 }
 
@@ -392,7 +413,11 @@ function openModal() {
 }
 
 function closeModalOnClick(e) {
-  if (e.target === background || closeSettingsModalBtn || closeActivityModal) {
+  if (
+    e.target === background ||
+    e.target === closeSettingsModalBtn ||
+    e.target === closeActivityModal
+  ) {
     background.style.display = "none";
     settingsModal.style.display = "none";
     activitiesModal.style.display = "none";
