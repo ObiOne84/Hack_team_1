@@ -22,7 +22,7 @@ The project aligns perfectly with the theme of the hackathon, which is to encour
 
 Agile methodologies have been employed through GitHub Projects. Different tasks for the project were created and assigned to various team members. Once each task was completed, they were moved to the "Done" section. As code modifications were made, the corresponding pull requests were created and approved by the Scrum Master.
 
-**The next part is not done yet**
+**@JOSE - READ THIS - This section refers to the video presentation that must be made at the end of the project, not needed in the readme - JOHNNY**
 - ✨ Presentation Quality - Present as if you are pitching it to client
 
 # ABOUT SUBMISSION
@@ -65,7 +65,26 @@ The goal of the Lovin Summer project is to provide a comprehensive and user-frie
 
 
 ## Tech
-In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
+In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.  
+
+**Languages:**
+* HTML
+* CSS
+* JavaScript
+
+**Frameworks:**
+* Bootstrap: CSS Framework for developing responsive and mobile-first websites.
+  
+**Libraries:**
+* [Leaflet](https://leafletjs.com/): Leaflet is an open-source JavaScript library for mobile-friendly interactive maps.
+
+**APIs:**
+* [REST Countries API](https://restcountries.com/): The REST Countries API is a basic REST API that delivers information about the countries in JSON format.
+* [Fáilte Ireland's Open Data API](https://failteireland.developer.azure-api.net/): This API contains a collection of activities and attractions.
+
+**Host:** 
+* Netlify
+
 
 To log into the Heroku toolbelt CLI:
 
