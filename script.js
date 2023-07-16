@@ -105,6 +105,7 @@ async function getLocationsNearMe() {
   });
 
   fitMarkersInView();
+  closeModal();
 }
 
 // Place a marker on the map
@@ -339,12 +340,12 @@ function displayFilteredActivtiesOnMap(filteredActivities) {
     placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
+  closeModal();
 }
 
 function selectMarkerIconFromValue(value) {
   let icon;
 
-  console.log(value);
   switch (value) {
     case "food":
       icon = foodMarkerIcon;
@@ -377,11 +378,16 @@ function openModal() {
   background.style.display = "flex";
 }
 
-function closeModal(e) {
+function closeModalOnClick(e) {
   if (e.target === background || e.target === closeSettingsModalBtn) {
     background.style.display = "none";
     settingsModal.style.display = "none";
   }
+}
+
+function closeModal() {
+  background.style.display = "none";
+  settingsModal.style.display = "none";
 }
 
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
@@ -390,5 +396,5 @@ nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
 filterSelector.addEventListener("change", filterActivityData);
 distanceSelector.addEventListener("change", getLocationsNearMe);
 settingsModalBtn.addEventListener("click", openModal);
-closeSettingsModalBtn.addEventListener("click", closeModal);
-background.addEventListener("click", closeModal);
+closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
+background.addEventListener("click", closeModalOnClick);
