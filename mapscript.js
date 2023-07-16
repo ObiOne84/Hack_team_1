@@ -1,6 +1,12 @@
-import attractionMarkerImage from "./assets/images/attraction-marker.png";
-import activityMarkerImage from "./assets/images/activity-marker.png";
-import foodMarkerImage from "./assets/images/food-marker.png";
+import attractionMarkerImage from "./assets/images/markers/attraction-marker.png";
+import activityMarkerImage from "./assets/images/markers/scenic.png";
+import foodMarkerImage from "./assets/images/markers/food.png";
+import cityMarkerImage from "./assets/images/markers/city.png";
+import cultureMarkerImage from "./assets/images/markers/culture.png";
+import favouriteMarkerImage from "./assets/images/markers/favourite.png";
+import luxuryMarkerImage from "./assets/images/markers/luxury.png";
+import parkMarkerImage from "./assets/images/markers/luxury.png";
+import sportsMarkerImage from "./assets/images/markers/sport.png";
 
 export const attractionMarkerIcon = L.icon({
   iconUrl: attractionMarkerImage,
@@ -16,6 +22,42 @@ export const activityMarkerIcon = L.icon({
 
 export const foodMarkerIcon = L.icon({
   iconUrl: foodMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const cityMarkerIcon = L.icon({
+  iconUrl: cityMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const cultureMarkerIcon = L.icon({
+  iconUrl: cultureMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const favouriteMarkerIcon = L.icon({
+  iconUrl: favouriteMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const luxuryMarkerIcon = L.icon({
+  iconUrl: luxuryMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const parkMarkerIcon = L.icon({
+  iconUrl: parkMarkerImage,
+  iconSize: [40, 40],
+  iconAnchor: [16, 32],
+});
+
+export const sportsMarkerIcon = L.icon({
+  iconUrl: sportsMarkerImage,
   iconSize: [40, 40],
   iconAnchor: [16, 32],
 });

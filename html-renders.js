@@ -8,7 +8,9 @@ export function createActivityHTML(activity) {
   const activityList = document.createElement("ul");
   activityList.classList.add("activity-list");
 
-  let activityListStringArray = ['<ul class="activity-list list-group-flush text-white text-center">'];
+  let activityListStringArray = [
+    '<ul class="activity-list list-group-flush text-white text-center">',
+  ];
 
   //Append indivdual activity to list array, max of 5 results
   activity.tags.forEach((element, index) => {
@@ -38,7 +40,7 @@ export function createActivityHTML(activity) {
       <button class="favourite-btn btn btn-dark">
         <i class="fa-solid fa-heart"></i>
       </button>
-        <button class="fly-btn btn  btn-info">Fly Here</button>
+        <button class="fly-btn btn btn-info">Fly Here</button>
     </div>
       </div>`;
 
