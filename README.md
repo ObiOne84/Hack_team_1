@@ -11,12 +11,18 @@
 This project was deployed using [Netlify](https://app.netlify.com/) and can be accessed at [this address](https://musical-kataifi-25a4e4.netlify.app/).
 
 ## Criteria
-In this section, we will briefly discuss how our team addressed the applicable criteria:
 
-- ✨ Project is 100% Mobile First
-- ✨ Project uses browser location or device camera
-- ✨ Project aligns well to the Hackathon Theme
-- ✨ Clear use of Github Projects or other agile tool
+The team put special emphasis on creating a 100% mobile-first design. From the early planning stages, we focused on this aspect, designing an interface and user experience that adapts seamlessly to mobile devices. To achieve this, we employed responsive design principles and utilized libraries like Bootstrap.
+
+The application uses browser location to detect our position and display it on an interactive map with events, attractions, and activities around us. The use of device cameras has not been considered in this project. 
+
+**Someone should add some information how browser location works, just one or two lines**
+
+The project aligns perfectly with the theme of the hackathon, which is to encourage people to get out of their homes and enjoy the summer. The app offers various tourist attractions, events, and activities to explore.
+
+Agile methodologies have been employed through GitHub Projects. Different tasks for the project were created and assigned to various team members. Once each task was completed, they were moved to the "Done" section. As code modifications were made, the corresponding pull requests were created and approved by the Scrum Master.
+
+**The next part is not done yet**
 - ✨ Presentation Quality - Present as if you are pitching it to client
 
 # ABOUT SUBMISSION
