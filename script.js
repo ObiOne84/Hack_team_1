@@ -76,8 +76,7 @@ async function flyToCurrentLocation() {
   geolocationBtn.appendChild(loader);
 
   const { lat, lng } = await getCurrentLocationLatLng();
-  geolocationBtn.innerHTML = "";
-  geolocationBtn.innerText = "Find Me";
+  geolocationBtn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i>';
   map.flyTo([lat, lng], 14);
   placeMarker([lat, lng]);
 }
@@ -369,11 +368,8 @@ function selectMarkerIconFromValue(value) {
 
   return icon;
 }
-// NODE JS FUNCTIONS - REWRITE FOR VALUE OF INDIVIDUALS.
 
-fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
-attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
 filterSelector.addEventListener("change", filterActivityData);
