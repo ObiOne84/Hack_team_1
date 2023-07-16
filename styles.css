@@ -354,6 +354,10 @@ div.hero .hero-heading {
   color: white;
 }
 
+.black-bg {
+  background-color: rgba(0, 0, 0, 0.87) !important;
+}
+
 /*End carousel*/
 
 /* footer */
@@ -436,7 +440,7 @@ div.hero .hero-heading {
 }
 
 #thank-you-note h2 {
-  margin-top: 7vh;
+  margin-top: 12vh;
 }
 
 #thank-you-note h3 {
@@ -450,6 +454,27 @@ div.hero .hero-heading {
 /* End Contact us page */
 
 /*Media Queries*/
+
+@media screen and (max-width: 1200px) {
+
+    /* thank you note */
+
+    #thank-you-note {
+        width: 50vw;
+        left: -200%
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* thank you note */
+
+    #thank-you-note {
+        width: 90vw;
+        left: -1000%;
+    }
+}
+
 @media (min-width: 768px) {
   div.hero {
     padding-top: 17rem;
