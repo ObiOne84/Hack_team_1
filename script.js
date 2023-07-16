@@ -11,7 +11,12 @@ import {
   ALL_CATEGORIES,
   activityMarkerIcon,
   attractionMarkerIcon,
+  cityMarkerIcon,
+  cultureMarkerIcon,
   foodMarkerIcon,
+  luxuryMarkerIcon,
+  parkMarkerIcon,
+  sportsMarkerIcon,
 } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
@@ -332,25 +337,25 @@ function selectMarkerIconFromValue(value) {
 
   switch (value) {
     case "food":
-      icon = activityMarkerIcon;
+      icon = foodMarkerIcon;
       break;
     case "sport":
-      icon = activityMarkerIcon;
+      icon = sportsMarkerIcon;
       break;
     case "scenic":
-      icon = activityMarkerIcon;
+      icon = parkMarkerIcon;
       break;
     case "luxury":
-      icon = attractionMarkerIcon;
+      icon = luxuryMarkerIcon;
       break;
     case "culture":
-      icon = attractionMarkerIcon;
+      icon = cultureMarkerIcon;
       break;
     case "city":
-      icon = attractionMarkerIcon;
+      icon = cityMarkerIcon;
       break;
     default:
-      icon = foodMarkerIcon;
+      icon = activityMarkerIcon;
       break;
   }
 

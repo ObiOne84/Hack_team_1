@@ -2,7 +2,7 @@
 
 /* Activities */
 
-/*#activities {
+#activities {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,4 +83,4 @@
 
 .fly-btn {
   padding: 0.5rem;
-}*/
+}

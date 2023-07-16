@@ -20,6 +20,7 @@
     />
 
     <!-- stylesheet link -->
+    <link rel="stylesheet" href="map.css" />
     <link rel="stylesheet" href="styles.css" />
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -72,17 +73,12 @@
       </nav>
     </header>
 
-    
-
     <main>
-
       <div class="row mt-5">
-
         <!-- Displays the leaflet map -->
         <div class="col-12 col-lg-6 text-center my-auto px-3 px-md-5">
           <div class="card-header">
             <ul class="nav nav-pills card-header-pills">
-
               <!-- fetch country button -->
               <li class="nav-item">
                 <button id="fetch-country-btn" class="btn btn-primary">
@@ -92,16 +88,24 @@
 
               <!-- Geolocatin buttons -->
               <li class="nav-item">
-                <button id="geolocation-btn" class="btn btn-secondary">Find me</button>
+                <button id="geolocation-btn" class="btn btn-secondary">
+                  Find me
+                </button>
               </li>
               <li class="nav-item">
-                <button id="locations-btn" class="btn btn-success">Get Nearby Locations</button>
+                <button id="locations-btn" class="btn btn-success">
+                  Get Nearby Locations
+                </button>
               </li>
               <li class="nav-item">
-                <button id="attractions-btn" class="btn btn-danger">Find Attractions</button>
+                <button id="attractions-btn" class="btn btn-danger">
+                  Find Attractions
+                </button>
               </li>
               <li class="nav-item">
-                <button id="activities-btn" class="btn btn-warning">Find Activities</button>
+                <button id="activities-btn" class="btn btn-warning">
+                  Find Activities
+                </button>
               </li>
             </ul>
           </div>
@@ -112,11 +116,10 @@
 
         <!-- Dynamically renders selected countries flag -->
         <div class="col-12 col-lg-6 text-center my-auto px-3 px-md-5">
-          <div id="information" class=" map-colour rounded">
-
+          <div id="information" class="map-colour rounded">
             <!-- flag -->
             <div class="row pt-5">
-              <div class="flag-container ">
+              <div class="flag-container">
                 <img
                   id="flag"
                   src="https://flagcdn.com/gb.svg"
@@ -130,18 +133,22 @@
             <div class="row">
               <div class="col-2 col-md-4"></div>
               <div class="col-8 col-md-4 mt-3">
-                <button id="favourites" class="btn btn-light">Load Favourites</button>
+                <button id="favourites" class="btn btn-light">
+                  Load Favourites
+                </button>
               </div>
               <div class="col-2 col-md-4"></div>
             </div>
-            
 
             <!-- category dropdown -->
             <div class="row">
               <div class="col-2 col-md-4"></div>
               <div class="col-8 col-md-4 mt-3">
                 <label for="filter" class="text-white">Categories:</label>
-                <select id="filter" class="dropdown btn btn-sm btn-secondary dropdown-toggle text-center">
+                <select
+                  id="filter"
+                  class="dropdown btn btn-sm btn-secondary dropdown-toggle text-center"
+                >
                   <option value="all">All</option>
                   <option value="food">Food & Beverage</option>
                   <option value="scenic">Scenic</option>
@@ -153,25 +160,27 @@
               </div>
               <div class="col-2 col-md-4"></div>
             </div>
-            
 
             <!-- activity information -->
             <div class="row">
-
               <!-- empty div -->
               <div class="col-2 col-md-3"></div>
 
               <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
               <div class="col-8 col-md-6">
-                <div id="activities" >
+                <div id="activities">
                   <div class="activity">
                     <h2 class="activity-name mt-3 text-white">Conna Castle</h2>
                     <h3 class="activity-location text-white">Cork</h3>
-                    <ul class="activity-list list-group-flush text-white text-center">
+                    <ul
+                      class="activity-list list-group-flush text-white text-center"
+                    >
                       <li class="list-group-item">Acitvity</li>
                       <li class="list-group-item">Castle</li>
                       <li class="list-group-item">Attraction</li>
-                      <li class="list-group-item">Historic Houses and Castle</li>
+                      <li class="list-group-item">
+                        Historic Houses and Castle
+                      </li>
                     </ul>
                     <div class="activity-links">
                       <a
@@ -181,10 +190,16 @@
                         >Visit Site</a
                       >
                       <div class="mb-5 mt-3">
-                        <button data-name="Conna Castle" class="favourite-btn btn btn-dark">
+                        <button
+                          data-name="Conna Castle"
+                          class="favourite-btn btn btn-dark"
+                        >
                           <i class="fa-solid fa-heart"></i>
                         </button>
-                        <button data-location="lat lng" class="fly-btn btn btn-info">
+                        <button
+                          data-location="lat lng"
+                          class="fly-btn btn btn-info"
+                        >
                           Fly Here
                         </button>
                       </div>
@@ -196,27 +211,24 @@
               <!-- empty div -->
               <div class="col-2 col-md-3"></div>
             </div>
-            
-
           </div>
         </div>
       </div>
-
 
       <!-- DARRACH ORIGINAL CODE - Johnny edit for Bootstrap  -->
 
       <!--<div class="map-wrapper">
         <div id="map"></div>-->
 
-        <!-- Map buttons -->
-        <!--<div class="btn-container">-->
-          <!-- fetch country button -->
-          <!--<button id="fetch-country-btn" class="btn">
+      <!-- Map buttons -->
+      <!--<div class="btn-container">-->
+      <!-- fetch country button -->
+      <!--<button id="fetch-country-btn" class="btn">
             Fetch Irelands Info
           </button>-->
 
-          <!-- Geolocatin button -->
-          <!--<button id="geolocation-btn" class="btn">Find me</button>
+      <!-- Geolocatin button -->
+      <!--<button id="geolocation-btn" class="btn">Find me</button>
           <button id="locations-btn" class="btn">Get Nearby Locations</button>
           <button id="attractions-btn" class="btn">Find Attractions</button>
           <button id="activities-btn" class="btn">Find Activities</button>
@@ -246,8 +258,8 @@
               <option value="culture">Culture</option>
             </select>
             <div id="activities">-->
-              <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
-              <!--<div class="activity">
+      <!-- THIS IS A DEMO CARD FOR ACTIVITY - CARDS ARE DYNAMICALLY RENDERED -->
+      <!--<div class="activity">
                 <h2 class="activity-name">Conna Castle</h2>
                 <h3 class="activity-location">Cork</h3>
                 <ul class="activity-list">
@@ -281,36 +293,31 @@
 
     <!-- footer -->
     <footer id="footer" class="container-fluid mt-5">
-
       <div class="row my-3">
-
         <!-- contact details -->
         <div class="col-12 col-md-4 text-center order-2 order-md-1 py-3">
-
           <div class="row pt-4">
             <div class="col-12 text-white text-left">
               <h6 class="font-weight-bold"><u>Contact:</u></h6>
               <p>
-                Lovin Summer<br>
-                Hacker Street 101<br>
-                Coding Hills<br>
-                Dublin<br>
+                Lovin Summer<br />
+                Hacker Street 101<br />
+                Coding Hills<br />
+                Dublin<br />
                 Ireland
-                <br><br>
+                <br /><br />
                 hackers@codewave_surfers.com
               </p>
             </div>
           </div>
-          
-
         </div>
 
         <!-- partner and social links column -->
-        <div class="col-12 col-md-4 text-right my-auto order-1 order-md-2 text-white footer-text">
-
+        <div
+          class="col-12 col-md-4 text-right my-auto order-1 order-md-2 text-white footer-text"
+        >
           <!-- social links -->
           <div class="row">
-            
             <!-- facebook -->
             <div class="col-4 col-md-4 text-center">
               <a
@@ -358,23 +365,28 @@
             </div>
             <div class="col-md-12 text-center">
               <a href="https://www.tourismireland.com/" target="_blank">
-                <img class="img-fluid" src="/assets/images/logoTourismIreland.jpg" alt="Tourism Ireland Logo">
+                <img
+                  class="img-fluid"
+                  src="/assets/images/logoTourismIreland.jpg"
+                  alt="Tourism Ireland Logo"
+                />
               </a>
             </div>
           </div>
         </div>
 
         <!-- copyright and disclaimer -->
-        <div class="col-12 col-md-4 text-center my-auto order-3 order-md-3 pb-3 text-white footer-text">
+        <div
+          class="col-12 col-md-4 text-center my-auto order-3 order-md-3 pb-3 text-white footer-text"
+        >
           <p class="m-auto pb-3">&copy; Lovin Summer, 2023</p>
           <p class="m-auto pb-3">For educational purposes only!</p>
-          <p class="m-auto">Created by <span class="font-indie">Codewave Surfers</span></p>
+          <p class="m-auto">
+            Created by <span class="font-indie">Codewave Surfers</span>
+          </p>
         </div>
-
       </div>
-
     </footer>
-
   </body>
 
   <!-- bootstrap plugins -->
@@ -412,8 +424,9 @@
   ></script>
 
   <!-- leaflet script -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin="">
-  </script>
+    crossorigin=""
+  ></script>
 </html>
