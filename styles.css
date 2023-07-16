@@ -269,19 +269,13 @@ div.hero .hero-heading {
 .out-activities {
   background-color: aliceblue;
   margin: 0;
-  padding: 2rem 0;
+  padding: 2rem;
   letter-spacing: 1.5;
 }
 
-.map-row{
-  margin: 0;
-}
 .stat-map-col {
-  max-width: 100%;
-}
-
-.stat-map-col img{
-  max-width: 90vw;
+  max-width: 90%;
+  margin: 2rem 0;
 }
 
 /* End Outdoor Activities */
@@ -432,26 +426,24 @@ div.hero .hero-heading {
 /* Thanky you message*/
 
 #thank-you-note {
-  width: 75%;
-  height: 450px;
+  width: 100%;
+  height: 100%;
   /* background-color: rgba(235, 94, 40, 0.8); */
-  /* background-color: var( --dark-green); */
-  background-color: var(--dark-orange);
+  background-color: var( --dark-green);
+  /* background-color: var(--dark-orange); */
   color: #fffcf2;
   font-size: 140%;
   position: absolute;
-  left: 12.5%;
-  top: 25%;
+  left: -100%;
+  top: 0;
   text-align: center;
-  /* text-shadow: 1px 1px white; */
   text-shadow: 1px 1px black;
-  border: 2px solid black;
   border-radius: 10px;
   align-items: center;
 }
 
 #thank-you-note h2 {
-  margin-top: 5vh;
+  margin-top: 7vh;
 }
 
 #thank-you-note h3 {
@@ -463,9 +455,9 @@ div.hero .hero-heading {
   padding: 15px 0;
 }
 
-#thank-you-note {
+/* #thank-you-note {
     display: none;
-}
+} */
 
 /*Media Queries*/
 @media (min-width: 768px) {
