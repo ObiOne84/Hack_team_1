@@ -22,7 +22,7 @@ The project aligns perfectly with the theme of the hackathon, which is to encour
 
 Agile methodologies have been employed through GitHub Projects. Different tasks for the project were created and assigned to various team members. Once each task was completed, they were moved to the "Done" section. As code modifications were made, the corresponding pull requests were created and approved by the Scrum Master.
 
-**The next part is not done yet**
+**@JOSE - READ THIS - This section refers to the video presentation that must be made at the end of the project, not needed in the readme - JOHNNY**
 - ✨ Presentation Quality - Present as if you are pitching it to client
 
 # ABOUT SUBMISSION
