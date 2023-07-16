@@ -106,6 +106,9 @@ We would like to give credit to the following individuals, organizations, and re
 [Festival dragon](https://eaf.ie/about) provided by **© 2023 Earagail Arts Festival**  
 [Hiking routes](https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/) provided by **Hillwalktours**  
 [Electric picnic](https://www.electricpicnic.ie/news/sign-up-for-tour-de-picnic-2023/) provided by **© Festival Republic 2023**  
+[Easter egg](https://www.youtube.com/watch?v=ZW0DfsCzfq4) provided by [Kurt Harmsworth](https://www.youtube.com/@eddiekurt15) / [YouTube] (https://www.youtube.com/)
+[QR Code](https://qr.io/) provided by **© QR.io**
+
 
 
 ------
