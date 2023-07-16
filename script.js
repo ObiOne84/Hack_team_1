@@ -24,8 +24,10 @@ const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
 const filterSelector = document.getElementById("filter");
 
+// initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
 
+// add OpenStreetMap tile layer
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution:
@@ -94,7 +96,7 @@ async function getLocationsNearMe() {
   fitMarkersInView();
 }
 
-// Place a marker the map
+// Place a marker on the map
 function placeMarker(location, icon) {
   let marker;
   icon
