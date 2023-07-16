@@ -5,7 +5,7 @@ import cityMarkerImage from "./assets/images/markers/city.png";
 import cultureMarkerImage from "./assets/images/markers/culture.png";
 import favouriteMarkerImage from "./assets/images/markers/favourite.png";
 import luxuryMarkerImage from "./assets/images/markers/luxury.png";
-import parkMarkerImage from "./assets/images/markers/luxury.png";
+import parkMarkerImage from "./assets/images/markers/park.png";
 import sportsMarkerImage from "./assets/images/markers/sport.png";
 
 export const attractionMarkerIcon = L.icon({
