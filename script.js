@@ -29,7 +29,9 @@ const settingsModalBtn = document.getElementById("settings");
 const closeSettingsModalBtn = document.getElementById("close-modal");
 const settingsModal = document.getElementById("modal");
 const background = document.getElementById("background");
+const mapLayout = document.getElementById("map");
 
+mapLayout.addEventListener("click", () => console.log("click"));
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
 
@@ -98,9 +100,7 @@ async function getLocationsNearMe() {
     const icon = selectMarkerIconFromValue(attraction.category);
 
     const { lat, lng } = attraction;
-    if (distanceSelector.value > 50) {
-      placeInteractiveMarker({ lat, lng }, icon, attraction);
-    } else placeToolTipMarker(attraction, icon);
+    placeInteractiveMarker({ lat, lng }, icon, attraction);
     // displayActivites(attraction);
   });
 
