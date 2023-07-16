@@ -65,7 +65,26 @@ The goal of the Lovin Summer project is to provide a comprehensive and user-frie
 
 
 ## Tech
-In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
+In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.  
+
+**Languages:**
+* HTML
+* CSS
+* JavaScript
+
+**Frameworks:**
+* Bootstrap: CSS Framework for developing responsive and mobile-first websites.
+  
+**Libraries:**
+* [Leaflet](https://leafletjs.com/): Leaflet is an open-source JavaScript library for mobile-friendly interactive maps.
+
+**APIs:**
+* [REST Countries API](https://restcountries.com/): The REST Countries API is a basic REST API that delivers information about the countries in JSON format.
+* [Fáilte Ireland's Open Data API](https://failteireland.developer.azure-api.net/): This API contains a collection of activities and attractions.
+
+**Host:** 
+* Netlify
+
 
 To log into the Heroku toolbelt CLI:
 
