@@ -32,8 +32,10 @@
 }
 
 /* johnny testing */
-.map-card {
-  height: 50vh;
+#map {
+  height: 100%;
+  min-height: 80vh;
+  border-radius: 10px;
 }
 
 .map-colour {
@@ -298,7 +300,6 @@ div.hero .hero-heading {
   font-weight: 400;
 }
 
-
 /* End go outside */
 
 /*Start carousel*/
@@ -324,7 +325,7 @@ div.hero .hero-heading {
 }
 
 .card {
-  margin: 0 .5em;
+  margin: 0 0.5em;
   width: calc(100%);
 }
 
@@ -392,7 +393,6 @@ div.hero .hero-heading {
   /* Johnny - test new color scheme */
 }
 
-
 .partners-row img {
   height: 25px;
   aspect-ratio: 4/1;
@@ -402,7 +402,6 @@ div.hero .hero-heading {
   letter-spacing: 1px;
   font-size: large;
 }
-
 
 /* Contact us page */
 /* form */
@@ -428,7 +427,7 @@ div.hero .hero-heading {
 #thank-you-note {
   width: 100%;
   height: 100%;
-  background-color: var( --dark-green);
+  background-color: var(--dark-green);
   color: #fffcf2;
   font-size: 140%;
   position: absolute;
@@ -496,7 +495,6 @@ div.hero .hero-heading {
   width: 100%;
   aspect-ratio: 16/9;
 }
-
 
 /* ANIMATIONS */
 @keyframes spin {

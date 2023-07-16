@@ -21,7 +21,6 @@ import { createActivityHTML } from "./html-renders";
 const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
 const attractionsBtn = document.getElementById("attractions-btn");
-const activitiesBtn = document.getElementById("activities-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
@@ -263,6 +262,7 @@ async function getFailteIrelandsActivitiesData() {
 
 function toggleFavourites(activity) {
   const currentStoredFavourites = localStorage.getItem("favourites");
+  activity.favourited = !activity.favourited;
 
   // If not storage
   if (!currentStoredFavourites) {
@@ -374,7 +374,6 @@ function selectMarkerIconFromValue(value) {
 fetchCountryBtn.addEventListener("click", fetchCountryData);
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 attractionsBtn.addEventListener("click", getFailteIrelandsAttractionsData);
-activitiesBtn.addEventListener("click", getFailteIrelandsActivitiesData);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
 filterSelector.addEventListener("change", filterActivityData);
