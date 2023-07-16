@@ -67,6 +67,18 @@ To log into the Heroku toolbelt CLI:
 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
+## Credits
+We would like to give credit to the following individuals, organizations, and resources that have contributed to the project or provided inspiration:
+
+[Hero image](https://www.cntraveller.com/gallery/places-to-visit-ireland) prvided by **© Condé Nast Britain 2023**  
+[Ireland map](https://www.shutterstock.com/es/image-vector/cartoon-map-ireland-1013843395) provided by **© 2003-2023 Shutterstock, Inc.**  
+[Healthy benefits](https://www.healthline.com/health/health-benefits-of-being-outdoors) provided by **Healthline Media a Red Ventures Company**  
+[Sports](https://theculturetrip.com/europe/ireland/articles/where-you-can-play-sports-in-dublin/) provided by **The Culture Trip Ltd**  
+[Festival dragon](https://eaf.ie/about) provided by **© 2023 Earagail Arts Festival**  
+[Hiking routes](https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/) provided by **Hillwalktours**  
+[Electric picnic](https://www.electricpicnic.ie/news/sign-up-for-tour-de-picnic-2023/) provided by **© Festival Republic 2023**  
+
+
 ------
 
 ## Release History
