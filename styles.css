@@ -407,6 +407,13 @@ div.hero .hero-heading {
   font-size: large;
 }
 
+.btn-summer {
+  background-color: var(--dark-orange);
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 25px;
+  color: white;
+}
 
 /* Contact us page */
 /* form */
