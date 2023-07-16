@@ -464,23 +464,21 @@ div.hero .hero-heading {
 /*Media Queries*/
 
 @media screen and (max-width: 1200px) {
+  /* thank you note */
 
-    /* thank you note */
-
-    #thank-you-note {
-        width: 50vw;
-        left: -200%
-    }
+  #thank-you-note {
+    width: 50vw;
+    left: -200%;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  /* thank you note */
 
-    /* thank you note */
-
-    #thank-you-note {
-        width: 90vw;
-        left: -1000%;
-    }
+  #thank-you-note {
+    width: 90vw;
+    left: -1000%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -547,6 +545,22 @@ div.hero .hero-heading {
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+
+  80% {
+    transform: translateY(-35px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
   }
 }
 

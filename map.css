@@ -20,9 +20,9 @@
   border-radius: 5px;
   gap: 0.5rem;
   color: var(--dark-grey);
-  transform: translateY(50px);
+  transform: translateY(200px);
   opacity: 0;
-  animation: fadeInSlideUp 1s ease forwards;
+  animation: slideFromBottom 0.3s ease forwards;
   color: var(--off-black);
 }
 
@@ -165,6 +165,7 @@
 
 #activites-modal {
   display: none;
+  align-self: flex-end;
 }
 
 .close-modal {
