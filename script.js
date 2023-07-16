@@ -27,11 +27,12 @@ const filterSelector = document.getElementById("filter");
 const distanceSelector = document.getElementById("distance");
 const settingsModalBtn = document.getElementById("settings");
 const closeSettingsModalBtn = document.getElementById("close-modal");
-const settingsModal = document.getElementById("modal");
+const settingsModal = document.getElementById("settings-modal");
+const activitiesModal = document.getElementById("activites-modal");
 const background = document.getElementById("background");
-const mapLayout = document.getElementById("map");
+const mapBtnContainers = document.querySelector(".map-btns-container");
+const closeActivityModal = document.getElementById("close-activity-modal");
 
-mapLayout.addEventListener("click", () => console.log("click"));
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
 
@@ -120,11 +121,22 @@ function placeMarker(location, icon) {
 function placeInteractiveMarker(location, icon, activity) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
-  // marker.bindTooltip(location.name).openTooltip();
 
-  marker.addEventListener("click", () => console.log(activity));
+  marker.addEventListener("mouseover", () => {
+    marker.bindTooltip(activity.name).openTooltip();
+    renderActivityPopup(activity);
+  });
 
   return marker;
+}
+
+function renderActivityPopup(activity) {
+  // activitiesModal.innerHTML = ` <span id="close-modal" class='close-modal'>&times;</span>`;
+  background.style.display = "flex";
+  mapBtnContainers.style.display = "none";
+  // const activityElement = createActivityHTML(activity);
+
+  activitiesModal.appendChild(activityElement);
 }
 
 // Places a marker with a tooltip on the map
@@ -379,15 +391,17 @@ function openModal() {
 }
 
 function closeModalOnClick(e) {
-  if (e.target === background || e.target === closeSettingsModalBtn) {
+  if (e.target === background || closeSettingsModalBtn || closeActivityModal) {
     background.style.display = "none";
     settingsModal.style.display = "none";
+    mapBtnContainers.style.display = "flex";
   }
 }
 
 function closeModal() {
   background.style.display = "none";
   settingsModal.style.display = "none";
+  mapBtnContainers.style.display = "flex";
 }
 
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
@@ -398,3 +412,4 @@ distanceSelector.addEventListener("change", getLocationsNearMe);
 settingsModalBtn.addEventListener("click", openModal);
 closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
+closeActivityModal.addEventListener("click", closeModalOnClick);

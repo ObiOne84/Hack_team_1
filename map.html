@@ -85,8 +85,9 @@
       <div class="map-container">
         <!-- SETTINGS MODAL -->
         <div id="background">
-          <div id="modal">
-            <span id="close-modal">&times;</span>
+          <!-- ATTRACTION MODAL -->
+          <div id="settings-modal">
+            <span id="close-modal" class="close-modal">&times;</span>
             <h2>Settings</h2>
             <label for="filter">Categories:</label>
             <select id="filter" class="">
@@ -108,7 +109,33 @@
               value="30"
             />
           </div>
+          <div id="activites-modal">
+            <div class="activity">
+              <div id="close-activity-modal" class="close-modal">&times;</div>
+              <h3 class="activity-name">Maynooth Ecclesiastical Museum</h3>
+              <h4 class="activity-location">Kildare</h4>
+              <ul class="activity-list">
+                <li>Museums and Attraction</li>
+              </ul>
+              <div class="activity-links">
+                <a
+                  href="http://museum.maynoothcollege.ie"
+                  alt="Link to Maynooth Ecclesiastical Museum website"
+                  target="_blank"
+                  >Visit Site</a
+                >
+
+                <div class="">
+                  <button class="favourite-btn btn btn-dark">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                  <button class="fly-btn btn btn-info">Fly Here</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div id="map"></div>
 
         <!-- Geolocation buttons -->
@@ -217,6 +244,28 @@
             </div>
             <!-- </div> -->
 
+            <div class="activity">
+              <h3 class="activity-name">Maynooth Ecclesiastical Museum</h3>
+              <h4 class="activity-location">Kildare</h4>
+              <ul class="activity-list">
+                <li>Museums and Attraction</li>
+              </ul>
+              <div class="activity-links">
+                <a
+                  href="http://museum.maynoothcollege.ie"
+                  alt="Link to Maynooth Ecclesiastical Museum website"
+                  target="_blank"
+                  >Visit Site</a
+                >
+
+                <div class="">
+                  <button class="favourite-btn btn btn-dark">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                  <button class="fly-btn btn btn-info">Fly Here</button>
+                </div>
+              </div>
+            </div>
             <!-- empty div -->
             <div class="col-2 col-md-3"></div>
           </div>
@@ -317,7 +366,13 @@
           <p class="m-auto mb-3">
             Created by <span class="font-indie">Codewave Surfers</span>
           </p>
-          <a href="https://youtu.be/ZW0DfsCzfq4" target="_blank" rel="noopener noreferrer" class="text-decoration-none btn-summer">For some Summer Lovin'</a>
+          <a
+            href="https://youtu.be/ZW0DfsCzfq4"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-decoration-none btn-summer"
+            >For some Summer Lovin'</a
+          >
         </div>
       </div>
     </footer>

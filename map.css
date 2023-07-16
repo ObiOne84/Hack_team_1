@@ -134,7 +134,7 @@
 
 /* MODAL */
 #background {
-  display: none;
+  display: flex;
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -147,7 +147,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modal {
+#settings-modal {
   display: none;
   background-color: #fefefe;
   border-radius: 10px;
@@ -163,15 +163,24 @@
   gap: 1rem;
 }
 
-#close-modal {
+#activites-modal {
+}
+
+.close-modal {
   color: var(--off-black);
-  right: 10;
-  top: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 5;
+  top: -2;
   position: absolute;
   font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
 }
+/* #close-modal {
+} */
 
 .close:hover {
   color: #000;
