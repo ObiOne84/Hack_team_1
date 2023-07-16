@@ -18,14 +18,17 @@ import {
 } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
-const fetchCountryBtn = document.getElementById("fetch-country-btn");
+// const fetchCountryBtn = document.getElementById("fetch-country-btn");
 const geolocationBtn = document.getElementById("geolocation-btn");
-const attractionsBtn = document.getElementById("attractions-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
 const actvityWrapper = document.getElementById("activities");
 const filterSelector = document.getElementById("filter");
 const distanceSelector = document.getElementById("distance");
+const settingsModalBtn = document.getElementById("settings");
+const closeSettingsModalBtn = document.getElementById("close-modal");
+const settingsModal = document.getElementById("modal");
+const background = document.getElementById("background");
 
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
@@ -369,8 +372,23 @@ function selectMarkerIconFromValue(value) {
   return icon;
 }
 
+function openModal() {
+  settingsModal.style.display = "flex";
+  background.style.display = "flex";
+}
+
+function closeModal(e) {
+  if (e.target === background || e.target === closeSettingsModalBtn) {
+    background.style.display = "none";
+    settingsModal.style.display = "none";
+  }
+}
+
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
 filterSelector.addEventListener("change", filterActivityData);
 distanceSelector.addEventListener("change", getLocationsNearMe);
+settingsModalBtn.addEventListener("click", openModal);
+closeSettingsModalBtn.addEventListener("click", closeModal);
+background.addEventListener("click", closeModal);
