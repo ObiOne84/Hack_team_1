@@ -47,12 +47,16 @@ Here is a sample of a user story which indicates the MoSCow Prioritisation, the 
 At a glance any developer could see what is still needed and contribute accordingly.
 
 ## Goal
-The goal section provides a concise summary of the main objective or purpose of the project or software described in this README. It addresses the following aspects:
+The goal of the Lovin Summer project is to provide a comprehensive and user-friendly web application, with a strong focus on mobile design, that offers an immersive platform for discovering and exploring Ireland during the summer season. 
 
-- ➡️ Problem Statement
-- ➡️ Objective(s)
-- ➡️ Target Audience
-- ➡️ Benefits
+* **Problem Statement:** As a user, one of the most significant challenges during the summer is finding reliable and up-to-date information about local attractions, cultural events, and exciting outdoor activities scattered across Ireland. 
+
+* **Objective(s):** Lovin Summer is committed to bringing accurate insights, especially regarding all the events and activities surrounding the user. The primary objective is to create a platform that becomes your ultimate go-to source for all things summer in Ireland. The second objective is to cover both if you're seeking beach parties, music festivals, or hiking spots. 
+
+* **Target Audience:** Everyone with a thirst for adventure and a love for Irish summer vibes. This App is tailored for both tourists visiting Ireland for the first time and residents looking for new places to explore within the country. 
+
+* **Benefits:** With geolocation integration, Lovin Summer offers a real-time connection between individuals engaging in outdoor activities and summer events. Additionally, embracing the Irish summer's breathtaking landscapes and engaging in its vibrant cultural scene can lead to substantial mental and physical well-being benefits.
+
 
 ## Tech
 In the tech section, we provide information about the technology stack, dependencies, and any technical details related to the project.
@@ -66,6 +70,18 @@ To log into the Heroku toolbelt CLI:
 5. Paste in your API key when asked
 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+
+## Credits
+We would like to give credit to the following individuals, organizations, and resources that have contributed to the project or provided inspiration:
+
+[Hero image](https://www.cntraveller.com/gallery/places-to-visit-ireland) prvided by **© Condé Nast Britain 2023**  
+[Ireland map](https://www.shutterstock.com/es/image-vector/cartoon-map-ireland-1013843395) provided by **© 2003-2023 Shutterstock, Inc.**  
+[Healthy benefits](https://www.healthline.com/health/health-benefits-of-being-outdoors) provided by **Healthline Media a Red Ventures Company**  
+[Sports](https://theculturetrip.com/europe/ireland/articles/where-you-can-play-sports-in-dublin/) provided by **The Culture Trip Ltd**  
+[Festival dragon](https://eaf.ie/about) provided by **© 2023 Earagail Arts Festival**  
+[Hiking routes](https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/) provided by **Hillwalktours**  
+[Electric picnic](https://www.electricpicnic.ie/news/sign-up-for-tour-de-picnic-2023/) provided by **© Festival Republic 2023**  
+
 
 ------
 
