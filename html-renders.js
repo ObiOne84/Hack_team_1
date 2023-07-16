@@ -8,14 +8,12 @@ export function createActivityHTML(activity) {
   const activityList = document.createElement("ul");
   activityList.classList.add("activity-list");
 
-  let activityListStringArray = [
-    '<ul class="activity-list list-group-flush text-white text-center">',
-  ];
+  let activityListStringArray = ['<ul class="activity-list">'];
 
   //Append indivdual activity to list array, max of 5 results
   activity.tags.forEach((element, index) => {
     if (index > 5) return;
-    const html = `<li class="list-group-item">${element}</li>`;
+    const html = `<li>${element}</li>`;
     activityListStringArray.push(html);
   });
 
@@ -25,8 +23,8 @@ export function createActivityHTML(activity) {
   //Create inner html for the activity element
 
   const html = `
-      <h3 class="activity-name mt-3 text-white">${activity.name}</h3>
-      <h4 class="activity-location text-white">${activity.region}</h4>
+      <h3 class="activity-name">${activity.name}</h3>
+      <h4 class="activity-location">${activity.region}</h4>
      ${activityListStringArray}
      <div class="activity-links">
       <a
@@ -36,7 +34,7 @@ export function createActivityHTML(activity) {
         >Visit Site</a
       >
 
-      <div class="mb-5 mt-3">
+      <div class="">
       <button class="favourite-btn btn btn-dark">
         <i class="fa-solid fa-heart"></i>
       </button>
