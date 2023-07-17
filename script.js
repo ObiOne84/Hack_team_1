@@ -2,7 +2,11 @@
 import { capitalize, filterObjectsByRadius } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
 import DUMMY_ACTIVITIES from "./assets/data/testing.json";
-import { favouriteMarkerIcon, selectMarkerIconFromValue } from "./mapscript";
+import {
+  favouriteMarkerIcon,
+  selectMapTheme,
+  selectMarkerIconFromValue,
+} from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
 // const fetchCountryBtn = document.getElementById("fetch-country-btn");
@@ -19,16 +23,25 @@ const activitiesModal = document.getElementById("activites-modal");
 const background = document.getElementById("background");
 const mapBtnContainers = document.querySelector(".map-btns-container");
 const closeActivityModal = document.getElementById("close-activity-modal");
+const mapSelector = document.getElementById("map-selector");
 
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
 
-// add OpenStreetMap tile layer
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+const LAYERS = [];
+setMap();
+
+function setMap() {
+  const mapValue = mapSelector.value;
+
+  LAYERS.forEach((layer) => map.removeLayer(layer));
+
+  const tileLayer = selectMapTheme(mapValue);
+
+  tileLayer.addTo(map);
+
+  LAYERS.push(tileLayer);
+}
 
 // Using web geolocation to find current users location and display on map
 async function getCurrentLocationLatLng() {
@@ -63,7 +76,7 @@ async function getLocationsNearMe() {
   const coords = { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
-    DUMMY_ATTRACTIONS,
+    [...DUMMY_ATTRACTIONS, ...DUMMY_ACTIVITIES],
     distanceSelector.value
   );
 
@@ -265,6 +278,8 @@ function loadAllFavourites() {
   currentFavourites.forEach((activity) =>
     placeToolTipMarker(activity, favouriteMarkerIcon)
   );
+
+  fitMarkersInView();
 }
 
 function flyToLocation(coords) {
@@ -338,3 +353,4 @@ settingsModalBtn.addEventListener("click", openModal);
 closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
 closeActivityModal.addEventListener("click", closeModalOnClick);
+mapSelector.addEventListener("change", setMap);

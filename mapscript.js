@@ -245,6 +245,69 @@ export function selectMarkerIconFromValue(activity) {
   return icon;
 }
 
+const waterColourMap = L.tileLayer(
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+  {
+    attribution:
+      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: "abcd",
+    minZoom: 1,
+    maxZoom: 16,
+    ext: "jpg",
+  }
+);
+
+const natGeoMap = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
+  {
+    attribution:
+      "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
+    maxZoom: 16,
+  }
+);
+
+const defaultMap = L.tileLayer(
+  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }
+);
+
+const darkMap = L.tileLayer(
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+  {
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+  }
+);
+
+export function selectMapTheme(value) {
+  let map;
+
+  switch (value) {
+    case "default":
+      map = defaultMap;
+      break;
+    case "dark":
+      map = darkMap;
+      break;
+    case "natgeo":
+      map = natGeoMap;
+      break;
+    case "watercolour":
+      map = waterColourMap;
+      break;
+    default:
+      map = defaultMap;
+      break;
+  }
+
+  return map;
+}
+
 // export const ALL_TAGS = [
 //   "Food and Drink",
 //   "Restaurant",
