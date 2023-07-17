@@ -49,7 +49,15 @@ function setMap() {
   LAYERS.push(tileLayer);
 }
 
-function getLocation() {
+async function getLocation() {
+  const permissions = await navigator.permissions.query({
+    name: "geolocation",
+  });
+
+  alert(permissions.state);
+  if (permissions.state === "granted") {
+  }
+
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -68,13 +76,12 @@ async function getCurrentLocationLatLng() {
   try {
     const position = await getLocation();
 
-    console.log(position);
-
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     return { lat, lng };
   } catch (error) {
-    console.log(error);
+    alert("Unable to find location - default to Dublin");
+    return { lat: 53.34, lng: -6.26 };
   }
 }
 
