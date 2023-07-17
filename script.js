@@ -154,6 +154,7 @@ async function routeFromCurrentLocation(location) {
     let distance = (summary.totalDistance / 1000).toFixed(2);
     let time = Math.round((summary.totalTime % 3600) / 60);
     const tripSummary = document.getElementById("trip-summary");
+    tripSummary.style.display = "block";
     tripSummary.innerText = `${distance}km / ${time}mins`;
   });
 }

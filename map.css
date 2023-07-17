@@ -255,7 +255,16 @@
   color: #000;
 }
 
-.trip-summary {
+#trip-summary {
+  font-size: small;
+  display: none;
   position: absolute;
-  top: 50;
+  bottom: 140;
+  z-index: 1001;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  background-color: var(--bright-green);
 }
