@@ -55,7 +55,7 @@ function getLocation() {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         (error) => reject(error),
-        { enableHighAccuracy: true }
+        { enableHighAccuracy: true, maximumAge: 10000 }
       );
     } else {
       reject(new Error("Geolocation is not supported by the browser."));
@@ -67,6 +67,8 @@ function getLocation() {
 async function getCurrentLocationLatLng() {
   try {
     const position = await getLocation();
+
+    console.log(position);
 
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
@@ -112,7 +114,7 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (!isOutSideIreland && !MANUAL_LOCATION) {
+  if (isOutSideIreland && !MANUAL_LOCATION) {
     alert(
       "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
     );
@@ -120,7 +122,7 @@ async function getLocationsNearMe() {
     setManualLocation();
   }
 
-  !isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
+  isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
   console.log(MANUAL_LOCATION);
   const filteredAttractions = filterObjectsByRadius(
     coords,
@@ -388,19 +390,6 @@ function updateDistanceFilterText() {
   const element = document.getElementById("distance-value");
   element.textContent = capitalize(distanceSelector.value) + "Km";
 }
-
-var observer = new IntersectionObserver(
-  function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate");
-      } else {
-        entry.target.classList.remove("animate");
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
 
 function isCoordinateOutsideIreland(lat, lng) {
   const irelandBoundaries = {
