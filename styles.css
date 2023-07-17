@@ -356,6 +356,10 @@ div.hero .hero-heading {
   background-color: rgba(0, 0, 0, 0.87) !important;
 }
 
+.no-decor {
+  text-decoration: none !important;
+}
+
 /*End carousel*/
 
 /* footer */
