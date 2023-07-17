@@ -31,6 +31,11 @@
   margin: 0;
 }
 
+.row {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /* johnny testing */
 .map-colour {
   background-color: rgba(47, 65, 61, 0.9);
