@@ -27,8 +27,11 @@ const mapSelector = document.getElementById("map-selector");
 
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
+let MANUAL_LOCATION;
 
 const LAYERS = [];
+let isPlacingLocation = false;
+
 setMap();
 
 function setMap() {
@@ -73,10 +76,39 @@ async function flyToCurrentLocation() {
   placeMarker([lat, lng]);
 }
 
+function setManualLocation() {
+  isPlacingLocation = true;
+  MANUAL_LOCATION = { lat: 53.34, lng: -6.26 };
+}
+
+function onMapClick(event) {
+  if (isPlacingLocation) {
+    const lat = event.latlng.lat;
+    const lng = event.latlng.lng;
+
+    // Create marker at clicked location
+    L.marker([lat, lng]).addTo(map);
+    MANUAL_LOCATION = { lat, lng };
+    isPlacingLocation = false;
+  }
+}
+
 async function getLocationsNearMe() {
   const { lat, lng } = await getCurrentLocationLatLng();
 
-  const coords = { lat, lng };
+  const isOutSideIreland = isCoordinateOutsideIreland(lat, lng);
+
+  let coords = { lat, lng };
+
+  if (isOutSideIreland && !MANUAL_LOCATION) {
+    alert(
+      "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
+    );
+
+    setManualLocation();
+  }
+
+  isOutSideIreland ? (coords = MANUAL_LOCATION) : { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
     [...DUMMY_ATTRACTIONS, ...DUMMY_ACTIVITIES],
@@ -84,28 +116,6 @@ async function getLocationsNearMe() {
   );
 
   return filteredAttractions;
-}
-
-async function displayFilteredLocationsNearMe() {
-  nearbyLocationsBtn.innerHTML = "";
-  const loader = document.createElement("div");
-  loader.id = "loader";
-  nearbyLocationsBtn.appendChild(loader);
-  removeAllMarkers(map);
-  const filteredAttractions = await getLocationsNearMe();
-
-  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
-
-  filteredAttractions.forEach((attraction) => {
-    const icon = selectMarkerIconFromValue(attraction);
-
-    const { lat, lng } = attraction;
-    placeInteractiveMarker({ lat, lng }, icon, attraction);
-    // displayActivites(attraction);
-  });
-
-  fitMarkersInView();
-  closeModal();
 }
 
 // Place a marker on the map
@@ -378,6 +388,22 @@ var observer = new IntersectionObserver(
   { threshold: 0.5 }
 );
 
+function isCoordinateOutsideIreland(lat, lng) {
+  const irelandBoundaries = {
+    north: 55.431573,
+    south: 51.427461,
+    west: -10.449578,
+    east: -5.994749,
+  };
+
+  return (
+    lat < irelandBoundaries.south ||
+    lat > irelandBoundaries.north ||
+    lng < irelandBoundaries.west ||
+    lng > irelandBoundaries.east
+  );
+}
+
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", filterActivityData);
@@ -388,3 +414,4 @@ closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
 closeActivityModal.addEventListener("click", closeModalOnClick);
 mapSelector.addEventListener("change", setMap);
+map.on("click", onMapClick);
