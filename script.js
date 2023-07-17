@@ -49,7 +49,13 @@ function setMap() {
   LAYERS.push(tileLayer);
 }
 
-function getLocation() {
+async function getLocation() {
+  const permissions = await navigator.permissions.query({
+    name: "geolocation",
+  });
+
+  alert(permissions);
+
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
