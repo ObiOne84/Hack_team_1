@@ -76,13 +76,12 @@ async function getCurrentLocationLatLng() {
   try {
     const position = await getLocation();
 
-    console.log(position);
-
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     return { lat, lng };
   } catch (error) {
-    console.log(error);
+    alert("Unable to find location - default to Dublin");
+    return { lat: 53.34, lng: -6.26 };
   }
 }
 
