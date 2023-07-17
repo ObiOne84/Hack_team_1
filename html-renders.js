@@ -22,7 +22,6 @@ export function createActivityHTML(activity) {
   activityListStringArray = activityListStringArray.join("") + "</ul>";
 
   //Create inner html for the activity element
-
   const isFavourited = isFavouritedActivity(activity);
 
   const html = `
@@ -38,6 +37,9 @@ export function createActivityHTML(activity) {
         target="_blank" class="fly-btn btn-flat">
         <i class="fa-solid fa-globe"></i>
         </a>
+        <button class="direction-btn btn-flat">
+        <i class="fa-solid fa-route"></i>
+      </button>
       </div>`;
 
   // Add inner html to activity element

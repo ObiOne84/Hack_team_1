@@ -1,23 +1,8 @@
-import L from "leaflet";
-import {
-  delayTimer,
-  filterObjectsByRadius,
-  isFavouritedActivity,
-  randomThreeFromArray,
-} from "./helpers";
+// import L from "leaflet";
+import { filterObjectsByRadius } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
 import DUMMY_ACTIVITIES from "./assets/data/testing.json";
-import {
-  activityMarkerIcon,
-  attractionMarkerIcon,
-  cityMarkerIcon,
-  cultureMarkerIcon,
-  favouriteMarkerIcon,
-  foodMarkerIcon,
-  luxuryMarkerIcon,
-  parkMarkerIcon,
-  sportsMarkerIcon,
-} from "./mapscript";
+import { favouriteMarkerIcon, selectMarkerIconFromValue } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
 // const fetchCountryBtn = document.getElementById("fetch-country-btn");
@@ -44,23 +29,6 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
-
-// Async function that fetching country information from rest-countries API
-async function fetchCountryData() {
-  const url = `https://restcountries.com/v3.1/name/ireland`;
-  try {
-    // const { data } = await axios(url);
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
-    const { latlng } = capitalInfo;
-    map.flyTo([latlng[0], latlng[1]], 13);
-    displayCountryFlag(data[1].name.common, data[1].flags.svg);
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 // Using web geolocation to find current users location and display on map
 async function getCurrentLocationLatLng() {
@@ -90,8 +58,14 @@ async function flyToCurrentLocation() {
 }
 
 async function getLocationsNearMe() {
+  nearbyLocationsBtn.innerHTML = "";
+  const loader = document.createElement("div");
+  loader.id = "loader";
+  nearbyLocationsBtn.appendChild(loader);
   removeAllMarkers(map);
   const { lat, lng } = await getCurrentLocationLatLng();
+
+  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
   const coords = { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
@@ -120,13 +94,45 @@ function placeMarker(location, icon) {
   return marker;
 }
 
+function removeRouteFromMap(map) {
+  const popupElement = document.querySelector(".leaflet-routing-container");
+  if (popupElement) {
+    popupElement.parentNode.removeChild(popupElement);
+  }
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Polyline) {
+      map.removeLayer(layer);
+    }
+  });
+}
+
+async function routeFromCurrentLocation(location) {
+  closeModal();
+  removeRouteFromMap(map);
+
+  const { lat, lng } = await getCurrentLocationLatLng();
+
+  placeMarker([lat, lng]);
+  L.Routing.control({
+    waypoints: [L.latLng(lat, lng), L.latLng(location.lat, location.lng)],
+    routeWhileDragging: true,
+    createMarker: function () {
+      return null;
+    },
+    show: false,
+    lineOptions: {
+      styles: [{ color: "green", opacity: 0.8, weight: 10 }],
+    },
+  }).addTo(map);
+}
+
 function placeInteractiveMarker(location, icon, activity) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
 
-  marker.addEventListener("mouseover", () =>
-    marker.bindTooltip(activity.name).openTooltip()
-  );
+  marker.addEventListener("mouseover", () => {
+    marker.bindTooltip(activity.name).openTooltip();
+  });
 
   marker.addEventListener("click", () => {
     renderActivityPopup(activity);
@@ -142,7 +148,14 @@ function renderActivityPopup(activity) {
   const activityElement = createActivityHTML(activity);
 
   const favouriteBtn = activityElement.querySelector(".favourite-btn");
+  const directionBtn = activityElement.querySelector(".direction-btn");
+
+  const { lat, lng } = activity;
+
   favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
+  directionBtn.addEventListener("click", () =>
+    routeFromCurrentLocation({ lat, lng })
+  );
 
   activitiesModal.appendChild(activityElement);
 }
@@ -194,95 +207,6 @@ function fitMarkersInView() {
   map.fitBounds(markerBounds);
 }
 
-// Function to dynamically render a countries flag to the DOM
-function displayCountryFlag(country, flagUrl) {
-  const flag = document.getElementById("flag");
-  flag.src = flagUrl;
-  flag.alt = `${country}'s flag`;
-}
-
-// Async function to fetch activity data from Failte Irelands API
-async function getFailteIrelandsAttractionsAPI() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    const results = [];
-
-    // const { data } = await axios.get(
-    //   "https://failteireland.azure-api.net/opendata-api/v1/attractions"
-    // );
-
-    const response = await fetch(
-      "https://failteireland.azure-api.net/opendata-api/v1/attractions"
-    );
-    const data = await response.json();
-
-    results.push(data);
-
-    // await fetchAlFailteIrelandActivities(data, results);
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(data.results);
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Gets FailteIrelands Attraction data from parsed CSV into JSON object array
-
-async function getFailteIrelandsAttractionsData() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    await delayTimer(100); // Simulating fetch request delay
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(DUMMY_ATTRACTIONS);
-
-    removeAllMarkers(map);
-
-    randomThreeActivites.forEach((attraction) =>
-      placeToolTipMarker(attraction, attractionMarkerIcon)
-    );
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getFailteIrelandsActivitiesData() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    await delayTimer(100); // Simulating fetch request delay
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(DUMMY_ACTIVITIES);
-
-    removeAllMarkers(map);
-
-    DUMMY_ACTIVITIES.forEach((attraction) =>
-      placeToolTipMarker(attraction, activityMarkerIcon)
-    );
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function toggleFavourites(e, activity) {
   console.log(e);
   const closestButton = e.target.closest("button");
@@ -331,21 +255,6 @@ function loadAllFavourites() {
   );
 }
 
-// Renders actvities to the DOM
-function displayActivites(activity) {
-  if (!activity) return;
-  const activitiesElement = createActivityHTML(activity);
-
-  const flyBtn = activitiesElement.querySelector(".fly-btn");
-  const favouriteBtn = activitiesElement.querySelector(".favourite-btn");
-
-  const { lat, lng } = activity;
-
-  flyBtn.addEventListener("click", () => flyToLocation([lat, lng]));
-  favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
-  actvityWrapper.appendChild(activitiesElement);
-}
-
 function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
@@ -371,40 +280,6 @@ function displayFilteredActivtiesOnMap(filteredActivities) {
   });
   fitMarkersInView();
   closeModal();
-}
-
-function selectMarkerIconFromValue(activity) {
-  let icon;
-
-  switch (activity.category) {
-    case "food":
-      icon = foodMarkerIcon;
-      break;
-    case "sport":
-      icon = sportsMarkerIcon;
-      break;
-    case "scenic":
-      icon = parkMarkerIcon;
-      break;
-    case "luxury":
-      icon = luxuryMarkerIcon;
-      break;
-    case "culture":
-      icon = cultureMarkerIcon;
-      break;
-    case "city":
-      icon = cityMarkerIcon;
-      break;
-    default:
-      icon = activityMarkerIcon;
-      break;
-  }
-
-  if (isFavouritedActivity(activity)) {
-    icon = favouriteMarkerIcon;
-  }
-
-  return icon;
 }
 
 function openModal() {

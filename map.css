@@ -76,10 +76,6 @@
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-.fly-btn {
-  background-color: var(--blue);
-}
-
 .favourite-btn:hover,
 .favourite-btn:focus {
   background-color: var(--red);
@@ -103,6 +99,10 @@
   color: white;
 }
 
+.fly-btn {
+  background-color: var(--blue);
+}
+
 .fly-btn:hover,
 .fly-btn:focus {
   background-color: var(--bright-blue);
@@ -112,6 +112,21 @@
 .fly-btn:hover i,
 .fly-btn:focus i {
   color: var(--light-blue);
+}
+
+.direction-btn {
+  background-color: var(--green);
+}
+
+.direction-btn:hover,
+.direction-btn:focus {
+  background-color: var(--bright-green);
+  filter: brightness(1.05);
+}
+
+.direction-btn:hover i,
+.direction-btn:focus i {
+  color: var(--dark-green);
 }
 
 .btn {

@@ -7,6 +7,7 @@ import favouriteMarkerImage from "./assets/images/markers/favourite.png";
 import luxuryMarkerImage from "./assets/images/markers/luxury.png";
 import parkMarkerImage from "./assets/images/markers/park.png";
 import sportsMarkerImage from "./assets/images/markers/sport.png";
+import { isFavouritedActivity } from "./helpers";
 
 export const attractionMarkerIcon = L.icon({
   iconUrl: attractionMarkerImage,
@@ -209,6 +210,40 @@ export const ALL_CATEGORIES = {
     "Spa",
   ],
 };
+
+export function selectMarkerIconFromValue(activity) {
+  let icon;
+
+  switch (activity.category) {
+    case "food":
+      icon = foodMarkerIcon;
+      break;
+    case "sport":
+      icon = sportsMarkerIcon;
+      break;
+    case "scenic":
+      icon = parkMarkerIcon;
+      break;
+    case "luxury":
+      icon = luxuryMarkerIcon;
+      break;
+    case "culture":
+      icon = cultureMarkerIcon;
+      break;
+    case "city":
+      icon = cityMarkerIcon;
+      break;
+    default:
+      icon = activityMarkerIcon;
+      break;
+  }
+
+  if (isFavouritedActivity(activity)) {
+    icon = favouriteMarkerIcon;
+  }
+
+  return icon;
+}
 
 // export const ALL_TAGS = [
 //   "Food and Drink",
