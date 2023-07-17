@@ -475,6 +475,9 @@ div.hero .hero-heading {
   flex-direction: column;
   gap: 0.5rem;
   font-size: 1.4rem;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .map-benefits li {
@@ -488,6 +491,10 @@ div.hero .hero-heading {
 
 .map-benefits li:nth-child(even) {
   color: var(--orange);
+}
+
+.benefits-img {
+  width: 50px;
 }
 
 /* .map-benefits li:nth-child(3) {
