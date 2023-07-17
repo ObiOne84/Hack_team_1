@@ -27,7 +27,7 @@ const mapSelector = document.getElementById("map-selector");
 
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
-let MANUAL_LOCATION = { lat: 53.34, lng: -6.26 };
+let MANUAL_LOCATION;
 
 const LAYERS = [];
 let isPlacingLocation = false;
@@ -78,7 +78,6 @@ async function flyToCurrentLocation() {
 
 function setManualLocation() {
   isPlacingLocation = true;
-  // onMapClick();
   MANUAL_LOCATION = { lat: 53.34, lng: -6.26 };
 }
 
@@ -101,14 +100,15 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (isOutSideIreland) {
-    // alert("please set your default marker if you are located outside Ireland");
+  if (!isOutSideIreland || !MANUAL_LOCATION) {
+    alert(
+      "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
+    );
 
-    // setManualLocation();
-    coords = MANUAL_LOCATION;
-    return;
+    setManualLocation();
   }
 
+  isOutSideIreland ? (coords = MANUAL_LOCATION) : { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
     [...DUMMY_ATTRACTIONS, ...DUMMY_ACTIVITIES],
