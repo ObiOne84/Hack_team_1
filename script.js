@@ -58,20 +58,27 @@ async function flyToCurrentLocation() {
 }
 
 async function getLocationsNearMe() {
-  nearbyLocationsBtn.innerHTML = "";
-  const loader = document.createElement("div");
-  loader.id = "loader";
-  nearbyLocationsBtn.appendChild(loader);
-  removeAllMarkers(map);
   const { lat, lng } = await getCurrentLocationLatLng();
 
-  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
   const coords = { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
     DUMMY_ATTRACTIONS,
     distanceSelector.value
   );
+
+  return filteredAttractions;
+}
+
+async function displayFilteredLocationsNearMe() {
+  nearbyLocationsBtn.innerHTML = "";
+  const loader = document.createElement("div");
+  loader.id = "loader";
+  nearbyLocationsBtn.appendChild(loader);
+  removeAllMarkers(map);
+  const filteredAttractions = await getLocationsNearMe();
+
+  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
 
   filteredAttractions.forEach((attraction) => {
     const icon = selectMarkerIconFromValue(attraction);
@@ -250,6 +257,11 @@ function loadAllFavourites() {
   }
   const currentFavourites = JSON.parse(currentStoredFavourites);
 
+  if (currentFavourites.length === 0) {
+    alert("NO current favourites");
+    return;
+  }
+
   currentFavourites.forEach((activity) =>
     placeToolTipMarker(activity, favouriteMarkerIcon)
   );
@@ -259,15 +271,15 @@ function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
-function filterActivityData() {
+async function filterActivityData() {
   const value = filterSelector.value;
-  const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
-  const filteredActivities = allIrishAttractions.filter(
+  const nearbyLocations = await getLocationsNearMe();
+  const filteredActivities = nearbyLocations.filter(
     (activity) => activity.category === value
   );
 
   displayFilteredActivtiesOnMap(
-    value === "all" ? allIrishAttractions : filteredActivities
+    value === "all" ? nearbyLocations : filteredActivities
   );
 }
 
@@ -309,9 +321,9 @@ function closeModal() {
 
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
-nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
+nearbyLocationsBtn.addEventListener("click", filterActivityData);
 filterSelector.addEventListener("change", filterActivityData);
-distanceSelector.addEventListener("change", getLocationsNearMe);
+distanceSelector.addEventListener("change", filterActivityData);
 settingsModalBtn.addEventListener("click", openModal);
 closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
