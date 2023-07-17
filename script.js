@@ -33,6 +33,9 @@ setMap();
 
 function setMap() {
   const mapValue = mapSelector.value;
+  const mapValueText = document.getElementById("map-value");
+
+  mapValueText.textContent = capitalize(mapValue);
 
   LAYERS.forEach((layer) => map.removeLayer(layer));
 
