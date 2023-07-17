@@ -244,7 +244,7 @@
 }
 
 #activites-modal {
-  display: flex;
+  display: noone;
   align-self: flex-end;
   position: relative;
   animation: slideFromBottom 0.3s ease forwards;

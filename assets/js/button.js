@@ -8,17 +8,19 @@
  */
 let contactForm = document.getElementById("form-container");
 
-contactForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    let thankYouMessage = document.getElementById("thank-you-note"); 
-    let fname = document.getElementById("fname").value;
-    let lname = document.getElementById("exampleInputPassword1").value;
-    let email = document.getElementById("exampleInputEmail1").value;
+  let form = document.getElementById("form-container");
+  form.style.display = "none";
+  let thankYouMessage = document.getElementById("thank-you-note");
+  let fname = document.getElementById("fname").value;
+  let lname = document.getElementById("exampleInputPassword1").value;
+  let email = document.getElementById("exampleInputEmail1").value;
 
-    if (fname !== "" && lname !== "" && email !== "") {
-        thankYouMessage.style.display = "block"
-    } else {
-        console.log("User did not provide valid creditentials.")
-    }
+  if (fname !== "" && lname !== "" && email !== "") {
+    thankYouMessage.style.display = "block";
+  } else {
+    console.log("User did not provide valid creditentials.");
+  }
 });
