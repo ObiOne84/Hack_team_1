@@ -152,12 +152,13 @@
 
 #map {
   height: 100%;
-  min-height: 85vh;
+  min-height: 75vh;
   border-radius: 10px;
 }
 
 .map-container {
   position: relative;
+  padding: 1rem;
 }
 
 .map-btns-container {
@@ -270,4 +271,14 @@
   padding: 0.25rem 0.5rem;
   border-radius: 20px;
   background-color: var(--bright-green);
+}
+
+@media screen and (max-width: 400px) {
+  /* thank you note */
+
+  .btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
 }
