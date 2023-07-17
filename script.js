@@ -10,10 +10,10 @@ import {
 import { createActivityHTML } from "./html-renders";
 
 // const fetchCountryBtn = document.getElementById("fetch-country-btn");
+const manualLocationBtn = document.getElementById("manual-location");
 const geolocationBtn = document.getElementById("geolocation-btn");
 const nearbyLocationsBtn = document.getElementById("locations-btn");
 const favouritesBtn = document.getElementById("favourites");
-const actvityWrapper = document.getElementById("activities");
 const filterSelector = document.getElementById("filter");
 const distanceSelector = document.getElementById("distance");
 const settingsModalBtn = document.getElementById("settings");
@@ -112,7 +112,7 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (isOutSideIreland && !MANUAL_LOCATION) {
+  if (!isOutSideIreland && !MANUAL_LOCATION) {
     alert(
       "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
     );
@@ -120,7 +120,7 @@ async function getLocationsNearMe() {
     setManualLocation();
   }
 
-  isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
+  !isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
   console.log(MANUAL_LOCATION);
   const filteredAttractions = filterObjectsByRadius(
     coords,
@@ -418,6 +418,10 @@ function isCoordinateOutsideIreland(lat, lng) {
   );
 }
 
+function updateManualMarker() {
+  isPlacingLocation = true;
+}
+
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", filterActivityData);
@@ -428,4 +432,5 @@ closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
 closeActivityModal.addEventListener("click", closeModalOnClick);
 mapSelector.addEventListener("change", setMap);
+manualLocationBtn.addEventListener("click", updateManualMarker);
 map.on("click", onMapClick);
