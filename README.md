@@ -1,11 +1,10 @@
-<h1 align="center"><strong>🌞🚵 Summer of Code 🏄🏖️</strong>
+<h1 align="center"><strong>Lovin Summer</strong>
 
 </h1>
 
 
-![Summer of Code Banner](https://res.cloudinary.com/djdefbnij/image/upload/v1688114955/Summer_2_owummy.png)
+![Summer of Code Banner](/assets/images/logo-summer.png)
 
-# SUBMISSION
 ## Deployment
 #### _(please note, your team must also include the deployed links in the usual submission in Hackapp)_
 This project was deployed using [Netlify](https://app.netlify.com/) and can be accessed at [this address](https://musical-kataifi-25a4e4.netlify.app/).
@@ -22,8 +21,6 @@ The project aligns perfectly with the theme of the hackathon, which is to encour
 
 Agile methodologies have been employed through GitHub Projects. Different tasks for the project were created and assigned to various team members. Once each task was completed, they were moved to the "Done" section. As code modifications were made, the corresponding pull requests were created and approved by the Scrum Master.
 
-**@JOSE - READ THIS - This section refers to the video presentation that must be made at the end of the project, not needed in the readme - JOHNNY**
-- ✨ Presentation Quality - Present as if you are pitching it to client
 
 # ABOUT SUBMISSION
 ## Intro
@@ -86,16 +83,6 @@ In the tech section, we provide information about the technology stack, dependen
 * Netlify
 
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
 ## Credits
 We would like to give credit to the following individuals, organizations, and resources that have contributed to the project or provided inspiration:
 
@@ -106,8 +93,13 @@ We would like to give credit to the following individuals, organizations, and re
 [Festival dragon](https://eaf.ie/about) provided by **© 2023 Earagail Arts Festival**  
 [Hiking routes](https://www.hillwalktours.com/walking-hiking-blog/hiking-in-ireland-most-beautiful-multi-day-walking-routes/) provided by **Hillwalktours**  
 [Electric picnic](https://www.electricpicnic.ie/news/sign-up-for-tour-de-picnic-2023/) provided by **© Festival Republic 2023**  
-[Easter egg](https://www.youtube.com/watch?v=ZW0DfsCzfq4) provided by [Kurt Harmsworth](https://www.youtube.com/@eddiekurt15) / [YouTube] (https://www.youtube.com/)
-[QR Code](https://qr.io/) provided by **© QR.io**
+[Stamen tiles](https://stamen.com/) provided by **© Stamen Design LLC**  
+[Open Street Map](https://www.openstreetmap.org/copyright) provided by **OpenStreetMap®**  
+[NatGeo Map](https://server.arcgisonline.com/arcgis/rest/services) provided by **© 1995-2021 Esri**  
+[Leaflet Routing Machine](https://github.com/perliedman/leaflet-routing-machine) provided by **github.com/perliedman/**  
+[Easter egg](https://www.youtube.com/watch?v=ZW0DfsCzfq4) provided by [Kurt Harmsworth](https://www.youtube.com/@eddiekurt15) / 
+[YouTube](https://www.youtube.com/) provided by **© 2023 Google LLC**  
+[QR Code](https://qr.io/) provided by **© QR.io**  
 
 
 
