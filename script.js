@@ -55,7 +55,7 @@ function getLocation() {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve(position),
         (error) => reject(error),
-        { enableHighAccuracy: true }
+        { enableHighAccuracy: true, maximumAge: 10000 }
       );
     } else {
       reject(new Error("Geolocation is not supported by the browser."));
@@ -67,6 +67,8 @@ function getLocation() {
 async function getCurrentLocationLatLng() {
   try {
     const position = await getLocation();
+
+    console.log(position);
 
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
