@@ -291,10 +291,17 @@ function flyToLocation(coords) {
 
 async function filterActivityData() {
   const value = filterSelector.value;
+  nearbyLocationsBtn.innerHTML = "";
+  const loader = document.createElement("div");
+  loader.id = "loader";
+  nearbyLocationsBtn.appendChild(loader);
+  removeAllMarkers(map);
   const nearbyLocations = await getLocationsNearMe();
   const filteredActivities = nearbyLocations.filter(
     (activity) => activity.category === value
   );
+
+  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
 
   displayFilteredActivtiesOnMap(
     value === "all" ? nearbyLocations : filteredActivities
