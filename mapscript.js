@@ -7,58 +7,59 @@ import favouriteMarkerImage from "./assets/images/markers/favourite.png";
 import luxuryMarkerImage from "./assets/images/markers/luxury.png";
 import parkMarkerImage from "./assets/images/markers/park.png";
 import sportsMarkerImage from "./assets/images/markers/sport.png";
+import { isFavouritedActivity } from "./helpers";
 
 export const attractionMarkerIcon = L.icon({
   iconUrl: attractionMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const activityMarkerIcon = L.icon({
   iconUrl: activityMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const foodMarkerIcon = L.icon({
   iconUrl: foodMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const cityMarkerIcon = L.icon({
   iconUrl: cityMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const cultureMarkerIcon = L.icon({
   iconUrl: cultureMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const favouriteMarkerIcon = L.icon({
   iconUrl: favouriteMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const luxuryMarkerIcon = L.icon({
   iconUrl: luxuryMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const parkMarkerIcon = L.icon({
   iconUrl: parkMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
 export const sportsMarkerIcon = L.icon({
   iconUrl: sportsMarkerImage,
-  iconSize: [40, 40],
+  iconSize: [60, 60],
   iconAnchor: [16, 32],
 });
 
@@ -209,6 +210,103 @@ export const ALL_CATEGORIES = {
     "Spa",
   ],
 };
+
+export function selectMarkerIconFromValue(activity) {
+  let icon;
+
+  switch (activity.category) {
+    case "food":
+      icon = foodMarkerIcon;
+      break;
+    case "sport":
+      icon = sportsMarkerIcon;
+      break;
+    case "scenic":
+      icon = parkMarkerIcon;
+      break;
+    case "luxury":
+      icon = luxuryMarkerIcon;
+      break;
+    case "culture":
+      icon = cultureMarkerIcon;
+      break;
+    case "city":
+      icon = cityMarkerIcon;
+      break;
+    default:
+      icon = activityMarkerIcon;
+      break;
+  }
+
+  if (isFavouritedActivity(activity)) {
+    icon = favouriteMarkerIcon;
+  }
+
+  return icon;
+}
+
+const waterColourMap = L.tileLayer(
+  "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+  {
+    attribution:
+      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: "abcd",
+    minZoom: 1,
+    maxZoom: 16,
+    ext: "jpg",
+  }
+);
+
+const natGeoMap = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
+  {
+    attribution:
+      "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
+    maxZoom: 16,
+  }
+);
+
+const defaultMap = L.tileLayer(
+  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }
+);
+
+const darkMap = L.tileLayer(
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+  {
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+  }
+);
+
+export function selectMapTheme(value) {
+  let map;
+
+  switch (value) {
+    case "default":
+      map = defaultMap;
+      break;
+    case "dark":
+      map = darkMap;
+      break;
+    case "natgeo":
+      map = natGeoMap;
+      break;
+    case "watercolour":
+      map = waterColourMap;
+      break;
+    default:
+      map = defaultMap;
+      break;
+  }
+
+  return map;
+}
 
 // export const ALL_TAGS = [
 //   "Food and Drink",

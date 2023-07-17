@@ -33,6 +33,23 @@ export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
   return filteredObjects;
 }
 
+export function isFavouritedActivity(activity) {
+  const currentStoredFavourites = localStorage.getItem("favourites");
+  if (!currentStoredFavourites) return;
+  const currentFavourites = JSON.parse(currentStoredFavourites);
+
+  if (currentFavourites) {
+    return currentFavourites.find(
+      (favourite) => favourite.name === activity.name
+    );
+  }
+  return null;
+}
+
+export function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Calculate the distace between to coords
 function calculateDistance(coords1, coords2) {
   const earthRadiusKm = 6371;
@@ -59,4 +76,125 @@ function calculateDistance(coords1, coords2) {
 // convert the degrees into a radial line distance
 function toRadians(degrees) {
   return degrees * (Math.PI / 180);
+}
+
+// Async function that fetching country information from rest-countries API
+async function fetchCountryData() {
+  const url = `https://restcountries.com/v3.1/name/ireland`;
+  try {
+    // const { data } = await axios(url);
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
+    const { latlng } = capitalInfo;
+    map.flyTo([latlng[0], latlng[1]], 13);
+    displayCountryFlag(data[1].name.common, data[1].flags.svg);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Function to dynamically render a countries flag to the DOM
+function displayCountryFlag(country, flagUrl) {
+  const flag = document.getElementById("flag");
+  flag.src = flagUrl;
+  flag.alt = `${country}'s flag`;
+}
+
+// Async function to fetch activity data from Failte Irelands API
+async function getFailteIrelandsAttractionsAPI() {
+  try {
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
+
+    const results = [];
+
+    // const { data } = await axios.get(
+    //   "https://failteireland.azure-api.net/opendata-api/v1/attractions"
+    // );
+
+    const response = await fetch(
+      "https://failteireland.azure-api.net/opendata-api/v1/attractions"
+    );
+    const data = await response.json();
+
+    results.push(data);
+
+    // await fetchAlFailteIrelandActivities(data, results);
+
+    actvityWrapper.innerHTML = "";
+    const randomThreeActivites = randomThreeFromArray(data.results);
+
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Gets FailteIrelands Attraction data from parsed CSV into JSON object array
+
+async function getFailteIrelandsAttractionsData() {
+  try {
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
+
+    await delayTimer(100); // Simulating fetch request delay
+
+    actvityWrapper.innerHTML = "";
+    const randomThreeActivites = randomThreeFromArray(DUMMY_ATTRACTIONS);
+
+    removeAllMarkers(map);
+
+    randomThreeActivites.forEach((attraction) =>
+      placeToolTipMarker(attraction, attractionMarkerIcon)
+    );
+
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getFailteIrelandsActivitiesData() {
+  try {
+    actvityWrapper.innerHTML = "";
+    const loader = document.createElement("div");
+    actvityWrapper.appendChild(loader);
+    loader.id = "loader";
+
+    await delayTimer(100); // Simulating fetch request delay
+
+    actvityWrapper.innerHTML = "";
+    const randomThreeActivites = randomThreeFromArray(DUMMY_ACTIVITIES);
+
+    removeAllMarkers(map);
+
+    DUMMY_ACTIVITIES.forEach((attraction) =>
+      placeToolTipMarker(attraction, activityMarkerIcon)
+    );
+
+    randomThreeActivites.forEach((activity) => displayActivites(activity));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Renders actvities to the DOM
+function displayActivites(activity) {
+  if (!activity) return;
+  const activitiesElement = createActivityHTML(activity);
+
+  const flyBtn = activitiesElement.querySelector(".fly-btn");
+  const favouriteBtn = activitiesElement.querySelector(".favourite-btn");
+
+  const { lat, lng } = activity;
+
+  flyBtn.addEventListener("click", () => flyToLocation([lat, lng]));
+  favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
+  actvityWrapper.appendChild(activitiesElement);
 }

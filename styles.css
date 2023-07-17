@@ -191,8 +191,7 @@ body {
 
 /*hero*/
 div.home-hero {
-  animation: pan-image 30s linear infinite;
-  background-size: cover;
+  /* animation: pan-image 30s linear infinite; */
   background-image: linear-gradient(rgba(9, 53, 29, 0.8), rgba(47, 65, 61, 0.8)),
     url("./assets/images/ireland-hero.jpg");
 }
@@ -378,16 +377,62 @@ div.hero .hero-heading {
 
 .footer-link {
   font-size: 2rem;
-  /*background: var(--blue); original color */
 }
 
 .footer-link:hover {
-  /*background-color: var(--bright-orange); original color */
   background-color: white;
-  /* Johnny - test new color scheme */
-  /*color: var(--blue);*/
   color: rgba(47, 65, 61, 0.9) !important;
-  /* Johnny - test new color scheme */
+}
+
+.socials {
+  color: white;
+  font-size: 2rem;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.instagram:hover,
+.instagram:focus {
+  transition: all 0.2s;
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  cursor: pointer;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  color: white !important;
+}
+
+.facebook:hover,
+.facebook:focus {
+  transition: all 0.2s;
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  cursor: pointer;
+  color: white !important;
+  background-color: #2b4170;
+  background: -moz-linear-gradient(top, #3b5998, #2b4170);
+  background: -ms-linear-gradient(top, #3b5998, #2b4170);
+  background: -webkit-linear-gradient(top, #3b5998, #2b4170);
+}
+
+.twitter:hover,
+.twitter:focus {
+  transition: all 0.2s;
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  cursor: pointer;
+  color: white !important;
+  background: linear-gradient(45deg, #1da1f2, #0d90e0);
+  /* background: -webkit-radial-gradient(45deg, #1da1f2, #0d90e0);
+  background: -moz-radial-gradient(45deg, #1da1f2, #0d90e0);
+  background: -o-radial-gradient(45deg, #1da1f2, #0d90e0); */
 }
 
 .partners-row img {
@@ -411,7 +456,7 @@ div.hero .hero-heading {
 /* Contact us page */
 /* form */
 
-.form-background {
+/* .form-background {
   background-color: var(--dark-green);
 }
 
@@ -425,11 +470,11 @@ div.hero .hero-heading {
 
 .submit-button {
   background-color: var(--dark-orange);
-}
+} */
 
 /* Thank you message*/
 
-#thank-you-note {
+/* #thank-you-note {
   width: 100%;
   height: 100%;
   background-color: var(--dark-green);
@@ -457,7 +502,7 @@ div.hero .hero-heading {
 .submitted-ok {
   font-size: 300%;
   padding: 15px 0;
-}
+} */
 /* End Contact us page */
 
 /*Media Queries*/
@@ -531,6 +576,16 @@ div.hero .hero-heading {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInSlideUp {
   0% {
     opacity: 0;
@@ -544,6 +599,22 @@ div.hero .hero-heading {
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+
+  80% {
+    transform: translateY(-35px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-20px);
   }
 }
 
@@ -602,4 +673,15 @@ div.hero .hero-heading {
     background-position: 100% 40%;
     background-size: 225%;
   }
+}
+
+section {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+}
+
+.animate {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  transition: opacity 1s ease, transform 0.5s ease;
 }

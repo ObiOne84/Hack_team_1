@@ -1,20 +1,11 @@
-import L from "leaflet";
-import {
-  delayTimer,
-  filterObjectsByRadius,
-  randomThreeFromArray,
-} from "./helpers";
+// import L from "leaflet";
+import { capitalize, filterObjectsByRadius } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
 import DUMMY_ACTIVITIES from "./assets/data/testing.json";
 import {
-  activityMarkerIcon,
-  attractionMarkerIcon,
-  cityMarkerIcon,
-  cultureMarkerIcon,
-  foodMarkerIcon,
-  luxuryMarkerIcon,
-  parkMarkerIcon,
-  sportsMarkerIcon,
+  favouriteMarkerIcon,
+  selectMapTheme,
+  selectMarkerIconFromValue,
 } from "./mapscript";
 import { createActivityHTML } from "./html-renders";
 
@@ -27,36 +18,32 @@ const filterSelector = document.getElementById("filter");
 const distanceSelector = document.getElementById("distance");
 const settingsModalBtn = document.getElementById("settings");
 const closeSettingsModalBtn = document.getElementById("close-modal");
-const settingsModal = document.getElementById("modal");
+const settingsModal = document.getElementById("settings-modal");
+const activitiesModal = document.getElementById("activites-modal");
 const background = document.getElementById("background");
-const mapLayout = document.getElementById("map");
+const mapBtnContainers = document.querySelector(".map-btns-container");
+const closeActivityModal = document.getElementById("close-activity-modal");
+const mapSelector = document.getElementById("map-selector");
 
-mapLayout.addEventListener("click", () => console.log("click"));
 // initialise leaflet map, desired location and zoom level
 const map = L.map("map").setView([53.34, -6.26], 8);
 
-// add OpenStreetMap tile layer
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
+const LAYERS = [];
+setMap();
 
-// Async function that fetching country information from rest-countries API
-async function fetchCountryData() {
-  const url = `https://restcountries.com/v3.1/name/ireland`;
-  try {
-    // const { data } = await axios(url);
-    const response = await fetch(url);
-    const data = await response.json();
+function setMap() {
+  const mapValue = mapSelector.value;
+  const mapValueText = document.getElementById("map-value");
 
-    const { capitalInfo } = data[1]; // This is due to two results from Ireland , GB and Ire
-    const { latlng } = capitalInfo;
-    map.flyTo([latlng[0], latlng[1]], 13);
-    displayCountryFlag(data[1].name.common, data[1].flags.svg);
-  } catch (error) {
-    console.log(error);
-  }
+  mapValueText.textContent = capitalize(mapValue);
+
+  LAYERS.forEach((layer) => map.removeLayer(layer));
+
+  const tileLayer = selectMapTheme(mapValue);
+
+  tileLayer.addTo(map);
+
+  LAYERS.push(tileLayer);
 }
 
 // Using web geolocation to find current users location and display on map
@@ -87,17 +74,30 @@ async function flyToCurrentLocation() {
 }
 
 async function getLocationsNearMe() {
-  removeAllMarkers(map);
   const { lat, lng } = await getCurrentLocationLatLng();
+
   const coords = { lat, lng };
   const filteredAttractions = filterObjectsByRadius(
     coords,
-    DUMMY_ATTRACTIONS,
+    [...DUMMY_ATTRACTIONS, ...DUMMY_ACTIVITIES],
     distanceSelector.value
   );
 
+  return filteredAttractions;
+}
+
+async function displayFilteredLocationsNearMe() {
+  nearbyLocationsBtn.innerHTML = "";
+  const loader = document.createElement("div");
+  loader.id = "loader";
+  nearbyLocationsBtn.appendChild(loader);
+  removeAllMarkers(map);
+  const filteredAttractions = await getLocationsNearMe();
+
+  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+
   filteredAttractions.forEach((attraction) => {
-    const icon = selectMarkerIconFromValue(attraction.category);
+    const icon = selectMarkerIconFromValue(attraction);
 
     const { lat, lng } = attraction;
     placeInteractiveMarker({ lat, lng }, icon, attraction);
@@ -117,14 +117,80 @@ function placeMarker(location, icon) {
   return marker;
 }
 
+function removeRouteFromMap(map) {
+  const popupElement = document.querySelector(".leaflet-routing-container");
+  if (popupElement) {
+    popupElement.parentNode.removeChild(popupElement);
+  }
+  map.eachLayer(function (layer) {
+    if (layer instanceof L.Polyline) {
+      map.removeLayer(layer);
+    }
+  });
+}
+
+async function routeFromCurrentLocation(location) {
+  closeModal();
+  removeRouteFromMap(map);
+
+  const { lat, lng } = await getCurrentLocationLatLng();
+
+  placeMarker([lat, lng]);
+  const control = L.Routing.control({
+    waypoints: [L.latLng(lat, lng), L.latLng(location.lat, location.lng)],
+    routeWhileDragging: true,
+    createMarker: function () {
+      return null;
+    },
+    show: false,
+    lineOptions: {
+      styles: [{ color: "green", opacity: 0.8, weight: 10 }],
+    },
+  }).addTo(map);
+
+  control.on("routesfound", function (e) {
+    const routes = e.routes;
+    const summary = routes[0].summary;
+    let distance = (summary.totalDistance / 1000).toFixed(2);
+    let time = Math.round((summary.totalTime % 3600) / 60);
+    const tripSummary = document.getElementById("trip-summary");
+    tripSummary.style.display = "block";
+    tripSummary.innerText = `${distance}km / ${time}mins`;
+  });
+}
+
 function placeInteractiveMarker(location, icon, activity) {
   const { lat, lng } = location;
   const marker = placeMarker([lat, lng], icon);
-  // marker.bindTooltip(location.name).openTooltip();
 
-  marker.addEventListener("click", () => console.log(activity));
+  marker.addEventListener("mouseover", () => {
+    marker.bindTooltip(activity.name).openTooltip();
+  });
+
+  marker.addEventListener("click", () => {
+    renderActivityPopup(activity);
+  });
 
   return marker;
+}
+
+function renderActivityPopup(activity) {
+  activitiesModal.style.display = "flex";
+  background.style.display = "flex";
+  mapBtnContainers.style.display = "none";
+  const activityElement = createActivityHTML(activity);
+
+  const favouriteBtn = activityElement.querySelector(".favourite-btn");
+  const directionBtn = activityElement.querySelector(".direction-btn");
+
+  const { lat, lng } = activity;
+
+  favouriteBtn.addEventListener("click", (e) => toggleFavourites(e, activity));
+  directionBtn.addEventListener("click", () =>
+    routeFromCurrentLocation({ lat, lng })
+  );
+
+  activitiesModal.appendChild(activityElement);
 }
 
 // Places a marker with a tooltip on the map
@@ -174,96 +240,11 @@ function fitMarkersInView() {
   map.fitBounds(markerBounds);
 }
 
-// Function to dynamically render a countries flag to the DOM
-function displayCountryFlag(country, flagUrl) {
-  const flag = document.getElementById("flag");
-  flag.src = flagUrl;
-  flag.alt = `${country}'s flag`;
-}
+function toggleFavourites(e, activity) {
+  console.log(e);
+  const closestButton = e.target.closest("button");
+  closestButton.classList.toggle("favourite");
 
-// Async function to fetch activity data from Failte Irelands API
-async function getFailteIrelandsAttractionsAPI() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    const results = [];
-
-    // const { data } = await axios.get(
-    //   "https://failteireland.azure-api.net/opendata-api/v1/attractions"
-    // );
-
-    const response = await fetch(
-      "https://failteireland.azure-api.net/opendata-api/v1/attractions"
-    );
-    const data = await response.json();
-
-    results.push(data);
-
-    // await fetchAlFailteIrelandActivities(data, results);
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(data.results);
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Gets FailteIrelands Attraction data from parsed CSV into JSON object array
-
-async function getFailteIrelandsAttractionsData() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    await delayTimer(100); // Simulating fetch request delay
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(DUMMY_ATTRACTIONS);
-
-    removeAllMarkers(map);
-
-    randomThreeActivites.forEach((attraction) =>
-      placeToolTipMarker(attraction, attractionMarkerIcon)
-    );
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getFailteIrelandsActivitiesData() {
-  try {
-    actvityWrapper.innerHTML = "";
-    const loader = document.createElement("div");
-    actvityWrapper.appendChild(loader);
-    loader.id = "loader";
-
-    await delayTimer(100); // Simulating fetch request delay
-
-    actvityWrapper.innerHTML = "";
-    const randomThreeActivites = randomThreeFromArray(DUMMY_ACTIVITIES);
-
-    removeAllMarkers(map);
-
-    DUMMY_ACTIVITIES.forEach((attraction) =>
-      placeToolTipMarker(attraction, activityMarkerIcon)
-    );
-
-    randomThreeActivites.forEach((activity) => displayActivites(activity));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-function toggleFavourites(activity) {
   const currentStoredFavourites = localStorage.getItem("favourites");
   activity.favourited = !activity.favourited;
 
@@ -296,81 +277,57 @@ function toggleFavourites(activity) {
 
 function loadAllFavourites() {
   const currentStoredFavourites = localStorage.getItem("favourites");
+  if (!currentStoredFavourites) {
+    alert("NO current favourites");
+    return;
+  }
   const currentFavourites = JSON.parse(currentStoredFavourites);
 
-  currentFavourites.forEach((activity) => displayActivites(activity));
-}
+  if (currentFavourites.length === 0) {
+    alert("NO current favourites");
+    return;
+  }
 
-// Renders actvities to the DOM
-function displayActivites(activity) {
-  if (!activity) return;
-  const activitiesElement = createActivityHTML(activity);
+  currentFavourites.forEach((activity) => {
+    const { lat, lng } = activity;
+    placeInteractiveMarker(activity, favouriteMarkerIcon, activity);
+  });
 
-  const flyBtn = activitiesElement.querySelector(".fly-btn");
-  const favouriteBtn = activitiesElement.querySelector(".favourite-btn");
-
-  const { lat, lng } = activity;
-
-  flyBtn.addEventListener("click", () => flyToLocation([lat, lng]));
-  favouriteBtn.addEventListener("click", () => toggleFavourites(activity));
-  actvityWrapper.appendChild(activitiesElement);
+  fitMarkersInView();
 }
 
 function flyToLocation(coords) {
   map.flyTo(coords, 14);
 }
 
-function filterActivityData() {
+async function filterActivityData() {
   const value = filterSelector.value;
-  const allIrishAttractions = [...DUMMY_ACTIVITIES, ...DUMMY_ATTRACTIONS];
-  const filteredActivities = allIrishAttractions.filter(
+  nearbyLocationsBtn.innerHTML = "";
+  const loader = document.createElement("div");
+  loader.id = "loader";
+  nearbyLocationsBtn.appendChild(loader);
+  removeAllMarkers(map);
+  const nearbyLocations = await getLocationsNearMe();
+  const filteredActivities = nearbyLocations.filter(
     (activity) => activity.category === value
   );
 
+  nearbyLocationsBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+
   displayFilteredActivtiesOnMap(
-    value === "all" ? allIrishAttractions : filteredActivities
+    value === "all" ? nearbyLocations : filteredActivities
   );
 }
 
 function displayFilteredActivtiesOnMap(filteredActivities) {
   removeAllMarkers(map);
   filteredActivities.forEach((activity) => {
-    const icon = selectMarkerIconFromValue(activity.category);
+    const icon = selectMarkerIconFromValue(activity);
     const { lat, lng } = activity;
     placeInteractiveMarker({ lat, lng }, icon, activity);
   });
   fitMarkersInView();
   closeModal();
-}
-
-function selectMarkerIconFromValue(value) {
-  let icon;
-
-  switch (value) {
-    case "food":
-      icon = foodMarkerIcon;
-      break;
-    case "sport":
-      icon = sportsMarkerIcon;
-      break;
-    case "scenic":
-      icon = parkMarkerIcon;
-      break;
-    case "luxury":
-      icon = luxuryMarkerIcon;
-      break;
-    case "culture":
-      icon = cultureMarkerIcon;
-      break;
-    case "city":
-      icon = cityMarkerIcon;
-      break;
-    default:
-      icon = activityMarkerIcon;
-      break;
-  }
-
-  return icon;
 }
 
 function openModal() {
@@ -379,22 +336,55 @@ function openModal() {
 }
 
 function closeModalOnClick(e) {
-  if (e.target === background || e.target === closeSettingsModalBtn) {
+  if (
+    e.target === background ||
+    e.target === closeSettingsModalBtn ||
+    e.target === closeActivityModal
+  ) {
     background.style.display = "none";
     settingsModal.style.display = "none";
+    activitiesModal.style.display = "none";
+    mapBtnContainers.style.display = "flex";
   }
 }
 
 function closeModal() {
   background.style.display = "none";
   settingsModal.style.display = "none";
+  mapBtnContainers.style.display = "flex";
+  activitiesModal.style.display = "none";
 }
+
+function updateCategoryFilterText() {
+  const element = document.getElementById("catagory-value");
+  element.textContent = capitalize(filterSelector.value);
+}
+
+function updateDistanceFilterText() {
+  const element = document.getElementById("distance-value");
+  element.textContent = capitalize(distanceSelector.value) + "Km";
+}
+
+var observer = new IntersectionObserver(
+  function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+      } else {
+        entry.target.classList.remove("animate");
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
 
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
-nearbyLocationsBtn.addEventListener("click", getLocationsNearMe);
-filterSelector.addEventListener("change", filterActivityData);
-distanceSelector.addEventListener("change", getLocationsNearMe);
+nearbyLocationsBtn.addEventListener("click", filterActivityData);
+filterSelector.addEventListener("change", updateCategoryFilterText);
+distanceSelector.addEventListener("change", updateDistanceFilterText);
 settingsModalBtn.addEventListener("click", openModal);
 closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);
+closeActivityModal.addEventListener("click", closeModalOnClick);
+mapSelector.addEventListener("change", setMap);
