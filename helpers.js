@@ -23,6 +23,8 @@ export function delayTimer(delay) {
 export function filterObjectsByRadius(originalCoords, objects, radiusInKm) {
   const filteredObjects = [];
 
+  console.log(originalCoords);
+
   for (const obj of objects) {
     const distance = calculateDistance(originalCoords, obj);
     if (distance <= radiusInKm) {

@@ -108,7 +108,8 @@ async function getLocationsNearMe() {
     setManualLocation();
   }
 
-  isOutSideIreland ? (coords = MANUAL_LOCATION) : { lat, lng };
+  isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
+  console.log(MANUAL_LOCATION);
   const filteredAttractions = filterObjectsByRadius(
     coords,
     [...DUMMY_ATTRACTIONS, ...DUMMY_ACTIVITIES],
@@ -286,6 +287,7 @@ function toggleFavourites(e, activity) {
 }
 
 function loadAllFavourites() {
+  removeAllMarkers(map);
   const currentStoredFavourites = localStorage.getItem("favourites");
   if (!currentStoredFavourites) {
     alert("NO current favourites");
