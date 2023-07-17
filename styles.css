@@ -620,3 +620,13 @@ div.hero .hero-heading {
     background-size: 225%;
   }
 }
+
+section {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+}
+.animate {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  transition: opacity 1s ease, transform 0.5s ease;
+}

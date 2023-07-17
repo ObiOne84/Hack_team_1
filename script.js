@@ -354,6 +354,19 @@ function updateDistanceFilterText() {
   element.textContent = capitalize(distanceSelector.value) + "Km";
 }
 
+var observer = new IntersectionObserver(
+  function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+      } else {
+        entry.target.classList.remove("animate");
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", filterActivityData);
