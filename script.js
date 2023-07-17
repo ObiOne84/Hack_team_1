@@ -100,7 +100,7 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (!isOutSideIreland || !MANUAL_LOCATION) {
+  if (isOutSideIreland && !MANUAL_LOCATION) {
     alert(
       "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
     );
