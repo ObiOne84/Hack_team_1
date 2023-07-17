@@ -527,6 +527,11 @@ div.hero .hero-heading {
 } */
 /*Media Queries*/
 
+h5 {
+  color: white !important;
+  padding: 1rem;
+}
+
 @media screen and (max-width: 1200px) {
   /* thank you note */
 
