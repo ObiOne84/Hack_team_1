@@ -497,6 +497,18 @@ div.hero .hero-heading {
   width: 50px;
 }
 
+#btn-map {
+  background-color: var(--dark-green);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3rem;
+}
+
+#btn-map:hover {
+  background-color: var(--green);
+  color: white;
+}
 /* .map-benefits li:nth-child(3) {
   color: var(--orange);
 }
