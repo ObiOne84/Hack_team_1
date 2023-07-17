@@ -101,7 +101,7 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (!isOutSideIreland) {
+  if (isOutSideIreland) {
     // alert("please set your default marker if you are located outside Ireland");
 
     // setManualLocation();
