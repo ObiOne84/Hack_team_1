@@ -467,6 +467,40 @@ div.hero .hero-heading {
   overflow: hidden;
   animation: pan-image 30s linear infinite;
 }
+
+.map-benefits {
+  padding: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.map-benefits li {
+  font-weight: bold;
+  text-shadow: 1px 1px black;
+}
+
+.map-benefits li:nth-child(odd) {
+  color: var(--bright-green);
+}
+
+.map-benefits li:nth-child(even) {
+  color: var(--orange);
+}
+
+/* .map-benefits li:nth-child(3) {
+  color: var(--orange);
+}
+
+.map-benefits li:nth-child(4) {
+  color: var(--bright-green);
+}
+
+.map-benefits li:nth-child(5) {
+  color: rgb(164, 164, 28);
+} */
 /*Media Queries*/
 
 @media screen and (max-width: 1200px) {
