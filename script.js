@@ -49,12 +49,24 @@ function setMap() {
   LAYERS.push(tileLayer);
 }
 
+function getLocation() {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => resolve(position),
+        (error) => reject(error),
+        { enableHighAccuracy: true }
+      );
+    } else {
+      reject(new Error("Geolocation is not supported by the browser."));
+    }
+  });
+}
+
 // Using web geolocation to find current users location and display on map
 async function getCurrentLocationLatLng() {
   try {
-    const position = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
+    const position = await getLocation();
 
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
