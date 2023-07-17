@@ -457,7 +457,7 @@ div.hero .hero-heading {
 /* Contact us page */
 /* form */
 
-.form-background {
+/* .form-background {
   background-color: var(--dark-green);
 }
 
@@ -471,11 +471,11 @@ div.hero .hero-heading {
 
 .submit-button {
   background-color: var(--dark-orange);
-}
+} */
 
 /* Thank you message*/
 
-#thank-you-note {
+/* #thank-you-note {
   width: 100%;
   height: 100%;
   background-color: var(--dark-green);
@@ -503,7 +503,7 @@ div.hero .hero-heading {
 .submitted-ok {
   font-size: 300%;
   padding: 15px 0;
-}
+} */
 /* End Contact us page */
 
 /*Media Queries*/
