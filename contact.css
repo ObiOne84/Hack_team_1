@@ -1,3 +1,15 @@
+.gradient-container {
+  background-image: linear-gradient(
+      rgba(255, 216, 137, 0.6),
+      rgba(255, 201, 142, 0.6)
+    ),
+    url("./assets/images/contact-background.jpg");
+}
+
+#form-container {
+  animation: fadeInSlideUp 0.3s ease-in;
+}
+
 .form-background {
   background-color: var(--dark-green);
 }
