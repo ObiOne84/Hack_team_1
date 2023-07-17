@@ -46,6 +46,10 @@ export function isFavouritedActivity(activity) {
   return null;
 }
 
+export function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Calculate the distace between to coords
 function calculateDistance(coords1, coords2) {
   const earthRadiusKm = 6371;

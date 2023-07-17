@@ -1,5 +1,5 @@
 // import L from "leaflet";
-import { filterObjectsByRadius } from "./helpers";
+import { capitalize, filterObjectsByRadius } from "./helpers";
 import DUMMY_ATTRACTIONS from "./assets/data/testing2.json";
 import DUMMY_ACTIVITIES from "./assets/data/testing.json";
 import { favouriteMarkerIcon, selectMarkerIconFromValue } from "./mapscript";
@@ -319,11 +319,21 @@ function closeModal() {
   activitiesModal.style.display = "none";
 }
 
+function updateCategoryFilterText() {
+  const element = document.getElementById("catagory-value");
+  element.textContent = capitalize(filterSelector.value);
+}
+
+function updateDistanceFilterText() {
+  const element = document.getElementById("distance-value");
+  element.textContent = capitalize(distanceSelector.value) + "Km";
+}
+
 geolocationBtn.addEventListener("click", flyToCurrentLocation);
 favouritesBtn.addEventListener("click", loadAllFavourites);
 nearbyLocationsBtn.addEventListener("click", filterActivityData);
-filterSelector.addEventListener("change", filterActivityData);
-distanceSelector.addEventListener("change", filterActivityData);
+filterSelector.addEventListener("change", updateCategoryFilterText);
+distanceSelector.addEventListener("change", updateDistanceFilterText);
 settingsModalBtn.addEventListener("click", openModal);
 closeSettingsModalBtn.addEventListener("click", closeModalOnClick);
 background.addEventListener("click", closeModalOnClick);

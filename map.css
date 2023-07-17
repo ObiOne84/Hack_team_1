@@ -172,6 +172,27 @@
   z-index: 1000;
 }
 
+.active-filter {
+  padding: 0;
+  top: -25px;
+  list-style: none;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.25rem;
+  position: absolute;
+}
+
+.active-filter li {
+  display: flex;
+  border: 1px solid;
+  font-size: x-small;
+  border-radius: 20px;
+  background-color: var(--bright-green);
+  padding: 0.25rem 0.5rem;
+  color: var(--off-black);
+}
+
 /* MODAL */
 #background {
   display: none;
