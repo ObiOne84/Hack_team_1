@@ -136,7 +136,7 @@ async function routeFromCurrentLocation(location) {
   const { lat, lng } = await getCurrentLocationLatLng();
 
   placeMarker([lat, lng]);
-  L.Routing.control({
+  const control = L.Routing.control({
     waypoints: [L.latLng(lat, lng), L.latLng(location.lat, location.lng)],
     routeWhileDragging: true,
     createMarker: function () {
@@ -147,6 +147,15 @@ async function routeFromCurrentLocation(location) {
       styles: [{ color: "green", opacity: 0.8, weight: 10 }],
     },
   }).addTo(map);
+
+  control.on("routesfound", function (e) {
+    const routes = e.routes;
+    const summary = routes[0].summary;
+    let distance = (summary.totalDistance / 1000).toFixed(2);
+    let time = Math.round((summary.totalTime % 3600) / 60);
+    const tripSummary = document.getElementById("trip-summary");
+    tripSummary.innerText = `${distance}km / ${time}mins`;
+  });
 }
 
 function placeInteractiveMarker(location, icon, activity) {
@@ -278,9 +287,10 @@ function loadAllFavourites() {
     return;
   }
 
-  currentFavourites.forEach((activity) =>
-    placeToolTipMarker(activity, favouriteMarkerIcon)
-  );
+  currentFavourites.forEach((activity) => {
+    const { lat, lng } = activity;
+    placeInteractiveMarker(activity, favouriteMarkerIcon, activity);
+  });
 
   fitMarkersInView();
 }

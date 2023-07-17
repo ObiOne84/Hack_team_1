@@ -181,6 +181,7 @@
   display: flex;
   gap: 0.25rem;
   position: absolute;
+  width: fit-content;
 }
 
 .active-filter li {
@@ -252,4 +253,9 @@
 
 .close:hover {
   color: #000;
+}
+
+.trip-summary {
+  position: absolute;
+  top: 50;
 }
