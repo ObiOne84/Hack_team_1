@@ -50,13 +50,13 @@ function setMap() {
 }
 
 async function getLocation() {
-  const permissions = await navigator.permissions.query({
-    name: "geolocation",
-  });
+  // const permissions = await navigator.permissions.query({
+  //   name: "geolocation",
+  // });
 
-  alert(permissions.state);
-  if (permissions.state === "granted") {
-  }
+  // alert(permissions.state);
+  // if (permissions.state === "granted") {
+  // }
 
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
