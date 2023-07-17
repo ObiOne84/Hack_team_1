@@ -85,87 +85,96 @@
             Fetch Irelands Info
           </button>
         </li> -->
+      
+      <div class="row">
+        <div class="col-md-2 order-md-1"></div>
+        <div class="col-md-8 order-md-2 py-5">
 
-      <div class="map-container">
-        <span id="trip-summary"></span>
-        <!-- SETTINGS MODAL -->
-        <div id="background">
-          <!-- ATTRACTION MODAL -->
-          <div id="settings-modal">
-            <span id="close-modal" class="close-modal">&times;</span>
-            <h2>Settings</h2>
-            <label for="filter">Categories:</label>
-            <select id="filter">
-              <option value="all">All</option>
-              <option value="food">Food & Beverage</option>
-              <option value="scenic">Scenic</option>
-              <option value="sport">Sport</option>
-              <option value="luxury">Luxury</option>
-              <option value="city">City</option>
-              <option value="culture">Culture</option>
-            </select>
-            <label for="distance">Distance</label>
-            <input
-              type="number"
-              id="distance"
-              name="tentacles"
-              min="10"
-              max="100"
-              value="30"
-            />
-            <label for="map-selector">Map:</label>
-            <select id="map-selector">
-              <option value="default">Default</option>
-              <option value="dark">Dark</option>
-              <option value="natgeo">NatGeo</option>
-              <option value="watercolour">WaterColour</option>
-            </select>
-          </div>
-          <div id="activites-modal">
-            <span id="close-activity-modal" class="close-modal">&times;</span>
-            <div id="activity" class="activity"></div>
+          <!-- map conatiner -->
+          <div class="map-container rounded">
+            <span id="trip-summary"></span>
+            <!-- SETTINGS MODAL -->
+            <div id="background">
+              <!-- ATTRACTION MODAL -->
+              <div id="settings-modal">
+                <span id="close-modal" class="close-modal">&times;</span>
+                <h2>Settings</h2>
+                <label for="filter">Categories:</label>
+                <select id="filter">
+                  <option value="all">All</option>
+                  <option value="food">Food & Beverage</option>
+                  <option value="scenic">Scenic</option>
+                  <option value="sport">Sport</option>
+                  <option value="luxury">Luxury</option>
+                  <option value="city">City</option>
+                  <option value="culture">Culture</option>
+                </select>
+                <label for="distance">Distance</label>
+                <input
+                  type="number"
+                  id="distance"
+                  name="tentacles"
+                  min="10"
+                  max="100"
+                  value="30"
+                />
+                <label for="map-selector">Map:</label>
+                <select id="map-selector">
+                  <option value="default">Default</option>
+                  <option value="dark">Dark</option>
+                  <option value="natgeo">NatGeo</option>
+                  <option value="watercolour">WaterColour</option>
+                </select>
+              </div>
+              <div id="activites-modal">
+                <span id="close-activity-modal" class="close-modal">&times;</span>
+                <div id="activity" class="activity"></div>
+              </div>
+            </div>
+    
+            <div id="map"></div>
+            <!-- Geolocation buttons -->
+            <div class="map-btns-container">
+              <ul class="active-filter">
+                <li
+                  style="background-color: var(--bright-blue)"
+                  id="distance-value"
+                >
+                  30km
+                </li>
+                <li id="catagory-value">All</li>
+                <li id="map-value" style="background-color: var(--orange)">
+                  Default
+                </li>
+              </ul>
+              <button id="manual-location" class="btn btn-info">
+                <i class="fa-solid fa-location-dot"></i>
+              </button>
+              <button id="geolocation-btn" class="btn btn-primary">
+                <i class="fa-solid fa-location-crosshairs"></i>
+              </button>
+    
+              <!-- Find nearby locations -->
+              <button id="locations-btn" class="btn btn-success">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <!-- Find favourite locations -->
+              <button id="favourites" class="btn btn-danger">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <button
+                id="settings"
+                class="btn"
+                style="background-color: var(--orange)"
+              >
+                <i class="fa-solid fa-gear"></i>
+              </button>
+            </div>
           </div>
         </div>
-
-        <div id="map"></div>
-        <!-- Geolocation buttons -->
-        <div class="map-btns-container">
-          <ul class="active-filter">
-            <li
-              style="background-color: var(--bright-blue)"
-              id="distance-value"
-            >
-              30km
-            </li>
-            <li id="catagory-value">All</li>
-            <li id="map-value" style="background-color: var(--orange)">
-              Default
-            </li>
-          </ul>
-          <button id="manual-location" class="btn btn-info">
-            <i class="fa-solid fa-location-dot"></i>
-          </button>
-          <button id="geolocation-btn" class="btn btn-primary">
-            <i class="fa-solid fa-location-crosshairs"></i>
-          </button>
-
-          <!-- Find nearby locations -->
-          <button id="locations-btn" class="btn btn-success">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <!-- Find favourite locations -->
-          <button id="favourites" class="btn btn-danger">
-            <i class="fa-solid fa-heart"></i>
-          </button>
-          <button
-            id="settings"
-            class="btn"
-            style="background-color: var(--orange)"
-          >
-            <i class="fa-solid fa-gear"></i>
-          </button>
-        </div>
+        <div class="col-md-2 order-md-3"></div>
       </div>
+      
     </main>
 
     <!-- footer -->
