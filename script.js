@@ -54,7 +54,9 @@ async function getLocation() {
     name: "geolocation",
   });
 
-  alert(permissions);
+  alert(permissions.state);
+  if (permissions.state === "granted") {
+  }
 
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
