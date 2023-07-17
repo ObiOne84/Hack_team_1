@@ -130,7 +130,11 @@
 }
 
 .btn {
-  aspect-ratio: 1;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
   font-size: 1.6rem;
   transition: 150ms;
