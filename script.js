@@ -100,7 +100,7 @@ async function getLocationsNearMe() {
 
   let coords = { lat, lng };
 
-  if (!isOutSideIreland && !MANUAL_LOCATION) {
+  if (isOutSideIreland && !MANUAL_LOCATION) {
     alert(
       "please set your default marker if you are located outside Ireland. You are defaulted to Dublin"
     );
@@ -108,7 +108,7 @@ async function getLocationsNearMe() {
     setManualLocation();
   }
 
-  !isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
+  isOutSideIreland ? (coords = MANUAL_LOCATION) : (coords = { lat, lng });
   console.log(MANUAL_LOCATION);
   const filteredAttractions = filterObjectsByRadius(
     coords,
@@ -287,6 +287,7 @@ function toggleFavourites(e, activity) {
 }
 
 function loadAllFavourites() {
+  removeAllMarkers(map);
   const currentStoredFavourites = localStorage.getItem("favourites");
   if (!currentStoredFavourites) {
     alert("NO current favourites");
